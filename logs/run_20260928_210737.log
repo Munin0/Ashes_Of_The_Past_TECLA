@@ -1,0 +1,2369 @@
+Log guardado en: logs/run_20260928_210737.log
+No existe la carpeta build/, generando el proyecto con CMake...
+-- The C compiler identification is GNU 16.2.1
+-- The CXX compiler identification is GNU 16.2.1
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Dowloading SDL3 Library
+-- Making libraries available:
+--   - « SDL3 »
+--   - « SDL3_Mixer »
+--   - « GLM »
+--   - « nlohmann_json »
+-- Found PkgConfig: /usr/bin/pkg-config (found version "3.0.7")
+-- Detecting Target CPU Architecture
+-- Detecting Target CPU Architecture - X64
+-- Performing Test HAVE_GCC_WALL
+-- Performing Test HAVE_GCC_WALL - Success
+-- Performing Test HAVE_GCC_WUNDEF
+-- Performing Test HAVE_GCC_WUNDEF - Success
+-- Performing Test HAVE_GCC_WFLOAT_CONVERSION
+-- Performing Test HAVE_GCC_WFLOAT_CONVERSION - Success
+-- Performing Test HAVE_GCC_NO_STRICT_ALIASING
+-- Performing Test HAVE_GCC_NO_STRICT_ALIASING - Success
+-- Performing Test HAVE_GCC_WDOCUMENTATION
+-- Performing Test HAVE_GCC_WDOCUMENTATION - Failed
+-- Performing Test HAVE_GCC_WDOCUMENTATION_UNKNOWN_COMMAND
+-- Performing Test HAVE_GCC_WDOCUMENTATION_UNKNOWN_COMMAND - Failed
+-- Performing Test HAVE_GCC_COMMENT_BLOCK_COMMANDS
+-- Performing Test HAVE_GCC_COMMENT_BLOCK_COMMANDS - Failed
+-- Performing Test HAVE_CLANG_COMMENT_BLOCK_COMMANDS
+-- Performing Test HAVE_CLANG_COMMENT_BLOCK_COMMANDS - Failed
+-- Performing Test HAVE_GCC_WSHADOW
+-- Performing Test HAVE_GCC_WSHADOW - Success
+-- Performing Test HAVE_GCC_WUNUSED_LOCAL_TYPEDEFS
+-- Performing Test HAVE_GCC_WUNUSED_LOCAL_TYPEDEFS - Success
+-- Performing Test HAVE_GCC_WIMPLICIT_FALLTHROUGH
+-- Performing Test HAVE_GCC_WIMPLICIT_FALLTHROUGH - Success
+-- Performing Test COMPILER_SUPPORTS_FDIAGNOSTICS_COLOR_ALWAYS
+-- Performing Test COMPILER_SUPPORTS_FDIAGNOSTICS_COLOR_ALWAYS - Success
+-- Looking for __GLIBC__
+-- Looking for __GLIBC__ - found
+-- Performing Test HAVE_WL_VERSION_SCRIPT
+-- Performing Test HAVE_WL_VERSION_SCRIPT - Success
+-- Performing Test COMPILER_SUPPORTS_GCC_ATOMICS
+-- Performing Test COMPILER_SUPPORTS_GCC_ATOMICS - Success
+-- Performing Test HAVE_GCC_FVISIBILITY
+-- Performing Test HAVE_GCC_FVISIBILITY - Success
+-- Performing Test LINKER_SUPPORTS_WL_NO_UNDEFINED
+-- Performing Test LINKER_SUPPORTS_WL_NO_UNDEFINED - Success
+-- Performing Test COMPILER_SUPPORTS_MMX
+-- Performing Test COMPILER_SUPPORTS_MMX - Success
+-- Performing Test COMPILER_SUPPORTS_SSE
+-- Performing Test COMPILER_SUPPORTS_SSE - Success
+-- Performing Test COMPILER_SUPPORTS_SSE2
+-- Performing Test COMPILER_SUPPORTS_SSE2 - Success
+-- Performing Test COMPILER_SUPPORTS_SSE3
+-- Performing Test COMPILER_SUPPORTS_SSE3 - Success
+-- Performing Test COMPILER_SUPPORTS_SSE4_1
+-- Performing Test COMPILER_SUPPORTS_SSE4_1 - Success
+-- Performing Test COMPILER_SUPPORTS_SSE4_2
+-- Performing Test COMPILER_SUPPORTS_SSE4_2 - Success
+-- Performing Test COMPILER_SUPPORTS_AVX
+-- Performing Test COMPILER_SUPPORTS_AVX - Success
+-- Performing Test COMPILER_SUPPORTS_AVX2
+-- Performing Test COMPILER_SUPPORTS_AVX2 - Success
+-- Performing Test COMPILER_SUPPORTS_AVX512F
+-- Performing Test COMPILER_SUPPORTS_AVX512F - Success
+-- Looking for alloca.h
+-- Looking for alloca.h - found
+-- Looking for float.h
+-- Looking for float.h - found
+-- Looking for iconv.h
+-- Looking for iconv.h - found
+-- Looking for inttypes.h
+-- Looking for inttypes.h - found
+-- Looking for limits.h
+-- Looking for limits.h - found
+-- Looking for malloc.h
+-- Looking for malloc.h - found
+-- Looking for math.h
+-- Looking for math.h - found
+-- Looking for memory.h
+-- Looking for memory.h - found
+-- Looking for signal.h
+-- Looking for signal.h - found
+-- Looking for stdarg.h
+-- Looking for stdarg.h - found
+-- Looking for stdbool.h
+-- Looking for stdbool.h - found
+-- Looking for stddef.h
+-- Looking for stddef.h - found
+-- Looking for stdint.h
+-- Looking for stdint.h - found
+-- Looking for stdio.h
+-- Looking for stdio.h - found
+-- Looking for stdlib.h
+-- Looking for stdlib.h - found
+-- Looking for string.h
+-- Looking for string.h - found
+-- Looking for strings.h
+-- Looking for strings.h - found
+-- Looking for sys/types.h
+-- Looking for sys/types.h - found
+-- Looking for time.h
+-- Looking for time.h - found
+-- Looking for wchar.h
+-- Looking for wchar.h - found
+-- Looking for pow in m
+-- Looking for pow in m - found
+-- Looking for abs
+-- Looking for abs - found
+-- Looking for acos
+-- Looking for acos - found
+-- Looking for acosf
+-- Looking for acosf - found
+-- Looking for asin
+-- Looking for asin - found
+-- Looking for asinf
+-- Looking for asinf - found
+-- Looking for atan
+-- Looking for atan - found
+-- Looking for atan2
+-- Looking for atan2 - found
+-- Looking for atan2f
+-- Looking for atan2f - found
+-- Looking for atanf
+-- Looking for atanf - found
+-- Looking for atof
+-- Looking for atof - found
+-- Looking for atoi
+-- Looking for atoi - found
+-- Looking for bcopy
+-- Looking for bcopy - found
+-- Looking for ceil
+-- Looking for ceil - found
+-- Looking for ceilf
+-- Looking for ceilf - found
+-- Looking for copysign
+-- Looking for copysign - found
+-- Looking for copysignf
+-- Looking for copysignf - found
+-- Looking for cos
+-- Looking for cos - found
+-- Looking for cosf
+-- Looking for cosf - found
+-- Looking for _Exit
+-- Looking for _Exit - found
+-- Looking for exp
+-- Looking for exp - found
+-- Looking for expf
+-- Looking for expf - found
+-- Looking for fabs
+-- Looking for fabs - found
+-- Looking for fabsf
+-- Looking for fabsf - found
+-- Looking for floor
+-- Looking for floor - found
+-- Looking for floorf
+-- Looking for floorf - found
+-- Looking for fmod
+-- Looking for fmod - found
+-- Looking for fmodf
+-- Looking for fmodf - found
+-- Looking for fopen64
+-- Looking for fopen64 - found
+-- Looking for fseeko
+-- Looking for fseeko - found
+-- Looking for fseeko64
+-- Looking for fseeko64 - found
+-- Looking for getenv
+-- Looking for getenv - found
+-- Looking for _i64toa
+-- Looking for _i64toa - not found
+-- Looking for index
+-- Looking for index - found
+-- Looking for itoa
+-- Looking for itoa - not found
+-- Looking for log
+-- Looking for log - found
+-- Looking for log10
+-- Looking for log10 - found
+-- Looking for log10f
+-- Looking for log10f - found
+-- Looking for logf
+-- Looking for logf - found
+-- Looking for lround
+-- Looking for lround - found
+-- Looking for lroundf
+-- Looking for lroundf - found
+-- Looking for _ltoa
+-- Looking for _ltoa - not found
+-- Looking for malloc
+-- Looking for malloc - found
+-- Looking for memcmp
+-- Looking for memcmp - found
+-- Looking for memcpy
+-- Looking for memcpy - found
+-- Looking for memmove
+-- Looking for memmove - found
+-- Looking for memset
+-- Looking for memset - found
+-- Looking for modf
+-- Looking for modf - found
+-- Looking for modff
+-- Looking for modff - found
+-- Looking for pow
+-- Looking for pow - found
+-- Looking for powf
+-- Looking for powf - found
+-- Looking for putenv
+-- Looking for putenv - found
+-- Looking for rindex
+-- Looking for rindex - found
+-- Looking for round
+-- Looking for round - found
+-- Looking for roundf
+-- Looking for roundf - found
+-- Looking for scalbn
+-- Looking for scalbn - found
+-- Looking for scalbnf
+-- Looking for scalbnf - found
+-- Looking for setenv
+-- Looking for setenv - found
+-- Looking for sin
+-- Looking for sin - found
+-- Looking for sinf
+-- Looking for sinf - found
+-- Looking for sqr
+-- Looking for sqr - not found
+-- Looking for sqrt
+-- Looking for sqrt - found
+-- Looking for sqrtf
+-- Looking for sqrtf - found
+-- Looking for sscanf
+-- Looking for sscanf - found
+-- Looking for strchr
+-- Looking for strchr - found
+-- Looking for strcmp
+-- Looking for strcmp - found
+-- Looking for strlcat
+-- Looking for strlcat - found
+-- Looking for strlcpy
+-- Looking for strlcpy - found
+-- Looking for strlen
+-- Looking for strlen - found
+-- Looking for strncmp
+-- Looking for strncmp - found
+-- Looking for strnlen
+-- Looking for strnlen - found
+-- Looking for strpbrk
+-- Looking for strpbrk - found
+-- Looking for strrchr
+-- Looking for strrchr - found
+-- Looking for strstr
+-- Looking for strstr - found
+-- Looking for strnstr
+-- Looking for strnstr - not found
+-- Looking for strtod
+-- Looking for strtod - found
+-- Looking for strtok_r
+-- Looking for strtok_r - found
+-- Looking for strtol
+-- Looking for strtol - found
+-- Looking for strtoll
+-- Looking for strtoll - found
+-- Looking for strtoul
+-- Looking for strtoul - found
+-- Looking for strtoull
+-- Looking for strtoull - found
+-- Looking for tan
+-- Looking for tan - found
+-- Looking for tanf
+-- Looking for tanf - found
+-- Looking for trunc
+-- Looking for trunc - found
+-- Looking for truncf
+-- Looking for truncf - found
+-- Looking for unsetenv
+-- Looking for unsetenv - found
+-- Looking for vsnprintf
+-- Looking for vsnprintf - found
+-- Looking for vsscanf
+-- Looking for vsscanf - found
+-- Looking for wcsnlen
+-- Looking for wcsnlen - found
+-- Looking for wcscmp
+-- Looking for wcscmp - found
+-- Looking for wcsdup
+-- Looking for wcsdup - found
+-- Looking for wcslcat
+-- Looking for wcslcat - found
+-- Looking for wcslcpy
+-- Looking for wcslcpy - found
+-- Looking for wcslen
+-- Looking for wcslen - found
+-- Looking for wcsncmp
+-- Looking for wcsncmp - found
+-- Looking for wcsstr
+-- Looking for wcsstr - found
+-- Looking for wcstol
+-- Looking for wcstol - found
+-- Looking for strcasestr
+-- Looking for strcasestr - found
+-- Performing Test LIBC_HAS_ISINF
+-- Performing Test LIBC_HAS_ISINF - Success
+-- Performing Test LIBC_ISINF_HANDLES_FLOAT
+-- Performing Test LIBC_ISINF_HANDLES_FLOAT - Success
+-- Performing Test LIBC_HAS_ISINFF
+-- Performing Test LIBC_HAS_ISINFF - Success
+-- Performing Test LIBC_HAS_ISNAN
+-- Performing Test LIBC_HAS_ISNAN - Success
+-- Performing Test LIBC_ISNAN_HANDLES_FLOAT
+-- Performing Test LIBC_ISNAN_HANDLES_FLOAT - Success
+-- Performing Test LIBC_HAS_ISNANF
+-- Performing Test LIBC_HAS_ISNANF - Success
+-- Looking for fdatasync
+-- Looking for fdatasync - found
+-- Looking for gethostname
+-- Looking for gethostname - found
+-- Looking for getpagesize
+-- Looking for getpagesize - found
+-- Looking for getresgid
+-- Looking for getresgid - found
+-- Looking for getresuid
+-- Looking for getresuid - found
+-- Looking for sigaction
+-- Looking for sigaction - found
+-- Looking for sigtimedwait
+-- Looking for sigtimedwait - found
+-- Looking for setjmp
+-- Looking for setjmp - found
+-- Looking for nanosleep
+-- Looking for nanosleep - found
+-- Looking for gmtime_r
+-- Looking for gmtime_r - found
+-- Looking for localtime_r
+-- Looking for localtime_r - found
+-- Looking for nl_langinfo
+-- Looking for nl_langinfo - found
+-- Looking for sysconf
+-- Looking for sysconf - found
+-- Looking for sysctlbyname
+-- Looking for sysctlbyname - not found
+-- Looking for getauxval
+-- Looking for getauxval - found
+-- Looking for elf_aux_info
+-- Looking for elf_aux_info - not found
+-- Looking for ppoll
+-- Looking for ppoll - found
+-- Looking for memfd_create
+-- Looking for memfd_create - found
+-- Looking for posix_fallocate
+-- Looking for posix_fallocate - found
+-- Looking for posix_spawn_file_actions_addchdir
+-- Looking for posix_spawn_file_actions_addchdir - found
+-- Looking for posix_spawn_file_actions_addchdir_np
+-- Looking for posix_spawn_file_actions_addchdir_np - found
+-- Performing Test ICONV_IN_LIBC
+-- Performing Test ICONV_IN_LIBC - Success
+-- Performing Test ICONV_IN_LIBICONV
+-- Performing Test ICONV_IN_LIBICONV - Failed
+-- Performing Test HAVE_SA_SIGACTION
+-- Performing Test HAVE_SA_SIGACTION - Success
+-- Performing Test HAVE_ST_MTIM
+-- Performing Test HAVE_ST_MTIM - Success
+-- Looking for dlopen
+-- Looking for dlopen - found
+-- Performing Test HAVE_O_CLOEXEC
+-- Performing Test HAVE_O_CLOEXEC - Success
+CMake Warning (policy) at build/_deps/sdl3-src/CMakeLists.txt:1790 (check_c_source_compiles):
+  Policy CMP0219 is not set: Macro invocations preserve backslashes in
+  arguments.  Run "cmake --help-policy CMP0219" for policy details.  Use the
+  cmake_policy command to set the policy and suppress this warning.
+
+  Command "CHECK_C_SOURCE_COMPILES" called with arguments containing
+  backslashes.
+
+  Since the policy is not set, backslashes in the arguments:
+
+   "    #ifndef __ELF__
+        ELF DL notes is only supported on ELF platforms
+      #endif
+      __attribute__ ((used,aligned(4),section(".note.dlopen"))) static const struct {
+        struct { int a; int b; int c; } hdr; char name[4]; __attribute__((aligned(4))) char json[24];
+      } dlnote = { { 4, 0x407c0c0aU, 16 }, "FDO", "[\\"a\\":{\\"a\\":\\"1\\",\\"b\\":\\"2\\"}]" };
+      int main(int argc, char *argv[]) {
+        return argc + dlnote.hdr.a;
+      }
+      "
+
+  will be interpreted as escape sequences for compatibility.
+
+  Set the policy to NEW to instead pass
+
+   "    #ifndef __ELF__
+        ELF DL notes is only supported on ELF platforms
+      #endif
+      __attribute__ ((used,aligned(4),section(".note.dlopen"))) static const struct {
+        struct { int a; int b; int c; } hdr; char name[4]; __attribute__((aligned(4))) char json[24];
+      } dlnote = { { 4, 0x407c0c0aU, 16 }, "FDO", "[\\\\"a\\\\":{\\\\"a\\\\":\\\\"1\\\\",\\\\"b\\\\":\\\\"2\\\\"}]" };
+      int main(int argc, char *argv[]) {
+        return argc + dlnote.hdr.a;
+      }
+      "
+
+  so that argument parsing will preserve the original values.
+This warning is for project developers.  Use -Wno-author or -Wno-policy to
+suppress it.
+
+-- Performing Test COMPILER_SUPPORTS_ELFNOTES
+-- Performing Test COMPILER_SUPPORTS_ELFNOTES - Success
+-- Found ALSA: /usr/lib/libasound.so (found version "1.2.16.1")
+-- dynamic libasound -> libasound.so.2
+-- Checking for module 'jack'
+--   Found jack, version 1.9.22
+-- dynamic libjack -> libjack.so.0
+-- Checking for module 'libpipewire-0.3>=0.3.44'
+--   Found libpipewire-0.3, version 1.6.9
+-- dynamic libpipewire-0.3 -> libpipewire-0.3.so.0
+-- Checking for module 'libpulse>=0.9.15'
+--   Found libpulse, version 17.0-98-gb096
+-- dynamic libpulse -> libpulse.so.0
+-- Checking for module 'sndio'
+--   Found sndio, version 1.10.0
+-- dynamic libsndio -> libsndio.so.7
+-- Found X11: /usr/include
+-- Looking for XOpenDisplay in /usr/lib/libX11.so;/usr/lib/libXext.so
+-- Looking for XOpenDisplay in /usr/lib/libX11.so;/usr/lib/libXext.so - found
+-- Looking for gethostbyname
+-- Looking for gethostbyname - found
+-- Looking for connect
+-- Looking for connect - found
+-- Looking for remove
+-- Looking for remove - found
+-- Looking for shmat
+-- Looking for shmat - found
+-- Looking for IceConnectionNumber in ICE
+-- Looking for IceConnectionNumber in ICE - found
+-- dynamic libX11 -> libX11.so.6
+-- dynamic libXext -> libXext.so.6
+-- dynamic libXcursor -> libXcursor.so.1
+-- dynamic libXi -> libXi.so.6
+-- dynamic libXfixes -> libXfixes.so.3
+-- dynamic libXrandr -> libXrandr.so.2
+-- dynamic libXrender -> libXrender.so.1
+-- dynamic libXss -> libXss.so.1
+-- dynamic libXtst -> libXtst.so.6
+-- Looking for shmat
+-- Looking for shmat - found
+-- Performing Test HAVE_XGENERICEVENT
+-- Performing Test HAVE_XGENERICEVENT - Success
+-- Looking for X11/XKBlib.h
+-- Looking for X11/XKBlib.h - found
+-- Performing Test HAVE_XINPUT2_SCROLLINFO
+-- Performing Test HAVE_XINPUT2_SCROLLINFO - Success
+-- Performing Test HAVE_XINPUT2_MULTITOUCH
+-- Performing Test HAVE_XINPUT2_MULTITOUCH - Success
+-- Performing Test HAVE_XINPUT2_GESTURE
+-- Performing Test HAVE_XINPUT2_GESTURE - Success
+-- Performing Test HAVE_XFIXES_H
+-- Performing Test HAVE_XFIXES_H - Success
+-- Checking for module 'fribidi'
+--   Found fribidi, version 1.0.16
+-- dynamic libfribidi -> libfribidi.so.0
+-- Checking for module 'libthai'
+--   Found libthai, version 0.1.30
+-- dynamic libthai -> libthai.so.0
+-- Found OpenGL: /usr/lib/libOpenGL.so
+-- Performing Test HAVE_OPENGL_EGL
+-- Performing Test HAVE_OPENGL_EGL - Success
+-- Checking for module 'libdrm'
+--   Found libdrm, version 2.4.134
+-- Checking for module 'gbm'
+--   Found gbm, version 26.2.3-arch3.1
+-- dynamic libdrm -> libdrm.so.2
+-- dynamic libgbm -> libgbm.so.1
+-- Performing Test HAVE_OPENGL_GLX
+-- Performing Test HAVE_OPENGL_GLX - Success
+-- Performing Test HAVE_OPENGL
+-- Performing Test HAVE_OPENGL - Success
+-- Performing Test HAVE_OPENGLES_V1
+-- Performing Test HAVE_OPENGLES_V1 - Failed
+-- Performing Test HAVE_OPENGLES_V2
+-- Performing Test HAVE_OPENGLES_V2 - Success
+-- Checking for modules 'wayland-client>=1.18;wayland-egl;wayland-cursor;egl;xkbcommon>=0.5.0'
+--   Found wayland-client, version 1.26.0
+--   Found wayland-egl, version 18.1.0
+--   Found wayland-cursor, version 1.26.0
+--   Found egl, version 1.5
+--   Found xkbcommon, version 1.13.2
+-- dynamic libwayland-client -> libwayland-client.so.0
+-- dynamic libwayland-egl -> libwayland-egl.so.1
+-- dynamic libwayland-cursor -> libwayland-cursor.so.0
+-- dynamic libxkbcommon -> libxkbcommon.so.0
+-- Checking for module 'libdecor-0'
+--   Found libdecor-0, version 0.2.5
+-- dynamic libdecor-0 -> libdecor-0.so.0
+-- Performing Test HAVE_LINUX_INPUT_H
+-- Performing Test HAVE_LINUX_INPUT_H - Success
+-- Performing Test HAVE_INPUT_KD
+-- Performing Test HAVE_INPUT_KD - Success
+-- Performing Test HAVE_LINUX_VIDEODEV2_H
+-- Performing Test HAVE_LINUX_VIDEODEV2_H - Success
+-- Looking for libudev.h
+-- Looking for libudev.h - found
+-- dynamic libudev -> libudev.so.1
+-- Looking for sys/inotify.h
+-- Looking for sys/inotify.h - found
+-- Looking for inotify_init
+-- Looking for inotify_init - found
+-- Looking for inotify_init1
+-- Looking for inotify_init1 - found
+-- Checking for one of the modules 'dbus-1;dbus'
+-- Checking for one of the modules 'ibus-1.0;ibus'
+-- Checking for one of the modules 'liburing-ffi'
+-- Performing Test LIBC_HAS_WORKING_LIBUNWIND
+-- Performing Test LIBC_HAS_WORKING_LIBUNWIND - Failed
+-- Performing Test LIBUNWIND_HAS_WORKINGLIBUNWIND
+-- Performing Test LIBUNWIND_HAS_WORKINGLIBUNWIND - Failed
+-- Checking for modules 'libunwind;libunwind-generic'
+--   Found libunwind, version 1.8.3
+--   Found libunwind-generic, version 1.8.3
+-- Performing Test PC_LIBUNWIND_HAS_WORKING_LIBUNWIND
+-- Performing Test PC_LIBUNWIND_HAS_WORKING_LIBUNWIND - Success
+-- Checking for module 'libusb-1.0>=1.0.16'
+--   Found libusb-1.0, version 1.0.30
+-- Found LibUSB: /usr/lib/libusb-1.0.so (found version "1.0.30")
+-- Performing Test HAVE_LIBUSB_H
+-- Performing Test HAVE_LIBUSB_H - Success
+-- Performing Test HAVE_PTHREADS
+-- Performing Test HAVE_PTHREADS - Success
+-- Performing Test HAVE_RECURSIVE_MUTEXES
+-- Performing Test HAVE_RECURSIVE_MUTEXES - Success
+-- Performing Test HAVE_PTHREADS_SEM
+-- Performing Test HAVE_PTHREADS_SEM - Success
+-- Performing Test COMPILER_HAS_SEM_TIMEDWAIT
+-- Performing Test COMPILER_HAS_SEM_TIMEDWAIT - Success
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Looking for pthread_np.h
+-- Looking for pthread_np.h - not found
+-- Performing Test HAVE_PTHREAD_SETNAME_NP
+-- Performing Test HAVE_PTHREAD_SETNAME_NP - Success
+-- Looking for clock_gettime in c
+-- Looking for clock_gettime in c - found
+-- Performing Test HAVE_ENABLE_NEW_DTAGS
+-- Performing Test HAVE_ENABLE_NEW_DTAGS - Success
+-- Performing Test HAVE_POSIX_SPAWN
+-- Performing Test HAVE_POSIX_SPAWN - Success
+-- Looking for vfork
+-- Looking for vfork - found
+-- 
+-- SDL3 was configured with the following options:
+-- 
+-- Platform: Linux-6.18.52-1-cachyos-lts
+-- 64-bit:   TRUE
+-- Compiler: /usr/bin/cc
+-- Revision: SDL-3.4.4-release-3.4.4
+-- Vendor:   
+-- 
+-- Subsystems:
+--   Audio:    ON
+--   Video:    ON
+--   GPU:      ON
+--   Render:   ON
+--   Camera:   ON
+--   Joystick: ON
+--   Haptic:   ON
+--   Hidapi:   ON
+--   Power:    ON
+--   Sensor:   ON
+--   Dialog:   ON
+--   Tray:     ON
+-- 
+-- Options:
+--   SDL_ALSA                    (Wanted: ON): ON
+--   SDL_ALSA_SHARED             (Wanted: ON): ON
+--   SDL_ALTIVEC                 (Wanted: OFF): OFF
+--   SDL_ARMNEON                 (Wanted: OFF): OFF
+--   SDL_ASAN                    (Wanted: OFF): OFF
+--   SDL_ASSEMBLY                (Wanted: ON): ON
+--   SDL_ASSERTIONS              (Wanted: auto): auto
+--   SDL_AVX                     (Wanted: ON): ON
+--   SDL_AVX2                    (Wanted: ON): ON
+--   SDL_AVX512F                 (Wanted: ON): ON
+--   SDL_BACKGROUNDING_SIGNAL    (Wanted: OFF): OFF
+--   SDL_CCACHE                  (Wanted: OFF): OFF
+--   SDL_CLANG_TIDY              (Wanted: OFF): OFF
+--   SDL_CLOCK_GETTIME           (Wanted: ON): ON
+--   SDL_COCOA                   (Wanted: OFF): OFF
+--   SDL_DBUS                    (Wanted: ON): ON
+--   SDL_DEPS_SHARED             (Wanted: ON): OFF
+--   SDL_DIRECTX                 (Wanted: OFF): OFF
+--   SDL_DISKAUDIO               (Wanted: ON): ON
+--   SDL_DLOPEN_NOTES            (Wanted: ON): ON
+--   SDL_DUMMYAUDIO              (Wanted: ON): ON
+--   SDL_DUMMYCAMERA             (Wanted: ON): ON
+--   SDL_DUMMYVIDEO              (Wanted: ON): ON
+--   SDL_EXAMPLES                (Wanted: OFF): OFF
+--   SDL_EXAMPLES_LINK_SHARED    (Wanted: ON): OFF
+--   SDL_FOREGROUNDING_SIGNAL    (Wanted: OFF): OFF
+--   SDL_FRIBIDI                 (Wanted: ON): ON
+--   SDL_FRIBIDI_SHARED          (Wanted: ON): ON
+--   SDL_GCC_ATOMICS             (Wanted: ON): ON
+--   SDL_HIDAPI                  (Wanted: ON): ON
+--   SDL_HIDAPI_JOYSTICK         (Wanted: ON): ON
+--   SDL_HIDAPI_LIBUSB           (Wanted: ON): ON
+--   SDL_HIDAPI_LIBUSB_SHARED    (Wanted: ON): ON
+--   SDL_IBUS                    (Wanted: ON): OFF
+--   SDL_INSTALL                 (Wanted: OFF): OFF
+--   SDL_INSTALL_TESTS           (Wanted: OFF): OFF
+--   SDL_JACK                    (Wanted: ON): ON
+--   SDL_JACK_SHARED             (Wanted: ON): ON
+--   SDL_KMSDRM                  (Wanted: ON): ON
+--   SDL_KMSDRM_SHARED           (Wanted: ON): ON
+--   SDL_LASX                    (Wanted: OFF): OFF
+--   SDL_LIBC                    (Wanted: ON): ON
+--   SDL_LIBICONV                (Wanted: OFF): OFF
+--   SDL_LIBTHAI                 (Wanted: ON): ON
+--   SDL_LIBTHAI_SHARED          (Wanted: ON): ON
+--   SDL_LIBUDEV                 (Wanted: ON): ON
+--   SDL_LIBURING                (Wanted: ON): ON
+--   SDL_LSX                     (Wanted: OFF): OFF
+--   SDL_METAL                   (Wanted: OFF): OFF
+--   SDL_MMX                     (Wanted: ON): ON
+--   SDL_OFFSCREEN               (Wanted: ON): ON
+--   SDL_OPENGL                  (Wanted: ON): ON
+--   SDL_OPENGLES                (Wanted: ON): ON
+--   SDL_OPENVR                  (Wanted: OFF): OFF
+--   SDL_OSS                     (Wanted: OFF): OFF
+--   SDL_PIPEWIRE                (Wanted: ON): ON
+--   SDL_PIPEWIRE_SHARED         (Wanted: ON): ON
+--   SDL_PTHREADS                (Wanted: ON): ON
+--   SDL_PTHREADS_SEM            (Wanted: ON): ON
+--   SDL_PULSEAUDIO              (Wanted: ON): ON
+--   SDL_PULSEAUDIO_SHARED       (Wanted: ON): ON
+--   SDL_RENDER_D3D              (Wanted: OFF): OFF
+--   SDL_RENDER_D3D11            (Wanted: OFF): OFF
+--   SDL_RENDER_D3D12            (Wanted: OFF): OFF
+--   SDL_RENDER_GPU              (Wanted: ON): ON
+--   SDL_RENDER_METAL            (Wanted: OFF): OFF
+--   SDL_RENDER_VULKAN           (Wanted: ON): ON
+--   SDL_ROCKCHIP                (Wanted: OFF): OFF
+--   SDL_RPATH                   (Wanted: ON): ON
+--   SDL_RPI                     (Wanted: OFF): OFF
+--   SDL_SNDIO                   (Wanted: ON): ON
+--   SDL_SNDIO_SHARED            (Wanted: ON): ON
+--   SDL_SSE                     (Wanted: ON): ON
+--   SDL_SSE2                    (Wanted: ON): ON
+--   SDL_SSE3                    (Wanted: ON): ON
+--   SDL_SSE4_1                  (Wanted: ON): ON
+--   SDL_SSE4_2                  (Wanted: ON): ON
+--   SDL_SYSTEM_ICONV            (Wanted: ON): ON
+--   SDL_TESTS                   (Wanted: OFF): OFF
+--   SDL_TESTS_LINK_SHARED       (Wanted: ON): OFF
+--   SDL_UNINSTALL               (Wanted: OFF): OFF
+--   SDL_VIRTUAL_JOYSTICK        (Wanted: ON): ON
+--   SDL_VIVANTE                 (Wanted: OFF): OFF
+--   SDL_VULKAN                  (Wanted: ON): ON
+--   SDL_WASAPI                  (Wanted: OFF): OFF
+--   SDL_WAYLAND                 (Wanted: ON): ON
+--   SDL_WAYLAND_LIBDECOR        (Wanted: ON): ON
+--   SDL_WAYLAND_LIBDECOR_SHARED (Wanted: ON): ON
+--   SDL_WAYLAND_SHARED          (Wanted: ON): ON
+--   SDL_X11                     (Wanted: ON): ON
+--   SDL_X11_SHARED              (Wanted: ON): ON
+--   SDL_X11_XCURSOR             (Wanted: ON): ON
+--   SDL_X11_XDBE                (Wanted: ON): ON
+--   SDL_X11_XFIXES              (Wanted: ON): ON
+--   SDL_X11_XINPUT              (Wanted: ON): ON
+--   SDL_X11_XRANDR              (Wanted: ON): ON
+--   SDL_X11_XSCRNSAVER          (Wanted: ON): ON
+--   SDL_X11_XSHAPE              (Wanted: ON): ON
+--   SDL_X11_XSYNC               (Wanted: ON): ON
+--   SDL_X11_XTEST               (Wanted: ON): ON
+--   SDL_XINPUT                  (Wanted: OFF): OFF
+-- 
+--  Build Shared Library: ON
+--  Build Static Library: OFF
+-- 
+-- Enabled backends:
+--   Video drivers: dummy kmsdrm(dynamic) offscreen wayland(dynamic) x11(dynamic)
+--   X11 libraries: xcursor xdbe xfixes xinput2 xrandr xscrnsaver xshape xsync xtest
+--   Render drivers: gpu ogl ogl_es2 vulkan
+--   GPU drivers: vulkan
+--   Audio drivers: alsa(dynamic) disk dummy jack(dynamic) pipewire(dynamic) pulseaudio(dynamic) sndio(dynamic)
+--   Joystick drivers: hidapi linux virtual
+--   Camera drivers: dummy pipewire(dynamic) v4l2
+-- 
+-- If something was not detected, although the libraries
+-- were installed, then make sure you have set the
+-- CMAKE_C_FLAGS and CMAKE_PREFIX_PATH CMake variables correctly.
+-- 
+-- Configuring SDL3_mixer 3.2.4
+-- Performing Test LINKER_SUPPORTS_VERSION_SCRIPT
+-- Performing Test LINKER_SUPPORTS_VERSION_SCRIPT - Success
+-- Performing Test HAVE_WL_NO_UNDEFINED
+-- Performing Test HAVE_WL_NO_UNDEFINED - Success
+-- Using vendored libogg
+-- Configuring libogg 1.3.5
+-- Looking for include file inttypes.h
+-- Looking for include file inttypes.h - found
+-- Looking for include file stdint.h
+-- Looking for include file stdint.h - found
+-- Looking for include file sys/types.h
+-- Looking for include file sys/types.h - found
+-- Looking for sys/types.h
+-- Looking for sys/types.h - found
+-- Looking for stdint.h
+-- Looking for stdint.h - found
+-- Looking for stddef.h
+-- Looking for stddef.h - found
+-- Check size of int16_t
+-- Check size of int16_t - done
+-- Check size of uint16_t
+-- Check size of uint16_t - done
+-- Check size of u_int16_t
+-- Check size of u_int16_t - done
+-- Check size of int32_t
+-- Check size of int32_t - done
+-- Check size of uint32_t
+-- Check size of uint32_t - done
+-- Check size of u_int32_t
+-- Check size of u_int32_t - done
+-- Check size of int64_t
+-- Check size of int64_t - done
+-- Check size of short
+-- Check size of short - done
+-- Check size of int
+-- Check size of int - done
+-- Check size of long
+-- Check size of long - done
+-- Check size of long long
+-- Check size of long long - done
+-- Using vendored opus
+-- Found Git: /usr/bin/git (found version "2.55.0")
+-- Opus package version from git repo: 1.4-15-gac9f053e
+-- Opus project version: 1.4
+-- Performing Test VLA_SUPPORTED
+-- Performing Test VLA_SUPPORTED -- success
+-- Looking for alloca
+-- Looking for alloca - found
+-- Looking for lrintf
+-- Looking for lrintf - found
+-- Looking for lrint
+-- Looking for lrint - found
+-- Performing Test CPU_INFO_BY_ASM_SUPPORTED
+-- Performing Test CPU_INFO_BY_ASM_SUPPORTED -- success
+-- Looking for cpuid.h
+-- Looking for cpuid.h - found
+-- Performing Test CPU_INFO_BY_C_SUPPORTED
+-- Performing Test CPU_INFO_BY_C_SUPPORTED -- success
+-- Check SIMD support by compiler
+-- Looking for xmmintrin.h
+-- Looking for xmmintrin.h - found
+-- Performing Test SSE1_SUPPORTED
+-- Performing Test SSE1_SUPPORTED - Success
+-- Looking for emmintrin.h
+-- Looking for emmintrin.h - found
+-- Performing Test SSE2_SUPPORTED
+-- Performing Test SSE2_SUPPORTED - Success
+-- Looking for smmintrin.h
+-- Looking for smmintrin.h - found
+-- Performing Test SSE4_1_SUPPORTED
+-- Performing Test SSE4_1_SUPPORTED - Success
+-- Looking for immintrin.h
+-- Looking for immintrin.h - found
+-- Performing Test AVX_SUPPORTED
+-- Performing Test AVX_SUPPORTED - Success
+-- Performing Test FAST_MATH_SUPPORTED
+-- Performing Test FAST_MATH_SUPPORTED - Success
+-- Performing Test STACK_PROTECTOR_SUPPORTED
+-- Performing Test STACK_PROTECTOR_SUPPORTED - Success
+-- Performing Test HIDDEN_VISIBILITY_SUPPORTED
+-- Performing Test HIDDEN_VISIBILITY_SUPPORTED - Success
+-- Performing Test Wall_SUPPORTED
+-- Performing Test Wall_SUPPORTED - Success
+-- Performing Test W_SUPPORTED
+-- Performing Test W_SUPPORTED - Success
+-- Performing Test Wstrictprototypes_SUPPORTED
+-- Performing Test Wstrictprototypes_SUPPORTED - Success
+-- Performing Test Wextra_SUPPORTED
+-- Performing Test Wextra_SUPPORTED - Success
+-- Performing Test Wcastalign_SUPPORTED
+-- Performing Test Wcastalign_SUPPORTED - Success
+-- Performing Test Wnestedexterns_SUPPORTED
+-- Performing Test Wnestedexterns_SUPPORTED - Success
+-- Performing Test Wshadow_SUPPORTED
+-- Performing Test Wshadow_SUPPORTED - Success
+-- The following features have been enabled:
+
+ * OPUS_BUILD_SHARED_LIBRARY, build shared library.
+ * OPUS_ENABLE_FLOAT_API, compile with the floating point API (for machines with float library).
+ * OPUS_HARDENING, run-time checks that are cheap and safe for use in production.
+ * OPUS_INSTALL_PKG_CONFIG_MODULE, install pkg-config module.
+ * OPUS_INSTALL_CMAKE_CONFIG_MODULE, install CMake package config module.
+ * OPUS_VAR_ARRAYS, use variable length arrays for stack arrays.
+ * OPUS_STACK_PROTECTOR, use stack protection.
+ * OPUS_FORTIFY_SOURCE, add protection against buffer overflows.
+ * OPUS_X86_MAY_HAVE_SSE, does runtime check for SSE1 support.
+ * OPUS_X86_MAY_HAVE_SSE2, does runtime check for SSE2 support.
+ * OPUS_X86_MAY_HAVE_SSE4_1, does runtime check for SSE4.1 support.
+ * OPUS_X86_MAY_HAVE_AVX, does runtime check for AVX support.
+ * OPUS_X86_PRESUME_SSE, assume target CPU has SSE1 support (override runtime check).
+ * OPUS_X86_PRESUME_SSE2, assume target CPU has SSE2 support (override runtime check).
+
+-- The following OPTIONAL packages have been found:
+
+ * ALSA
+ * X11
+ * OpenGL
+ * LibUSB
+ * Git
+
+-- The following features have been disabled:
+
+ * OPUS_BUILD_TESTING, build tests.
+ * OPUS_CUSTOM_MODES, enable non-Opus modes, e.g. 44.1 kHz & 2^n frames.
+ * OPUS_BUILD_PROGRAMS, build programs.
+ * OPUS_DISABLE_INTRINSICS, disable all intrinsics optimizations.
+ * OPUS_FIXED_POINT, compile as fixed-point (for machines without a fast enough FPU).
+ * OPUS_FLOAT_APPROX, enable floating point approximations (Ensure your platform supports IEEE 754 before enabling).
+ * OPUS_ASSERTIONS, additional software error checking.
+ * OPUS_FUZZING, causes the encoder to make random decisions (do not use in production).
+ * OPUS_CHECK_ASM, enable bit-exactness checks between optimized and c implementations.
+ * OPUS_FIXED_POINT_DEBUG, debug fixed-point implementation.
+ * OPUS_USE_ALLOCA, use alloca for stack arrays (on non-C99 compilers).
+ * OPUS_NONTHREADSAFE_PSEUDOSTACK, use a non threadsafe pseudostack when neither variable length arrays or alloca is supported.
+ * OPUS_FAST_MATH, enable fast math (unsupported and discouraged use, as code is not well tested with this build option).
+ * OPUS_X86_PRESUME_SSE4_1, assume target CPU has SSE4.1 support (override runtime check).
+ * OPUS_X86_PRESUME_AVX, assume target CPU has AVX support (override runtime check).
+
+-- Using vendored opusfile
+-- Opus package version from git repo: 0.12-73-g9e5322c
+-- Opus project version: 0.12
+-- Looking for lrintf in m
+-- Looking for lrintf in m - found
+-- Looking for lrintf
+-- Looking for lrintf - found
+-- Dynamic opus (opusfile): $<TARGET_SONAME_FILE_NAME:opusfile>
+-- Using vendored vorbis + vorbisfile
+-- Configuring vorbis 1.3.7
+-- Dynamic vorbisfile: $<TARGET_SONAME_FILE_NAME:vorbisfile>
+-- Using vendored libflac
+-- Performing Test Iconv_IS_BUILT_IN
+-- Performing Test Iconv_IS_BUILT_IN - Success
+-- Found Iconv: built in to C library
+-- Performing Test DODEFINE_FORTIFY_SOURCE
+-- Performing Test DODEFINE_FORTIFY_SOURCE - Success
+-- Performing Test HAVE_MBSTATE
+-- Performing Test HAVE_MBSTATE - Success
+-- Performing Test DODEFINE_EXTENSIONS
+-- Performing Test DODEFINE_EXTENSIONS - Success
+-- Looking for byteswap.h
+-- Looking for byteswap.h - found
+-- Looking for inttypes.h
+-- Looking for inttypes.h - found
+-- Looking for x86intrin.h
+-- Looking for x86intrin.h - found
+-- Looking for fseeko
+-- Looking for fseeko - found
+-- Performing Test HAVE_BSWAP16
+-- Performing Test HAVE_BSWAP16 - Success
+-- Performing Test HAVE_BSWAP32
+-- Performing Test HAVE_BSWAP32 - Success
+-- Performing Test HAVE_WERROR_FLAG
+-- Performing Test HAVE_WERROR_FLAG - Success
+-- Performing Test HAVE_DECL_AFTER_STMT_FLAG
+-- Performing Test HAVE_DECL_AFTER_STMT_FLAG - Success
+-- Performing Test HAVE_STACKREALIGN_FLAG
+-- Performing Test HAVE_STACKREALIGN_FLAG - Success
+-- Performing Test HAVE_WEFFCXX_FLAG
+-- Performing Test HAVE_WEFFCXX_FLAG - Success
+-- Performing Test HAVE_STACK_PROTECTOR_FLAG
+-- Performing Test HAVE_STACK_PROTECTOR_FLAG - Success
+-- Looking for sys/param.h
+-- Looking for sys/param.h - found
+-- Looking for lround
+-- Looking for lround - found
+-- Check CPU architecture is x64
+-- Check CPU architecture is x64 - yes
+-- Looking for a ASM_NASM compiler
+-- Looking for a ASM_NASM compiler - NOTFOUND
+-- Looking for string.h
+-- Looking for string.h - found
+-- Found Intl: built in to C library
+-- Looking for clock_gettime
+-- Looking for clock_gettime - found
+CMake Warning (deprecated) at build/_deps/sdl3_mixer-src/external/flac/doc/CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+This warning is for project developers.  Use -Wno-author or -Wno-deprecated
+to suppress it.
+
+-- Found Doxygen: /usr/bin/doxygen (found version "1.18.0") found components: doxygen missing components: dot
+-- Dynamic libflac: $<TARGET_SONAME_FILE_NAME:FLAC>
+-- Using vendored libgme
+-- VGM/GYM: Nuked OPN2 emulator will be used
+-- Zlib-Compressed formats excluded
+-- Performing Test LINKER_SUPPORTS_NO_UNDEFINED
+-- Performing Test LINKER_SUPPORTS_NO_UNDEFINED - Success
+-- Performing Test LIBM_NOT_NEEDED
+-- Performing Test LIBM_NOT_NEEDED - Success
+-- Dynamic libgme: $<TARGET_SONAME_FILE_NAME:gme_shared>
+-- Using vendored libxmp
+-- Check for working linker: /usr/bin/ld
+-- Linker identification: GNU ld (GNU Binutils) 2.47
+-- Performing Test HAVE_W_ALL
+-- Performing Test HAVE_W_ALL - Success
+-- Performing Test HAVE_W_EXTRA
+-- Performing Test HAVE_W_EXTRA - Success
+-- Performing Test HAVE_W_WRITE_STRINGS
+-- Performing Test HAVE_W_WRITE_STRINGS - Success
+-- Performing Test HAVE_W_DECLARATION_AFTER_STATEMENT
+-- Performing Test HAVE_W_DECLARATION_AFTER_STATEMENT - Success
+-- Performing Test HAVE_W_MISSING_PROTOTYPES
+-- Performing Test HAVE_W_MISSING_PROTOTYPES - Success
+-- Performing Test HAVE_W_STRICT_PROTOTYPES
+-- Performing Test HAVE_W_STRICT_PROTOTYPES - Success
+-- Performing Test HAVE_W_WUNDEF
+-- Performing Test HAVE_W_WUNDEF - Success
+-- Performing Test HAVE_W_NO_UNKNOWN_WARNING
+-- Performing Test HAVE_W_NO_UNKNOWN_WARNING - Failed
+-- Performing Test HAVE_W_NO_UNUSED_PARAMETER
+-- Performing Test HAVE_W_NO_UNUSED_PARAMETER - Success
+-- Performing Test HAVE_W_NO_SIGN_COMPARE
+-- Performing Test HAVE_W_NO_SIGN_COMPARE - Success
+-- Looking for powf
+-- Looking for powf - found
+-- Looking for powf
+-- Looking for powf - found
+-- Looking for popen
+-- Looking for popen - found
+-- Looking for popen
+-- Looking for popen - found
+-- Looking for fnmatch
+-- Looking for fnmatch - found
+-- Looking for fnmatch
+-- Looking for fnmatch - found
+-- Looking for umask
+-- Looking for umask - found
+-- Looking for umask
+-- Looking for umask - found
+-- Looking for wait
+-- Looking for wait - found
+-- Looking for wait
+-- Looking for wait - found
+-- Looking for mkstemp
+-- Looking for mkstemp - found
+-- Looking for mkstemp
+-- Looking for mkstemp - found
+-- Looking for unistd.h
+-- Looking for unistd.h - found
+-- Looking for pipe
+-- Looking for pipe - found
+-- Looking for pipe
+-- Looking for pipe - found
+-- Looking for fork
+-- Looking for fork - found
+-- Looking for fork
+-- Looking for fork - found
+-- Looking for execvp
+-- Looking for execvp - found
+-- Looking for execvp
+-- Looking for execvp - found
+-- Looking for dup2
+-- Looking for dup2 - found
+-- Looking for dup2
+-- Looking for dup2 - found
+-- Looking for opendir
+-- Looking for opendir - found
+-- Looking for opendir
+-- Looking for opendir - found
+-- Looking for readdir
+-- Looking for readdir - found
+-- Performing Test HAVE_VISIBILITY
+-- Performing Test HAVE_VISIBILITY - Success
+-- Performing Test HAVE_EXTERNAL_VISIBILITY
+-- Performing Test HAVE_EXTERNAL_VISIBILITY - Success
+-- Performing Test HAVE_ATTRIBUTE_SYMVER
+-- Performing Test HAVE_ATTRIBUTE_SYMVER - Success
+-- Performing Test HAVE_NO_UNDEFINED
+-- Performing Test HAVE_NO_UNDEFINED - Success
+-- Versioned symbols: ENABLED.
+-- Manpage generation disabled: rst2man not found
+-- HTML doc generation disabled: rst2html not found
+-- PDF doc generation disabled: rst2pdf not found
+-- Dynamic libxmp: $<TARGET_SONAME_FILE_NAME:xmp_shared>
+-- Using vendored mpg123
+-- The ASM compiler identification is GNU
+-- Found assembler: /usr/bin/cc
+-- Looking for arpa/inet.h
+-- Looking for arpa/inet.h - found
+-- Looking for dirent.h
+-- Looking for dirent.h - found
+-- Looking for dlfcn.h
+-- Looking for dlfcn.h - found
+-- Looking for langinfo.h
+-- Looking for langinfo.h - found
+-- Looking for locale.h
+-- Looking for locale.h - found
+-- Looking for netdb.h
+-- Looking for netdb.h - found
+-- Looking for netinet/in.h
+-- Looking for netinet/in.h - found
+-- Looking for sched.h
+-- Looking for sched.h - found
+-- Looking for signal.h
+-- Looking for signal.h - found
+-- Looking for strings.h
+-- Looking for strings.h - found
+-- Looking for sys/ioctl.h
+-- Looking for sys/ioctl.h - found
+-- Looking for sys/ipc.h
+-- Looking for sys/ipc.h - found
+-- Looking for sys/resource.h
+-- Looking for sys/resource.h - found
+-- Looking for sys/select.h
+-- Looking for sys/select.h - found
+-- Looking for sys/shm.h
+-- Looking for sys/shm.h - found
+-- Looking for sys/signal.h
+-- Looking for sys/signal.h - found
+-- Looking for sys/socket.h
+-- Looking for sys/socket.h - found
+-- Looking for sys/stat.h
+-- Looking for sys/stat.h - found
+-- Looking for sys/time.h
+-- Looking for sys/time.h - found
+-- Looking for sys/wait.h
+-- Looking for sys/wait.h - found
+-- Looking for termios.h
+-- Looking for termios.h - found
+-- Looking for windows.h
+-- Looking for windows.h - not found
+-- Looking for sin
+-- Looking for sin - found
+-- Looking for clock_gettime
+-- Looking for clock_gettime - found
+-- Looking for atoll
+-- Looking for atoll - found
+-- Looking for getaddrinfo
+-- Looking for getaddrinfo - found
+-- Looking for mkfifo
+-- Looking for mkfifo - found
+-- Looking for mmap
+-- Looking for mmap - found
+-- Looking for random
+-- Looking for random - found
+-- Looking for setenv
+-- Looking for setenv - found
+-- Looking for unsetenv
+-- Looking for unsetenv - found
+-- Looking for setlocale
+-- Looking for setlocale - found
+-- Looking for uselocale
+-- Looking for uselocale - found
+-- Looking for setpriority
+-- Looking for setpriority - found
+-- Looking for shmget
+-- Looking for shmget - found
+-- Looking for shmat
+-- Looking for shmat - found
+-- Looking for shmdt
+-- Looking for shmdt - found
+-- Looking for shmctl
+-- Looking for shmctl - found
+-- Looking for strerror
+-- Looking for strerror - found
+-- Looking for strerror_l
+-- Looking for strerror_l - found
+-- Looking for strtok_r
+-- Looking for strtok_r - found
+-- Looking for strtok_s
+-- Looking for strtok_s - not found
+-- Looking for ctermid
+-- Looking for ctermid - found
+-- Check size of off_t
+-- Check size of off_t - done
+-- Performing Test ASMALIGN_BALIGN
+-- Performing Test ASMALIGN_BALIGN - Success
+-- Performing Test ASMALIGN_EXP
+-- Performing Test ASMALIGN_EXP - Failed
+-- Performing Test CCALIGN
+-- Performing Test CCALIGN - Success
+-- Performing Test LFS_INSENSITIVE
+-- Performing Test LFS_INSENSITIVE - Success
+-- Looking for dlopen
+-- Looking for dlopen - found
+-- Check CPU architecture is x86
+-- Check CPU architecture is x86 - no
+-- Check CPU architecture is x64
+-- Check CPU architecture is x64 - yes
+-- Check CPU architecture is arm32
+-- Check CPU architecture is arm32 - no
+-- Check CPU architecture is arm64
+-- Check CPU architecture is arm64 - no
+-- Detected machine: amd64
+-- Dynamic mpg123: $<TARGET_SONAME_FILE_NAME:libmpg123>
+-- Using vendored WavPack
+-- Looking for a ASM-ATT compiler
+-- Looking for a ASM-ATT compiler - /usr/bin/as
+-- The ASM-ATT compiler identification is GNU
+-- Found assembler: /usr/bin/as
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+-- Performing Test HAVE___BUILTIN_CLZ
+-- Performing Test HAVE___BUILTIN_CLZ - Success
+-- Checking large files support...
+-- Checking size of off_t without any definitions:
+-- Check size of off_t
+-- Check size of off_t - done
+-- Checking of off_t without any definitions: 8
+-- Result of checking large files support: supported
+-- Detecting Target CPU Architecture
+-- Detecting Target CPU Architecture - X64
+-- Performing Test COMPILER_SUPPORTS_SYMBOL_MAPS
+-- Performing Test COMPILER_SUPPORTS_SYMBOL_MAPS - Success
+-- The following features have been enabled:
+
+ * OPUS_BUILD_SHARED_LIBRARY, build shared library.
+ * OPUS_ENABLE_FLOAT_API, compile with the floating point API (for machines with float library).
+ * OPUS_HARDENING, run-time checks that are cheap and safe for use in production.
+ * OPUS_INSTALL_PKG_CONFIG_MODULE, install pkg-config module.
+ * OPUS_INSTALL_CMAKE_CONFIG_MODULE, install CMake package config module.
+ * OPUS_VAR_ARRAYS, use variable length arrays for stack arrays.
+ * OPUS_STACK_PROTECTOR, use stack protection.
+ * OPUS_FORTIFY_SOURCE, add protection against buffer overflows.
+ * OPUS_X86_MAY_HAVE_SSE, does runtime check for SSE1 support.
+ * OPUS_X86_MAY_HAVE_SSE2, does runtime check for SSE2 support.
+ * OPUS_X86_MAY_HAVE_SSE4_1, does runtime check for SSE4.1 support.
+ * OPUS_X86_MAY_HAVE_AVX, does runtime check for AVX support.
+ * OPUS_X86_PRESUME_SSE, assume target CPU has SSE1 support (override runtime check).
+ * OPUS_X86_PRESUME_SSE2, assume target CPU has SSE2 support (override runtime check).
+ * BUILD_SHARED_LIBS, Build shared library.
+ * WAVPACK_ENABLE_DSD, Enable support for WavPack DSD files.
+ * WAVPACK_ENABLE_ASM, Enable assembly optimizations.
+
+-- The following OPTIONAL packages have been found:
+
+ * ALSA
+ * X11
+ * OpenGL
+ * LibUSB
+ * Iconv
+ * Intl
+ * Doxygen
+ * Threads, Threads library
+   Required to build tests, optional for library.
+
+-- The following REQUIRED packages have been found:
+
+ * Git, fast, scalable, distributed revision control system, <https://git-scm.com/>
+   required to set up package version
+
+-- The following features have been disabled:
+
+ * OPUS_BUILD_TESTING, build tests.
+ * OPUS_CUSTOM_MODES, enable non-Opus modes, e.g. 44.1 kHz & 2^n frames.
+ * OPUS_BUILD_PROGRAMS, build programs.
+ * OPUS_DISABLE_INTRINSICS, disable all intrinsics optimizations.
+ * OPUS_FIXED_POINT, compile as fixed-point (for machines without a fast enough FPU).
+ * OPUS_FLOAT_APPROX, enable floating point approximations (Ensure your platform supports IEEE 754 before enabling).
+ * OPUS_ASSERTIONS, additional software error checking.
+ * OPUS_FUZZING, causes the encoder to make random decisions (do not use in production).
+ * OPUS_CHECK_ASM, enable bit-exactness checks between optimized and c implementations.
+ * OPUS_FIXED_POINT_DEBUG, debug fixed-point implementation.
+ * OPUS_USE_ALLOCA, use alloca for stack arrays (on non-C99 compilers).
+ * OPUS_NONTHREADSAFE_PSEUDOSTACK, use a non threadsafe pseudostack when neither variable length arrays or alloca is supported.
+ * OPUS_FAST_MATH, enable fast math (unsupported and discouraged use, as code is not well tested with this build option).
+ * OPUS_X86_PRESUME_SSE4_1, assume target CPU has SSE4.1 support (override runtime check).
+ * OPUS_X86_PRESUME_AVX, assume target CPU has AVX support (override runtime check).
+ * BUILD_TESTING, Build tests.
+ * WAVPACK_ENABLE_LEGACY, Decode legacy (< 4.0) WavPack files.
+ * WAVPACK_ENABLE_THREADS, Enable support for threading in libwavpack.
+ * WAVPACK_INSTALL_CMAKE_MODULE, Generate and install CMake package configuration module.
+ * WAVPACK_BUILD_PROGRAMS, Build programs.
+ * WAVPACK_BUILD_COOLEDIT_PLUGIN, Build CoolEdit plugin.
+ * WAVPACK_BUILD_WINAMP_PLUGIN, Build WinAmp plugin.
+ * WAVPACK_INSTALL_DOCS, Install documentation.
+ * WAVPACK_INSTALL_PKGCONFIG_MODULE, Generate and install wavpack.pc.
+
+-- Dynamic WavPack: $<TARGET_SONAME_FILE_NAME:wavpack>
+-- SDL3_mixer backends:
+-- - enabled:  opus vorbis_stb vorbis_vorbisfile flac_libflac flac_drflac gme mod_xmp mp3_drmp3 mp3_mpg123 midi_timidity wave aiff voc au wavpack
+-- - disabled: vorbis_tremor midi_fluidsynth
+-- GLM: Version 1.0.3
+-- GLM: Build with C++ features auto detection
+-- Using the multi-header code from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/json-src/include/
+-- Libraries linked: 
+--   - « SDL3 »
+--   - « SDL3 Image »
+--   - « GLM »
+--   - « nlohmann_json »
+-- 
+-- Configuring done (390.0s)
+-- Generating done (0.4s)
+-- Build files have been written to: /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build
+Compilando Project_AK ...
+[0/2] Re-checking globbed directories...
+[1/885] Building C object _deps/sdl3-build/CMakeFiles/SDL_uclibc.dir/Debug/src/libm/e_fmod.c.o
+[2/885] Building C object _deps/sdl3-build/CMakeFiles/SDL_uclibc.dir/Debug/src/libm/e_rem_pio2.c.o
+[3/885] Building C object _deps/sdl3-build/CMakeFiles/SDL_uclibc.dir/Debug/src/libm/e_log10.c.o
+[4/885] Building C object _deps/sdl3-build/CMakeFiles/SDL_uclibc.dir/Debug/src/libm/e_exp.c.o
+[5/885] Building C object _deps/sdl3-build/CMakeFiles/SDL_uclibc.dir/Debug/src/libm/e_log.c.o
+[6/885] Building C object _deps/sdl3-build/CMakeFiles/SDL_uclibc.dir/Debug/src/libm/e_sqrt.c.o
+[7/885] Building C object _deps/sdl3-build/CMakeFiles/SDL_uclibc.dir/Debug/src/libm/e_atan2.c.o
+[8/885] Building C object _deps/sdl3-build/CMakeFiles/SDL_uclibc.dir/Debug/src/libm/e_pow.c.o
+[9/885] Building C object _deps/sdl3-build/CMakeFiles/SDL_uclibc.dir/Debug/src/libm/k_rem_pio2.c.o
+[10/885] Building C object _deps/sdl3-build/CMakeFiles/SDL_uclibc.dir/Debug/src/libm/k_cos.c.o
+[11/885] Building C object _deps/sdl3-build/CMakeFiles/SDL_uclibc.dir/Debug/src/libm/k_sin.c.o
+[12/885] Building C object _deps/sdl3-build/CMakeFiles/SDL_uclibc.dir/Debug/src/libm/s_copysign.c.o
+[13/885] Building C object _deps/sdl3-build/CMakeFiles/SDL_uclibc.dir/Debug/src/libm/s_cos.c.o
+[14/885] Building C object _deps/sdl3-build/CMakeFiles/SDL_uclibc.dir/Debug/src/libm/s_atan.c.o
+[15/885] Building C object _deps/sdl3-build/CMakeFiles/SDL_uclibc.dir/Debug/src/libm/k_tan.c.o
+[16/885] Building C object _deps/sdl3-build/CMakeFiles/SDL_uclibc.dir/Debug/src/libm/s_fabs.c.o
+[17/885] Building C object _deps/sdl3-build/CMakeFiles/SDL_uclibc.dir/Debug/src/libm/s_floor.c.o
+[18/885] Building C object _deps/sdl3-build/CMakeFiles/SDL_uclibc.dir/Debug/src/libm/s_isinf.c.o
+[19/885] Building C object _deps/sdl3_mixer-build/external/ogg-build/CMakeFiles/ogg.dir/Debug/src/bitwise.c.o
+[20/885] Building C object _deps/sdl3-build/CMakeFiles/SDL_uclibc.dir/Debug/src/libm/s_isinff.c.o
+[21/885] Building C object _deps/sdl3-build/CMakeFiles/SDL_uclibc.dir/Debug/src/libm/s_isnan.c.o
+[22/885] Building C object _deps/sdl3_mixer-build/external/ogg-build/CMakeFiles/ogg.dir/Debug/src/framing.c.o
+[23/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/src/opus.c.o
+[24/885] Linking C shared library _deps/sdl3_mixer-build/external/ogg-build/Debug/libogg.so.0.8.5
+[25/885] Creating library symlink _deps/sdl3_mixer-build/external/ogg-build/Debug/libogg.so.0 _deps/sdl3_mixer-build/external/ogg-build/Debug/libogg.so
+[26/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/src/opus_multistream.c.o
+[27/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/src/opus_decoder.c.o
+/home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/opus/src/opus_decoder.c:37:10: note: ‘#pragma message: You appear to be compiling without optimization, if so opus will be very slow.’
+   37 | # pragma message "You appear to be compiling without optimization, if so opus will be very slow."
+      |          ^~~~~~~
+[28/885] Building C object _deps/sdl3-build/CMakeFiles/SDL_uclibc.dir/Debug/src/libm/s_isnanf.c.o
+[29/885] Building C object _deps/sdl3-build/CMakeFiles/SDL_uclibc.dir/Debug/src/libm/s_tan.c.o
+[30/885] Building C object _deps/sdl3-build/CMakeFiles/SDL_uclibc.dir/Debug/src/libm/s_scalbn.c.o
+[31/885] Building C object _deps/sdl3-build/CMakeFiles/SDL_uclibc.dir/Debug/src/libm/s_sin.c.o
+[32/885] Building C object _deps/sdl3-build/CMakeFiles/SDL_uclibc.dir/Debug/src/libm/s_modf.c.o
+[33/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/src/opus_projection_decoder.c.o
+[34/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/src/repacketizer.c.o
+[35/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/src/opus_multistream_decoder.c.o
+[36/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/src/opus_projection_encoder.c.o
+[37/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/src/mapping_matrix.c.o
+[38/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/src/opus_encoder.c.o
+[39/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/src/mlp_data.c.o
+[40/885] Linking C static library _deps/sdl3-build/Debug/libSDL_uclibc.a
+[41/885] Generating wayland-generated-protocols/alpha-modifier-v1-client-protocol.h
+[42/885] Generating wayland-generated-protocols/color-management-v1-client-protocol.h
+[43/885] Generating wayland-generated-protocols/cursor-shape-v1-client-protocol.h
+[44/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/src/mlp.c.o
+[45/885] Generating wayland-generated-protocols/fractional-scale-v1-client-protocol.h
+[46/885] Generating wayland-generated-protocols/frog-color-management-v1-client-protocol.h
+[47/885] Generating wayland-generated-protocols/idle-inhibit-unstable-v1-client-protocol.h
+[48/885] Generating wayland-generated-protocols/input-timestamps-unstable-v1-client-protocol.h
+[49/885] Generating wayland-generated-protocols/keyboard-shortcuts-inhibit-unstable-v1-client-protocol.h
+[50/885] Generating wayland-generated-protocols/pointer-constraints-unstable-v1-client-protocol.h
+[51/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/CNG.c.o
+[52/885] Generating wayland-generated-protocols/pointer-warp-v1-client-protocol.h
+[53/885] Generating wayland-generated-protocols/pointer-gestures-unstable-v1-client-protocol.h
+[54/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/src/opus_multistream_encoder.c.o
+[55/885] Generating wayland-generated-protocols/primary-selection-unstable-v1-client-protocol.h
+[56/885] Generating wayland-generated-protocols/relative-pointer-unstable-v1-client-protocol.h
+[57/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/init_decoder.c.o
+[58/885] Generating wayland-generated-protocols/tablet-v2-client-protocol.h
+[59/885] Generating wayland-generated-protocols/viewporter-client-protocol.h
+[60/885] Generating wayland-generated-protocols/text-input-unstable-v3-client-protocol.h
+[61/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/code_signs.c.o
+[62/885] Generating wayland-generated-protocols/xdg-activation-v1-client-protocol.h
+[63/885] Generating wayland-generated-protocols/xdg-dialog-v1-client-protocol.h
+[64/885] Generating wayland-generated-protocols/xdg-decoration-unstable-v1-client-protocol.h
+[65/885] Generating wayland-generated-protocols/xdg-foreign-unstable-v2-client-protocol.h
+[66/885] Generating wayland-generated-protocols/wayland-client-protocol.h
+[67/885] Generating wayland-generated-protocols/xdg-output-unstable-v1-client-protocol.h
+[68/885] Generating wayland-generated-protocols/xdg-shell-client-protocol.h
+[69/885] Generating wayland-generated-protocols/alpha-modifier-v1-protocol.c
+[70/885] Generating wayland-generated-protocols/xdg-toplevel-icon-v1-client-protocol.h
+[71/885] Generating wayland-generated-protocols/color-management-v1-protocol.c
+[72/885] Generating wayland-generated-protocols/fractional-scale-v1-protocol.c
+[73/885] Generating wayland-generated-protocols/cursor-shape-v1-protocol.c
+[74/885] Generating wayland-generated-protocols/idle-inhibit-unstable-v1-protocol.c
+[75/885] Generating wayland-generated-protocols/frog-color-management-v1-protocol.c
+[76/885] Generating wayland-generated-protocols/input-timestamps-unstable-v1-protocol.c
+[77/885] Generating wayland-generated-protocols/keyboard-shortcuts-inhibit-unstable-v1-protocol.c
+[78/885] Generating wayland-generated-protocols/pointer-gestures-unstable-v1-protocol.c
+[79/885] Generating wayland-generated-protocols/pointer-constraints-unstable-v1-protocol.c
+[80/885] Generating wayland-generated-protocols/pointer-warp-v1-protocol.c
+[81/885] Generating wayland-generated-protocols/relative-pointer-unstable-v1-protocol.c
+[82/885] Generating wayland-generated-protocols/primary-selection-unstable-v1-protocol.c
+[83/885] Generating wayland-generated-protocols/tablet-v2-protocol.c
+[84/885] Generating wayland-generated-protocols/text-input-unstable-v3-protocol.c
+[85/885] Generating wayland-generated-protocols/viewporter-protocol.c
+[86/885] Generating wayland-generated-protocols/xdg-dialog-v1-protocol.c
+[87/885] Generating wayland-generated-protocols/xdg-activation-v1-protocol.c
+[88/885] Generating wayland-generated-protocols/xdg-decoration-unstable-v1-protocol.c
+[89/885] Generating wayland-generated-protocols/xdg-output-unstable-v1-protocol.c
+[90/885] Generating wayland-generated-protocols/xdg-foreign-unstable-v2-protocol.c
+[91/885] Generating wayland-generated-protocols/wayland-protocol.c
+[92/885] Generating wayland-generated-protocols/xdg-toplevel-icon-v1-protocol.c
+[93/885] Generating wayland-generated-protocols/xdg-shell-protocol.c
+[94/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/decode_core.c.o
+[95/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/src/analysis.c.o
+[96/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/decode_pulses.c.o
+[97/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/decode_frame.c.o
+[98/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/decode_parameters.c.o
+[99/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/decoder_set_fs.c.o
+[100/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/decode_indices.c.o
+[101/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/dec_API.c.o
+[102/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/encode_indices.c.o
+[103/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/interpolate.c.o
+[104/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/NLSF_decode.c.o
+[105/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/encode_pulses.c.o
+[106/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/LP_variable_cutoff.c.o
+[107/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/gain_quant.c.o
+[108/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/enc_API.c.o
+[109/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/tables_gain.c.o
+[110/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/tables_NLSF_CB_NB_MB.c.o
+[111/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/tables_LTP.c.o
+[112/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/shell_coder.c.o
+[113/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/NSQ.c.o
+[114/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/tables_NLSF_CB_WB.c.o
+[115/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/PLC.c.o
+[116/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/tables_other.c.o
+[117/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/tables_pulses_per_block.c.o
+[118/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/tables_pitch_lag.c.o
+[119/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/control_audio_bandwidth.c.o
+[120/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/NSQ_del_dec.c.o
+[121/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/quant_LTP_gains.c.o
+[122/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/VAD.c.o
+[123/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/VQ_WMat_EC.c.o
+[124/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/HP_variable_cutoff.c.o
+[125/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/NLSF_VQ.c.o
+[126/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/NLSF_encode.c.o
+[127/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/NLSF_unpack.c.o
+[128/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/control_SNR.c.o
+[129/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/NLSF_del_dec_quant.c.o
+[130/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/process_NLSFs.c.o
+[131/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/stereo_MS_to_LR.c.o
+[132/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/check_control_input.c.o
+[133/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/stereo_LR_to_MS.c.o
+[134/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/init_encoder.c.o
+[135/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/biquad_alt.c.o
+[136/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/ana_filt_bank_1.c.o
+[137/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/debug.c.o
+[138/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/A2NLSF.c.o
+[139/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/bwexpander.c.o
+[140/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/bwexpander_32.c.o
+[141/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/control_codec.c.o
+[142/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/inner_prod_aligned.c.o
+[143/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/log2lin.c.o
+[144/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/decode_pitch.c.o
+[145/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/lin2log.c.o
+[146/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/table_LSF_cos.c.o
+[147/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/LPC_analysis_filter.c.o
+[148/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/pitch_est_tables.c.o
+[149/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/NLSF_VQ_weights_laroia.c.o
+[150/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/NLSF2A.c.o
+[151/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/NLSF_stabilize.c.o
+[152/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/LPC_inv_pred_gain.c.o
+[153/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/resampler.c.o
+[154/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/resampler_down2_3.c.o
+[155/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/resampler_private_AR2.c.o
+[156/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/resampler_down2.c.o
+[157/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/resampler_private_down_FIR.c.o
+[158/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/resampler_rom.c.o
+[159/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/resampler_private_up2_HQ.c.o
+[160/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/resampler_private_IIR_FIR.c.o
+[161/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/sigm_Q15.c.o
+[162/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/stereo_decode_pred.c.o
+[163/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/sort.c.o
+[164/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/sum_sqr_shift.c.o
+[165/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/stereo_encode_pred.c.o
+[166/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/LPC_fit.c.o
+[167/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/stereo_find_predictor.c.o
+[168/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/stereo_quant_pred.c.o
+[169/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/celt/entcode.c.o
+[170/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/celt/cwrs.c.o
+[171/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/celt/celt.c.o
+[172/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/celt/entdec.c.o
+[173/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/celt/entenc.c.o
+[174/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/celt/laplace.c.o
+[175/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/celt/mathops.c.o
+[176/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/celt/kiss_fft.c.o
+[177/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/celt/mdct.c.o
+[178/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/celt/modes.c.o
+[179/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/celt/celt_decoder.c.o
+[180/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/celt/bands.c.o
+[181/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/celt/celt_lpc.c.o
+[182/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/celt/pitch.c.o
+[183/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/celt/quant_bands.c.o
+[184/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/celt/rate.c.o
+[185/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/celt/vq.c.o
+[186/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/float/apply_sine_window_FLP.c.o
+[187/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/float/corrMatrix_FLP.c.o
+[188/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/float/find_LPC_FLP.c.o
+[189/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/celt/celt_encoder.c.o
+[190/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/float/find_LTP_FLP.c.o
+[191/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/float/find_pitch_lags_FLP.c.o
+[192/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/float/find_pred_coefs_FLP.c.o
+[193/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/float/LTP_analysis_filter_FLP.c.o
+[194/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/float/LPC_analysis_filter_FLP.c.o
+[195/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/float/encode_frame_FLP.c.o
+[196/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/float/LTP_scale_ctrl_FLP.c.o
+[197/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/float/regularize_correlations_FLP.c.o
+[198/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/float/process_gains_FLP.c.o
+[199/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/float/noise_shape_analysis_FLP.c.o
+[200/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/float/autocorrelation_FLP.c.o
+[201/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/float/warped_autocorrelation_FLP.c.o
+[202/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/float/residual_energy_FLP.c.o
+[203/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/float/bwexpander_FLP.c.o
+[204/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/float/energy_FLP.c.o
+[205/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/float/burg_modified_FLP.c.o
+[206/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/float/wrappers_FLP.c.o
+[207/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/float/inner_product_FLP.c.o
+[208/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/float/k2a_FLP.c.o
+[209/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/float/LPC_inv_pred_gain_FLP.c.o
+[210/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/float/scale_copy_vector_FLP.c.o
+[211/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/float/schur_FLP.c.o
+[212/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/float/scale_vector_FLP.c.o
+[213/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/celt/x86/x86_celt_map.c.o
+[214/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/float/pitch_analysis_core_FLP.c.o
+[215/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/celt/x86/x86cpu.c.o
+[216/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/float/sort_FLP.c.o
+[217/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/x86/x86_silk_map.c.o
+[218/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/celt/x86/pitch_sse2.c.o
+[219/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/celt/x86/pitch_sse4_1.c.o
+[220/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/celt/x86/pitch_sse.c.o
+[221/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/celt/x86/celt_lpc_sse4_1.c.o
+[222/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/celt/x86/vq_sse2.c.o
+[223/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/x86/VAD_sse4_1.c.o
+[224/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/x86/VQ_WMat_EC_sse4_1.c.o
+[225/885] Building C object _deps/sdl3_mixer-build/external/vorbis-build/lib/CMakeFiles/vorbis.dir/Debug/envelope.c.o
+[226/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/x86/NSQ_sse4_1.c.o
+[227/885] Building C object _deps/sdl3_mixer-build/external/opus-build/CMakeFiles/opus.dir/Debug/silk/x86/NSQ_del_dec_sse4_1.c.o
+[228/885] Building C object _deps/sdl3_mixer-build/external/vorbis-build/lib/CMakeFiles/vorbis.dir/Debug/mdct.c.o
+[229/885] Building C object _deps/sdl3_mixer-build/external/vorbis-build/lib/CMakeFiles/vorbis.dir/Debug/smallft.c.o
+[230/885] Building C object _deps/sdl3_mixer-build/external/vorbis-build/lib/CMakeFiles/vorbis.dir/Debug/block.c.o
+[231/885] Building C object _deps/sdl3_mixer-build/external/vorbis-build/lib/CMakeFiles/vorbis.dir/Debug/window.c.o
+[232/885] Building C object _deps/sdl3_mixer-build/external/vorbis-build/lib/CMakeFiles/vorbis.dir/Debug/lsp.c.o
+[233/885] Building C object _deps/sdl3_mixer-build/external/vorbis-build/lib/CMakeFiles/vorbis.dir/Debug/lpc.c.o
+[234/885] Building C object _deps/sdl3_mixer-build/external/vorbis-build/lib/CMakeFiles/vorbis.dir/Debug/analysis.c.o
+[235/885] Building C object _deps/sdl3_mixer-build/external/vorbis-build/lib/CMakeFiles/vorbis.dir/Debug/synthesis.c.o
+[236/885] Building C object _deps/sdl3_mixer-build/external/vorbis-build/lib/CMakeFiles/vorbis.dir/Debug/floor0.c.o
+[237/885] Building C object _deps/sdl3_mixer-build/external/vorbis-build/lib/CMakeFiles/vorbis.dir/Debug/info.c.o
+[238/885] Building C object _deps/sdl3_mixer-build/external/vorbis-build/lib/CMakeFiles/vorbis.dir/Debug/registry.c.o
+[239/885] Building C object _deps/sdl3_mixer-build/external/vorbis-build/lib/CMakeFiles/vorbis.dir/Debug/lookup.c.o
+[240/885] Building C object _deps/sdl3_mixer-build/external/vorbis-build/lib/CMakeFiles/vorbis.dir/Debug/floor1.c.o
+[241/885] Building C object _deps/sdl3_mixer-build/external/vorbis-build/lib/CMakeFiles/vorbis.dir/Debug/codebook.c.o
+[242/885] Building C object _deps/sdl3_mixer-build/external/vorbis-build/lib/CMakeFiles/vorbis.dir/Debug/res0.c.o
+[243/885] Building C object _deps/sdl3_mixer-build/external/vorbis-build/lib/CMakeFiles/vorbis.dir/Debug/sharedbook.c.o
+[244/885] Building C object _deps/sdl3_mixer-build/external/vorbis-build/lib/CMakeFiles/vorbis.dir/Debug/mapping0.c.o
+[245/885] Building C object _deps/sdl3_mixer-build/external/vorbis-build/lib/CMakeFiles/vorbis.dir/Debug/bitrate.c.o
+[246/885] Building C object _deps/sdl3_mixer-build/external/vorbis-build/lib/CMakeFiles/vorbis.dir/Debug/psy.c.o
+[247/885] Building C object _deps/sdl3_mixer-build/external/opusfile-build/CMakeFiles/opusfile.dir/Debug/src/internal.c.o
+[248/885] Linking C shared library _deps/sdl3_mixer-build/external/vorbis-build/lib/Debug/libvorbis.so.0.4.9
+[249/885] Building C object _deps/sdl3_mixer-build/external/opusfile-build/CMakeFiles/opusfile.dir/Debug/src/stream.c.o
+[250/885] Creating library symlink _deps/sdl3_mixer-build/external/vorbis-build/lib/Debug/libvorbis.so.0 _deps/sdl3_mixer-build/external/vorbis-build/lib/Debug/libvorbis.so
+[251/885] Linking C shared library _deps/sdl3_mixer-build/external/opus-build/Debug/libopus.so.0.9.0
+[252/885] Building C object _deps/sdl3_mixer-build/external/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/Debug/bitmath.c.o
+In file included from /usr/include/bits/libc-header-start.h:33,
+                 from /usr/include/stdint.h:26,
+                 from /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stdint.h:11,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/include/FLAC/ordinals.h:55,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/src/libFLAC/include/private/bitmath.h:36,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/src/libFLAC/bitmath.c:37:
+/usr/include/features.h:451:4: warning: #warning _FORTIFY_SOURCE requires compiling with optimization (-O) [-Wcpp]
+  451 | #  warning _FORTIFY_SOURCE requires compiling with optimization (-O)
+      |    ^~~~~~~
+[253/885] Creating library symlink _deps/sdl3_mixer-build/external/opus-build/Debug/libopus.so.0 _deps/sdl3_mixer-build/external/opus-build/Debug/libopus.so
+[254/885] Building C object _deps/sdl3_mixer-build/external/opusfile-build/CMakeFiles/opusfile.dir/Debug/src/info.c.o
+[255/885] Building C object _deps/sdl3_mixer-build/external/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/Debug/crc.c.o
+In file included from /usr/include/bits/libc-header-start.h:33,
+                 from /usr/include/stdint.h:26,
+                 from /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stdint.h:11,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/include/FLAC/ordinals.h:55,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/src/libFLAC/include/private/crc.h:36,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/src/libFLAC/crc.c:37:
+/usr/include/features.h:451:4: warning: #warning _FORTIFY_SOURCE requires compiling with optimization (-O) [-Wcpp]
+  451 | #  warning _FORTIFY_SOURCE requires compiling with optimization (-O)
+      |    ^~~~~~~
+[256/885] Building C object _deps/sdl3_mixer-build/external/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/Debug/cpu.c.o
+In file included from /usr/include/bits/libc-header-start.h:33,
+                 from /usr/include/stdint.h:26,
+                 from /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stdint.h:11,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/include/FLAC/ordinals.h:55,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/src/libFLAC/include/private/cpu.h:36,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/src/libFLAC/cpu.c:37:
+/usr/include/features.h:451:4: warning: #warning _FORTIFY_SOURCE requires compiling with optimization (-O) [-Wcpp]
+  451 | #  warning _FORTIFY_SOURCE requires compiling with optimization (-O)
+      |    ^~~~~~~
+[257/885] Building C object _deps/sdl3_mixer-build/external/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/Debug/bitwriter.c.o
+In file included from /usr/include/bits/libc-header-start.h:33,
+                 from /usr/include/stdlib.h:26,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/src/libFLAC/bitwriter.c:37:
+/usr/include/features.h:451:4: warning: #warning _FORTIFY_SOURCE requires compiling with optimization (-O) [-Wcpp]
+  451 | #  warning _FORTIFY_SOURCE requires compiling with optimization (-O)
+      |    ^~~~~~~
+[258/885] Building C object _deps/sdl3_mixer-build/external/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/Debug/bitreader.c.o
+In file included from /usr/include/bits/libc-header-start.h:33,
+                 from /usr/include/stdlib.h:26,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/src/libFLAC/bitreader.c:37:
+/usr/include/features.h:451:4: warning: #warning _FORTIFY_SOURCE requires compiling with optimization (-O) [-Wcpp]
+  451 | #  warning _FORTIFY_SOURCE requires compiling with optimization (-O)
+      |    ^~~~~~~
+[259/885] Building C object _deps/sdl3_mixer-build/external/vorbis-build/lib/CMakeFiles/vorbisfile.dir/Debug/vorbisfile.c.o
+[260/885] Building C object _deps/sdl3_mixer-build/external/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/Debug/float.c.o
+In file included from /usr/include/assert.h:35,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/include/FLAC/assert.h:38,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/src/libFLAC/float.c:37:
+/usr/include/features.h:451:4: warning: #warning _FORTIFY_SOURCE requires compiling with optimization (-O) [-Wcpp]
+  451 | #  warning _FORTIFY_SOURCE requires compiling with optimization (-O)
+      |    ^~~~~~~
+[261/885] Building C object _deps/sdl3_mixer-build/external/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/Debug/fixed.c.o
+In file included from /usr/include/bits/libc-header-start.h:33,
+                 from /usr/include/math.h:27,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/src/libFLAC/fixed.c:37:
+/usr/include/features.h:451:4: warning: #warning _FORTIFY_SOURCE requires compiling with optimization (-O) [-Wcpp]
+  451 | #  warning _FORTIFY_SOURCE requires compiling with optimization (-O)
+      |    ^~~~~~~
+[262/885] Building C object _deps/sdl3_mixer-build/external/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/Debug/fixed_intrin_sse2.c.o
+In file included from /usr/include/bits/libc-header-start.h:33,
+                 from /usr/include/stdint.h:26,
+                 from /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stdint.h:11,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/include/FLAC/ordinals.h:55,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/src/libFLAC/include/private/cpu.h:36,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/src/libFLAC/fixed_intrin_sse2.c:37:
+/usr/include/features.h:451:4: warning: #warning _FORTIFY_SOURCE requires compiling with optimization (-O) [-Wcpp]
+  451 | #  warning _FORTIFY_SOURCE requires compiling with optimization (-O)
+      |    ^~~~~~~
+[263/885] Building C object _deps/sdl3_mixer-build/external/opusfile-build/CMakeFiles/opusfile.dir/Debug/src/opusfile.c.o
+[264/885] Building C object _deps/sdl3_mixer-build/external/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/Debug/fixed_intrin_ssse3.c.o
+In file included from /usr/include/bits/libc-header-start.h:33,
+                 from /usr/include/stdint.h:26,
+                 from /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stdint.h:11,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/include/FLAC/ordinals.h:55,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/src/libFLAC/include/private/cpu.h:36,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/src/libFLAC/fixed_intrin_ssse3.c:37:
+/usr/include/features.h:451:4: warning: #warning _FORTIFY_SOURCE requires compiling with optimization (-O) [-Wcpp]
+  451 | #  warning _FORTIFY_SOURCE requires compiling with optimization (-O)
+      |    ^~~~~~~
+[265/885] Building C object _deps/sdl3_mixer-build/external/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/Debug/format.c.o
+In file included from /usr/include/bits/libc-header-start.h:33,
+                 from /usr/include/stdio.h:28,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/src/libFLAC/format.c:37:
+/usr/include/features.h:451:4: warning: #warning _FORTIFY_SOURCE requires compiling with optimization (-O) [-Wcpp]
+  451 | #  warning _FORTIFY_SOURCE requires compiling with optimization (-O)
+      |    ^~~~~~~
+[266/885] Building C object _deps/sdl3_mixer-build/external/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/Debug/lpc_intrin_sse.c.o
+In file included from /usr/include/bits/libc-header-start.h:33,
+                 from /usr/include/stdint.h:26,
+                 from /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stdint.h:11,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/include/FLAC/ordinals.h:55,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/src/libFLAC/include/private/cpu.h:36,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/src/libFLAC/lpc_intrin_sse.c:37:
+/usr/include/features.h:451:4: warning: #warning _FORTIFY_SOURCE requires compiling with optimization (-O) [-Wcpp]
+  451 | #  warning _FORTIFY_SOURCE requires compiling with optimization (-O)
+      |    ^~~~~~~
+[267/885] Building C object _deps/sdl3_mixer-build/external/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/Debug/lpc_intrin_vsx.c.o
+[268/885] Building C object _deps/sdl3_mixer-build/external/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/Debug/memory.c.o
+In file included from /usr/include/bits/libc-header-start.h:33,
+                 from /usr/include/stdint.h:26,
+                 from /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stdint.h:11,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/src/libFLAC/memory.c:38:
+/usr/include/features.h:451:4: warning: #warning _FORTIFY_SOURCE requires compiling with optimization (-O) [-Wcpp]
+  451 | #  warning _FORTIFY_SOURCE requires compiling with optimization (-O)
+      |    ^~~~~~~
+[269/885] Building C object _deps/sdl3_mixer-build/external/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/Debug/md5.c.o
+In file included from /usr/include/bits/libc-header-start.h:33,
+                 from /usr/include/stdlib.h:26,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/src/libFLAC/md5.c:5:
+/usr/include/features.h:451:4: warning: #warning _FORTIFY_SOURCE requires compiling with optimization (-O) [-Wcpp]
+  451 | #  warning _FORTIFY_SOURCE requires compiling with optimization (-O)
+      |    ^~~~~~~
+[270/885] Building C object _deps/sdl3_mixer-build/external/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/Debug/lpc_intrin_sse2.c.o
+In file included from /usr/include/bits/libc-header-start.h:33,
+                 from /usr/include/stdint.h:26,
+                 from /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stdint.h:11,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/include/FLAC/ordinals.h:55,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/src/libFLAC/include/private/cpu.h:36,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/src/libFLAC/lpc_intrin_sse2.c:37:
+/usr/include/features.h:451:4: warning: #warning _FORTIFY_SOURCE requires compiling with optimization (-O) [-Wcpp]
+  451 | #  warning _FORTIFY_SOURCE requires compiling with optimization (-O)
+      |    ^~~~~~~
+[271/885] Building C object _deps/sdl3_mixer-build/external/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/Debug/lpc_intrin_sse41.c.o
+In file included from /usr/include/bits/libc-header-start.h:33,
+                 from /usr/include/stdint.h:26,
+                 from /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stdint.h:11,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/include/FLAC/ordinals.h:55,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/src/libFLAC/include/private/cpu.h:36,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/src/libFLAC/lpc_intrin_sse41.c:37:
+/usr/include/features.h:451:4: warning: #warning _FORTIFY_SOURCE requires compiling with optimization (-O) [-Wcpp]
+  451 | #  warning _FORTIFY_SOURCE requires compiling with optimization (-O)
+      |    ^~~~~~~
+[272/885] Building C object _deps/sdl3_mixer-build/external/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/Debug/lpc.c.o
+In file included from /usr/include/bits/libc-header-start.h:33,
+                 from /usr/include/math.h:27,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/src/libFLAC/lpc.c:37:
+/usr/include/features.h:451:4: warning: #warning _FORTIFY_SOURCE requires compiling with optimization (-O) [-Wcpp]
+  451 | #  warning _FORTIFY_SOURCE requires compiling with optimization (-O)
+      |    ^~~~~~~
+[273/885] Building C object _deps/sdl3_mixer-build/external/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/Debug/stream_encoder_intrin_sse2.c.o
+In file included from /usr/include/bits/libc-header-start.h:33,
+                 from /usr/include/stdint.h:26,
+                 from /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stdint.h:11,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/include/FLAC/ordinals.h:55,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/src/libFLAC/include/private/cpu.h:36,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/src/libFLAC/stream_encoder_intrin_sse2.c:37:
+/usr/include/features.h:451:4: warning: #warning _FORTIFY_SOURCE requires compiling with optimization (-O) [-Wcpp]
+  451 | #  warning _FORTIFY_SOURCE requires compiling with optimization (-O)
+      |    ^~~~~~~
+[274/885] Building C object _deps/sdl3_mixer-build/external/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/Debug/stream_encoder_intrin_ssse3.c.o
+In file included from /usr/include/bits/libc-header-start.h:33,
+                 from /usr/include/stdint.h:26,
+                 from /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stdint.h:11,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/include/FLAC/ordinals.h:55,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/src/libFLAC/include/private/cpu.h:36,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.c:37:
+/usr/include/features.h:451:4: warning: #warning _FORTIFY_SOURCE requires compiling with optimization (-O) [-Wcpp]
+  451 | #  warning _FORTIFY_SOURCE requires compiling with optimization (-O)
+      |    ^~~~~~~
+[275/885] Building C object _deps/sdl3_mixer-build/external/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/Debug/metadata_object.c.o
+In file included from /usr/include/bits/libc-header-start.h:33,
+                 from /usr/include/stdlib.h:26,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/src/libFLAC/metadata_object.c:37:
+/usr/include/features.h:451:4: warning: #warning _FORTIFY_SOURCE requires compiling with optimization (-O) [-Wcpp]
+  451 | #  warning _FORTIFY_SOURCE requires compiling with optimization (-O)
+      |    ^~~~~~~
+[276/885] Building C object _deps/sdl3_mixer-build/external/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/Debug/stream_decoder.c.o
+In file included from /usr/include/bits/libc-header-start.h:33,
+                 from /usr/include/stdio.h:28,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/src/libFLAC/stream_decoder.c:37:
+/usr/include/features.h:451:4: warning: #warning _FORTIFY_SOURCE requires compiling with optimization (-O) [-Wcpp]
+  451 | #  warning _FORTIFY_SOURCE requires compiling with optimization (-O)
+      |    ^~~~~~~
+[277/885] Building C object _deps/sdl3_mixer-build/external/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/Debug/metadata_iterators.c.o
+In file included from /usr/include/errno.h:25,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/src/libFLAC/metadata_iterators.c:37:
+/usr/include/features.h:451:4: warning: #warning _FORTIFY_SOURCE requires compiling with optimization (-O) [-Wcpp]
+  451 | #  warning _FORTIFY_SOURCE requires compiling with optimization (-O)
+      |    ^~~~~~~
+[278/885] Building C object _deps/sdl3_mixer-build/external/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/Debug/stream_encoder_framing.c.o
+In file included from /usr/include/bits/libc-header-start.h:33,
+                 from /usr/include/stdio.h:28,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/src/libFLAC/stream_encoder_framing.c:37:
+/usr/include/features.h:451:4: warning: #warning _FORTIFY_SOURCE requires compiling with optimization (-O) [-Wcpp]
+  451 | #  warning _FORTIFY_SOURCE requires compiling with optimization (-O)
+      |    ^~~~~~~
+[279/885] Building C object _deps/sdl3_mixer-build/external/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/Debug/stream_encoder.c.o
+In file included from /usr/include/bits/libc-header-start.h:33,
+                 from /usr/include/limits.h:26,
+                 from /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/limits.h:212,
+                 from /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/syslimits.h:9,
+                 from /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/limits.h:34,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/src/libFLAC/stream_encoder.c:37:
+/usr/include/features.h:451:4: warning: #warning _FORTIFY_SOURCE requires compiling with optimization (-O) [-Wcpp]
+  451 | #  warning _FORTIFY_SOURCE requires compiling with optimization (-O)
+      |    ^~~~~~~
+[280/885] Building C object _deps/sdl3_mixer-build/external/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/Debug/window.c.o
+In file included from /usr/include/bits/libc-header-start.h:33,
+                 from /usr/include/math.h:27,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/src/libFLAC/window.c:37:
+/usr/include/features.h:451:4: warning: #warning _FORTIFY_SOURCE requires compiling with optimization (-O) [-Wcpp]
+  451 | #  warning _FORTIFY_SOURCE requires compiling with optimization (-O)
+      |    ^~~~~~~
+[281/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Classic_Emu.cpp.o
+[282/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Blip_Buffer.cpp.o
+[283/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Dual_Resampler.cpp.o
+[284/885] Building C object _deps/sdl3_mixer-build/external/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/Debug/stream_encoder_intrin_avx2.c.o
+In file included from /usr/include/bits/libc-header-start.h:33,
+                 from /usr/include/stdint.h:26,
+                 from /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stdint.h:11,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/include/FLAC/ordinals.h:55,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/src/libFLAC/include/private/cpu.h:36,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/src/libFLAC/stream_encoder_intrin_avx2.c:37:
+/usr/include/features.h:451:4: warning: #warning _FORTIFY_SOURCE requires compiling with optimization (-O) [-Wcpp]
+  451 | #  warning _FORTIFY_SOURCE requires compiling with optimization (-O)
+      |    ^~~~~~~
+[285/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Data_Reader.cpp.o
+[286/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Fir_Resampler.cpp.o
+[287/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Gme_File.cpp.o
+[288/885] Building C object _deps/sdl3_mixer-build/external/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/Debug/lpc_intrin_avx2.c.o
+In file included from /usr/include/bits/libc-header-start.h:33,
+                 from /usr/include/stdint.h:26,
+                 from /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stdint.h:11,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/include/FLAC/ordinals.h:55,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/src/libFLAC/include/private/cpu.h:36,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/flac/src/libFLAC/lpc_intrin_avx2.c:37:
+/usr/include/features.h:451:4: warning: #warning _FORTIFY_SOURCE requires compiling with optimization (-O) [-Wcpp]
+  451 | #  warning _FORTIFY_SOURCE requires compiling with optimization (-O)
+      |    ^~~~~~~
+[289/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/cmake_pch.h.gch
+[290/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/M3u_Playlist.cpp.o
+[291/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Multi_Buffer.cpp.o
+[292/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Ay_Apu.cpp.o
+[293/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/gme.cpp.o
+[294/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/SDL_guid.c.o
+[295/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/SDL_error.c.o
+[296/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/SDL_assert.c.o
+[297/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/SDL_list.c.o
+[298/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Music_Emu.cpp.o
+[299/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/SDL.c.o
+[300/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/SDL_hints.c.o
+[301/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/SDL_hashtable.c.o
+[302/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/SDL_log.c.o
+[303/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/atomic/SDL_spinlock.c.o
+[304/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/atomic/SDL_atomic.c.o
+[305/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/SDL_utils.c.o
+[306/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/SDL_properties.c.o
+[307/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/audio/SDL_audiodev.c.o
+[308/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/audio/SDL_mixer.c.o
+[309/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Effects_Buffer.cpp.o
+[310/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/audio/SDL_audioqueue.c.o
+[311/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/audio/SDL_audioresample.c.o
+[312/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/core/SDL_core_unsupported.c.o
+[313/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/audio/SDL_audiotypecvt.c.o
+[314/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/audio/SDL_wave.c.o
+[315/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/events/SDL_clipboardevents.c.o
+[316/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/cpuinfo/SDL_cpuinfo.c.o
+[317/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/events/SDL_categories.c.o
+[318/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/audio/SDL_audio.c.o
+[319/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/camera/SDL_camera.c.o
+[320/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/events/SDL_displayevents.c.o
+[321/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/events/SDL_dropevents.c.o
+[322/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/events/SDL_eventwatch.c.o
+[323/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/dynapi/SDL_dynapi.c.o
+[324/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/audio/SDL_audiocvt.c.o
+[325/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/events/SDL_keymap.c.o
+[326/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/events/SDL_keysym_to_keycode.c.o
+[327/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/events/SDL_keysym_to_scancode.c.o
+[328/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/events/SDL_quit.c.o
+[329/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/events/SDL_keyboard.c.o
+[330/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/events/SDL_pen.c.o
+[331/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/events/SDL_scancode_tables.c.o
+[332/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/events/imKStoUCS.c.o
+[333/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/events/SDL_windowevents.c.o
+[334/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/events/SDL_events.c.o
+[335/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/events/SDL_touch.c.o
+[336/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/filesystem/SDL_filesystem.c.o
+[337/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/events/SDL_mouse.c.o
+[338/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/io/SDL_asyncio.c.o
+[339/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/haptic/SDL_haptic.c.o
+[340/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/io/generic/SDL_asyncio_generic.c.o
+[341/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/joystick/SDL_steam_virtual_gamepad.c.o
+[342/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/locale/SDL_locale.c.o
+[343/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/io/SDL_iostream.c.o
+[344/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/joystick/controller_type.c.o
+[345/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/main/SDL_main_callbacks.c.o
+[346/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/gpu/SDL_gpu.c.o
+[347/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/main/SDL_runapp.c.o
+[348/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/misc/SDL_url.c.o
+[349/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/misc/SDL_libusb.c.o
+[350/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/power/SDL_power.c.o
+[351/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/render/SDL_render_unsupported.c.o
+[352/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/render/direct3d/SDL_render_d3d.c.o
+[353/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/render/direct3d/SDL_shaders_d3d.c.o
+[354/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/joystick/SDL_joystick.c.o
+[355/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/render/direct3d11/SDL_render_d3d11.c.o
+[356/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/render/SDL_yuv_sw.c.o
+[357/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/render/direct3d11/SDL_shaders_d3d11.c.o
+[358/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/render/direct3d12/SDL_render_d3d12.c.o
+[359/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/render/direct3d12/SDL_shaders_d3d12.c.o
+[360/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/hidapi/SDL_hidapi.c.o
+[361/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/joystick/SDL_gamepad.c.o
+[362/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/render/gpu/SDL_pipeline_gpu.c.o
+[363/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/render/ngage/SDL_render_ngage.c.o
+[364/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/render/gpu/SDL_shaders_gpu.c.o
+[365/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/render/ps2/SDL_render_ps2.c.o
+[366/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/render/opengles2/SDL_shaders_gles2.c.o
+[367/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/render/psp/SDL_render_psp.c.o
+[368/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/render/opengl/SDL_shaders_gl.c.o
+[369/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/render/gpu/SDL_render_gpu.c.o
+[370/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/render/software/SDL_blendpoint.c.o
+[371/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/render/software/SDL_drawline.c.o
+[372/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/render/software/SDL_drawpoint.c.o
+[373/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/render/opengles2/SDL_render_gles2.c.o
+[374/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/render/vitagxm/SDL_render_vita_gxm.c.o
+[375/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/render/opengl/SDL_render_gl.c.o
+[376/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/render/vitagxm/SDL_render_vita_gxm_memory.c.o
+[377/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/render/vitagxm/SDL_render_vita_gxm_tools.c.o
+[378/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/render/software/SDL_render_sw.c.o
+[379/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/render/vulkan/SDL_shaders_vulkan.c.o
+[380/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/stdlib/SDL_crc16.c.o
+[381/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/render/software/SDL_triangle.c.o
+[382/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/sensor/SDL_sensor.c.o
+[383/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/stdlib/SDL_crc32.c.o
+[384/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/stdlib/SDL_iconv.c.o
+[385/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/stdlib/SDL_getenv.c.o
+[386/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/render/software/SDL_blendfillrect.c.o
+[387/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/render/SDL_render.c.o
+[388/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/stdlib/SDL_memcpy.c.o
+[389/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/render/software/SDL_blendline.c.o
+[390/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/stdlib/SDL_memmove.c.o
+[391/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/stdlib/SDL_malloc.c.o
+[392/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/stdlib/SDL_mslibc.c.o
+[393/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/stdlib/SDL_memset.c.o
+[394/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/stdlib/SDL_murmur3.c.o
+[395/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/stdlib/SDL_strtokr.c.o
+[396/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/stdlib/SDL_random.c.o
+[397/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/storage/SDL_storage.c.o
+[398/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/stdlib/SDL_stdlib.c.o
+[399/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/stdlib/SDL_qsort.c.o
+[400/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/thread/SDL_thread.c.o
+[401/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/time/SDL_time.c.o
+[402/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/timer/SDL_timer.c.o
+[403/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/SDL_blit.c.o
+[404/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/stdlib/SDL_string.c.o
+[405/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/SDL_blit_1.c.o
+[406/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/SDL_blit_copy.c.o
+[407/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/SDL_RLEaccel.c.o
+[408/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/SDL_blit_0.c.o
+[409/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/SDL_blit_slow.c.o
+[410/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/SDL_bmp.c.o
+[411/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/render/vulkan/SDL_render_vulkan.c.o
+[412/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/SDL_clipboard.c.o
+[413/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/SDL_fillrect.c.o
+[414/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/SDL_rect.c.o
+[415/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/SDL_blit_N.c.o
+[416/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/SDL_pixels.c.o
+[417/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/SDL_egl.c.o
+[418/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/SDL_rotate.c.o
+[419/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/SDL_blit_A.c.o
+[420/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/SDL_video_unsupported.c.o
+[421/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/SDL_stretch.c.o
+[422/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/yuv2rgb/yuv_rgb_lsx.c.o
+[423/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/SDL_vulkan_utils.c.o
+[424/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/SDL_surface.c.o
+[425/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/audio/dummy/SDL_dummyaudio.c.o
+[426/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/audio/disk/SDL_diskaudio.c.o
+[427/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/yuv2rgb/yuv_rgb_std.c.o
+[428/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/camera/dummy/SDL_camera_dummy.c.o
+[429/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/SDL_yuv.c.o
+[430/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/loadso/dlopen/SDL_sysloadso.c.o
+[431/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/SDL_blit_auto.c.o
+[432/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/dummy/SDL_nullevents.c.o
+[433/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/SDL_video.c.o
+[434/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/dummy/SDL_nullframebuffer.c.o
+[435/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/joystick/virtual/SDL_virtualjoystick.c.o
+[436/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/dummy/SDL_nullvideo.c.o
+[437/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/SDL_stb.c.o
+[438/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/audio/jack/SDL_jackaudio.c.o
+[439/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/audio/sndio/SDL_sndioaudio.c.o
+[440/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/audio/alsa/SDL_alsa_audio.c.o
+[441/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/audio/pulseaudio/SDL_pulseaudio.c.o
+[442/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/x11/SDL_x11dyn.c.o
+[443/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/x11/SDL_x11framebuffer.c.o
+[444/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/x11/SDL_x11clipboard.c.o
+[445/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/camera/pipewire/SDL_camera_pipewire.c.o
+[446/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/audio/pipewire/SDL_pipewire.c.o
+[447/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/x11/SDL_x11events.c.o
+[448/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/x11/SDL_x11keyboard.c.o
+[449/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/x11/SDL_x11messagebox.c.o
+[450/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/x11/SDL_x11opengl.c.o
+[451/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/x11/SDL_x11modes.c.o
+[452/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/x11/SDL_x11mouse.c.o
+[453/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/x11/SDL_x11opengles.c.o
+[454/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/x11/SDL_x11settings.c.o
+[455/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/x11/SDL_x11pen.c.o
+[456/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/x11/SDL_x11shape.c.o
+[457/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/yuv2rgb/yuv_rgb_sse.c.o
+[458/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/x11/SDL_x11video.c.o
+[459/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/x11/SDL_x11touch.c.o
+[460/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/x11/SDL_x11toolkit.c.o
+[461/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/x11/edid-parse.c.o
+[462/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/x11/SDL_x11xfixes.c.o
+[463/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/kmsdrm/SDL_kmsdrmdyn.c.o
+[464/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/x11/SDL_x11vulkan.c.o
+[465/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/x11/SDL_x11xtest.c.o
+[466/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/x11/SDL_x11xsync.c.o
+[467/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/kmsdrm/SDL_kmsdrmevents.c.o
+[468/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/x11/SDL_x11xinput2.c.o
+[469/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/x11/xsettings-client.c.o
+[470/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/kmsdrm/SDL_kmsdrmopengles.c.o
+[471/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/wayland/SDL_waylandclipboard.c.o
+[472/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/x11/SDL_x11window.c.o
+[473/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/kmsdrm/SDL_kmsdrmmouse.c.o
+[474/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/wayland/SDL_waylandcolor.c.o
+[475/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/wayland/SDL_waylandmessagebox.c.o
+[476/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/wayland/SDL_waylanddyn.c.o
+[477/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/wayland/SDL_waylandkeyboard.c.o
+[478/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/kmsdrm/SDL_kmsdrmvulkan.c.o
+[479/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/kmsdrm/SDL_kmsdrmvideo.c.o
+[480/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/wayland/SDL_waylandopengles.c.o
+[481/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/wayland/SDL_waylanddatamanager.c.o
+[482/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/wayland/SDL_waylandshmbuffer.c.o
+[483/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/wayland-generated-protocols/alpha-modifier-v1-protocol.c.o
+[484/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/wayland/SDL_waylandmouse.c.o
+[485/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/wayland-generated-protocols/color-management-v1-protocol.c.o
+[486/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/wayland-generated-protocols/fractional-scale-v1-protocol.c.o
+[487/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/wayland-generated-protocols/cursor-shape-v1-protocol.c.o
+[488/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/wayland-generated-protocols/frog-color-management-v1-protocol.c.o
+[489/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/wayland-generated-protocols/idle-inhibit-unstable-v1-protocol.c.o
+[490/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/wayland-generated-protocols/input-timestamps-unstable-v1-protocol.c.o
+[491/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/wayland-generated-protocols/keyboard-shortcuts-inhibit-unstable-v1-protocol.c.o
+[492/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/wayland-generated-protocols/pointer-constraints-unstable-v1-protocol.c.o
+[493/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/wayland/SDL_waylandvulkan.c.o
+[494/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/wayland-generated-protocols/pointer-gestures-unstable-v1-protocol.c.o
+[495/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/wayland-generated-protocols/pointer-warp-v1-protocol.c.o
+[496/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/wayland-generated-protocols/relative-pointer-unstable-v1-protocol.c.o
+[497/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/wayland/SDL_waylandvideo.c.o
+[498/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/wayland-generated-protocols/primary-selection-unstable-v1-protocol.c.o
+[499/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/wayland-generated-protocols/tablet-v2-protocol.c.o
+[500/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/wayland-generated-protocols/viewporter-protocol.c.o
+[501/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/wayland-generated-protocols/text-input-unstable-v3-protocol.c.o
+[502/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/wayland-generated-protocols/xdg-decoration-unstable-v1-protocol.c.o
+[503/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/wayland-generated-protocols/xdg-activation-v1-protocol.c.o
+[504/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/wayland-generated-protocols/wayland-protocol.c.o
+[505/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/wayland/SDL_waylandevents.c.o
+[506/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/wayland-generated-protocols/xdg-dialog-v1-protocol.c.o
+[507/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/wayland-generated-protocols/xdg-foreign-unstable-v2-protocol.c.o
+[508/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/wayland-generated-protocols/xdg-output-unstable-v1-protocol.c.o
+[509/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/wayland-generated-protocols/xdg-toplevel-icon-v1-protocol.c.o
+[510/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/wayland-generated-protocols/xdg-shell-protocol.c.o
+[511/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/core/unix/SDL_appid.c.o
+[512/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/core/unix/SDL_fribidi.c.o
+[513/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/core/unix/SDL_poll.c.o
+[514/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/core/unix/SDL_libthai.c.o
+[515/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/core/unix/SDL_gtk.c.o
+[516/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/tray/unix/SDL_tray.c.o
+[517/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/wayland/SDL_waylandwindow.c.o
+[518/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/core/linux/SDL_ime.c.o
+[519/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/camera/v4l2/SDL_camera_v4l2.c.o
+[520/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/core/linux/SDL_system_theme.c.o
+[521/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/core/linux/SDL_progressbar.c.o
+[522/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/core/linux/SDL_dbus.c.o
+[523/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/haptic/linux/SDL_syshaptic.c.o
+[524/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/core/linux/SDL_udev.c.o
+[525/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/core/linux/SDL_evdev_capabilities.c.o
+[526/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/joystick/hidapi/SDL_hidapi_combined.c.o
+[527/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/joystick/hidapi/SDL_hidapi_8bitdo.c.o
+[528/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/core/linux/SDL_threadprio.c.o
+[529/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/core/linux/SDL_evdev_kbd.c.o
+[530/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/core/linux/SDL_evdev.c.o
+[531/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/core/linux/SDL_fcitx.c.o
+[532/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/joystick/hidapi/SDL_hidapi_flydigi.c.o
+[533/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/io/io_uring/SDL_asyncio_liburing.c.o
+[534/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/joystick/hidapi/SDL_hidapi_luna.c.o
+[535/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/joystick/hidapi/SDL_hidapi_gamecube.c.o
+[536/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/joystick/hidapi/SDL_hidapi_rumble.c.o
+[537/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/joystick/hidapi/SDL_hidapi_lg4ff.c.o
+[538/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/joystick/hidapi/SDL_hidapi_ps4.c.o
+[539/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/joystick/hidapi/SDL_hidapi_ps3.c.o
+[540/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/joystick/hidapi/SDL_hidapi_shield.c.o
+[541/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/joystick/hidapi/SDL_hidapi_stadia.c.o
+[542/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/joystick/hidapi/SDL_hidapi_ps5.c.o
+[543/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/joystick/hidapi/SDL_hidapi_gip.c.o
+[544/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/joystick/hidapi/SDL_hidapi_steam_triton.c.o
+[545/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/joystick/hidapi/SDL_hidapi_sinput.c.o
+[546/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/joystick/hidapi/SDL_hidapi_steam_hori.c.o
+[547/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/joystick/hidapi/SDL_hidapi_steam.c.o
+[548/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/joystick/hidapi/SDL_hidapi_steamdeck.c.o
+[549/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/joystick/hidapi/SDL_hidapi_xbox360.c.o
+[550/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/joystick/hidapi/SDL_hidapi_xbox360w.c.o
+[551/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/joystick/hidapi/SDL_hidapi_zuiki.c.o
+[552/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/joystick/hidapi/SDL_hidapi_switch2.c.o
+[553/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/joystick/hidapi/SDL_hidapi_wii.c.o
+[554/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/joystick/hidapi/SDL_hidapi_xboxone.c.o
+[555/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/haptic/hidapi/SDL_hidapihaptic.c.o
+[556/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/joystick/hidapi/SDL_report_descriptor.c.o
+[557/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/thread/pthread/SDL_sysmutex.c.o
+[558/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/joystick/hidapi/SDL_hidapi_switch.c.o
+[559/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/joystick/hidapi/SDL_hidapijoystick.c.o
+[560/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/thread/pthread/SDL_syscond.c.o
+[561/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/thread/pthread/SDL_sysrwlock.c.o
+[562/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/thread/pthread/SDL_systls.c.o
+[563/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/thread/pthread/SDL_systhread.c.o
+[564/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/haptic/hidapi/SDL_hidapihaptic_lg4ff.c.o
+[565/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/thread/pthread/SDL_syssem.c.o
+[566/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/misc/unix/SDL_sysurl.c.o
+[567/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/locale/unix/SDL_syslocale.c.o
+[568/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/power/linux/SDL_syspower.c.o
+[569/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/filesystem/unix/SDL_sysfilesystem.c.o
+[570/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/storage/generic/SDL_genericstorage.c.o
+[571/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/storage/steam/SDL_steamstorage.c.o
+[572/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/filesystem/posix/SDL_sysfsops.c.o
+[573/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/timer/unix/SDL_systimer.c.o
+[574/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/dialog/SDL_dialog.c.o
+[575/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/dialog/SDL_dialog_utils.c.o
+[576/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/time/unix/SDL_systime.c.o
+[577/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/dialog/unix/SDL_unixdialog.c.o
+[578/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/joystick/linux/SDL_sysjoystick.c.o
+[579/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/offscreen/SDL_offscreenevents.c.o
+[580/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/dialog/unix/SDL_zenitymessagebox.c.o
+[581/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/dialog/unix/SDL_zenitydialog.c.o
+[582/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/process/SDL_process.c.o
+[583/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/offscreen/SDL_offscreenframebuffer.c.o
+[584/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/offscreen/SDL_offscreenopengles.c.o
+[585/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/dialog/unix/SDL_portaldialog.c.o
+[586/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/process/posix/SDL_posixprocess.c.o
+[587/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/offscreen/SDL_offscreenwindow.c.o
+[588/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/sensor/dummy/SDL_dummysensor.c.o
+[589/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/tray/SDL_tray_utils.c.o
+[590/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/offscreen/SDL_offscreenvideo.c.o
+[591/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/main/generic/SDL_sysmain_callbacks.c.o
+[592/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Sms_Apu.cpp.o
+[593/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Ay_Cpu.cpp.o
+[594/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Ym2612_Nuked.cpp.o
+[595/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/video/offscreen/SDL_offscreenvulkan.c.o
+[596/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Ay_Emu.cpp.o
+[597/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Gb_Cpu.cpp.o
+[598/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Gb_Apu.cpp.o
+[599/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Gb_Oscs.cpp.o
+[600/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Hes_Apu.cpp.o
+[601/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Gbs_Emu.cpp.o
+[602/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Gym_Emu.cpp.o
+[603/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Hes_Cpu.cpp.o
+[604/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Kss_Scc_Apu.cpp.o
+[605/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Hes_Emu.cpp.o
+[606/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Nes_Namco_Apu.cpp.o
+[607/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Nes_Fme7_Apu.cpp.o
+[608/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Kss_Cpu.cpp.o
+[609/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Nes_Apu.cpp.o
+/home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/libgme/gme/Nes_Apu.cpp: In constructor ‘Nes_Apu::Nes_Apu()’:
+/home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/libgme/gme/Nes_Apu.cpp:21:9: warning: ‘<unknown>’ may be used uninitialized [-Wmaybe-uninitialized]
+   21 |         square1( &square_synth ),
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/libgme/gme/Nes_Apu.h:12,
+                 from /home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/libgme/gme/Nes_Apu.cpp:3:
+/home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/_deps/sdl3_mixer-src/external/libgme/gme/Nes_Oscs.h:62:9: note: by argument 2 of type ‘const Nes_Square::Synth*’ {aka ‘const Blip_Synth<12, 1>*’} to ‘Nes_Square::Nes_Square(const Synth*)’ declared here
+   62 |         Nes_Square( Synth const* s ) : synth( *s ) { }
+      |         ^~~~~~~~~~
+[610/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Nes_Fds_Apu.cpp.o
+[611/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Kss_Emu.cpp.o
+[612/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Nes_Vrc6_Apu.cpp.o
+[613/885] Building C object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/ext/panning.c.o
+[614/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Nes_Cpu.cpp.o
+[615/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Nes_Vrc7_Apu.cpp.o
+[616/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Nes_Oscs.cpp.o
+[617/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Sap_Apu.cpp.o
+[618/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Snes_Spc.cpp.o
+[619/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Sap_Cpu.cpp.o
+[620/885] Building C object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/ext/emu2413.c.o
+[621/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Nsf_Emu.cpp.o
+[622/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Nsfe_Emu.cpp.o
+[623/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Sap_Emu.cpp.o
+[624/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Spc_Filter.cpp.o
+[625/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Spc_Cpu.cpp.o
+[626/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Ym2413_Emu.cpp.o
+[627/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Spc_Dsp.cpp.o
+[628/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/format.c.o
+[629/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/virtual.c.o
+[630/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/period.c.o
+[631/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Vgm_Emu_Impl.cpp.o
+[632/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/misc.c.o
+[633/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/mkstemp.c.o
+[634/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/dataio.c.o
+[635/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/read_event.c.o
+[636/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Spc_Emu.cpp.o
+[637/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/lfo.c.o
+[638/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/md5.c.o
+[639/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/far_extras.c.o
+[640/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/player.c.o
+[641/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/control.c.o
+[642/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/filter.c.o
+[643/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/scan.c.o
+[644/885] Building CXX object _deps/sdl3_mixer-build/external/libgme-build/gme/CMakeFiles/gme_shared.dir/Debug/Vgm_Emu.cpp.o
+[645/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/flow.c.o
+[646/885] Building C object _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/Debug/src/gpu/vulkan/SDL_gpu_vulkan.c.o
+[647/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/rng.c.o
+[648/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/med_extras.c.o
+[649/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/load_helpers.c.o
+[650/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/hmn_extras.c.o
+[651/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/effects.c.o
+[652/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/load.c.o
+[653/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/extras.c.o
+[654/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/hio.c.o
+[655/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/mixer.c.o
+[656/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/smix.c.o
+[657/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/filetype.c.o
+[658/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/tempfile.c.o
+[659/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/memio.c.o
+[660/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/path.c.o
+[661/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/win32.c.o
+[662/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/mix_paula.c.o
+[663/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/voltable.c.o
+[664/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/itsex.c.o
+[665/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/iff.c.o
+[666/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/common.c.o
+[667/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/lzw.c.o
+[668/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/sample.c.o
+[669/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/miniz_tinfl.c.o
+[670/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/mix_all.c.o
+[671/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/stm_load.c.o
+[672/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/669_load.c.o
+[673/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/mtm_load.c.o
+[674/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/far_load.c.o
+[675/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/s3m_load.c.o
+[676/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/mod_load.c.o
+[677/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/ptm_load.c.o
+[678/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/ult_load.c.o
+[679/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/xm_load.c.o
+[680/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/okt_load.c.o
+[681/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/stx_load.c.o
+[682/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/pt3_load.c.o
+[683/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/sfx_load.c.o
+[684/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/it_load.c.o
+[685/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/emod_load.c.o
+[686/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/flt_load.c.o
+[687/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/mdl_load.c.o
+[688/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/st_load.c.o
+[689/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/digi_load.c.o
+[690/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/imf_load.c.o
+[691/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/fnk_load.c.o
+[692/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/ice_load.c.o
+[693/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/ims_load.c.o
+[694/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/masi_load.c.o
+[695/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/masi16_load.c.o
+[696/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/liq_load.c.o
+[697/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/stim_load.c.o
+[698/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/amf_load.c.o
+[699/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/vorbis.c.o
+[700/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/mmd_common.c.o
+[701/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/no_load.c.o
+[702/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/mmd1_load.c.o
+[703/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/mmd3_load.c.o
+[704/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/arch_load.c.o
+[705/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/rtm_load.c.o
+[706/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/med2_load.c.o
+[707/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/sym_load.c.o
+[708/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/dt_load.c.o
+[709/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/pw_load.c.o
+[710/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/med3_load.c.o
+[711/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/gdm_load.c.o
+[712/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/gal5_load.c.o
+[713/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/umx_load.c.o
+[714/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/med4_load.c.o
+[715/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/dbm_load.c.o
+[716/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/gal4_load.c.o
+[717/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/mfp_load.c.o
+[718/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/asylum_load.c.o
+[719/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/coco_load.c.o
+[720/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/chip_load.c.o
+[721/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/muse_load.c.o
+[722/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/hmn_load.c.o
+[723/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/mgt_load.c.o
+[724/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/abk_load.c.o
+[725/885] Building C object _deps/sdl3_mixer-build/external/libxmp-build/CMakeFiles/xmp_shared.dir/Debug/src/loaders/xmf_load.c.o
+[726/885] Building C object _deps/sdl3_mixer-build/external/wavpack-build/CMakeFiles/wavpack.dir/Debug/src/decorr_utils.c.o
+[727/885] Building C object _deps/sdl3_mixer-build/external/wavpack-build/CMakeFiles/wavpack.dir/Debug/src/entropy_utils.c.o
+[728/885] Building C object _deps/sdl3_mixer-build/external/wavpack-build/CMakeFiles/wavpack.dir/Debug/src/open_filename.c.o
+[729/885] Building C object _deps/sdl3_mixer-build/external/wavpack-build/CMakeFiles/wavpack.dir/Debug/src/open_legacy.c.o
+[730/885] Building C object _deps/sdl3_mixer-build/external/wavpack-build/CMakeFiles/wavpack.dir/Debug/src/common_utils.c.o
+[731/885] Building C object _deps/sdl3_mixer-build/external/wavpack-build/CMakeFiles/wavpack.dir/Debug/src/open_raw.c.o
+[732/885] Building C object _deps/sdl3_mixer-build/external/wavpack-build/CMakeFiles/wavpack.dir/Debug/src/extra1.c.o
+[733/885] Building C object _deps/sdl3_mixer-build/external/wavpack-build/CMakeFiles/wavpack.dir/Debug/src/pack_floats.c.o
+[734/885] Building C object _deps/sdl3_mixer-build/external/wavpack-build/CMakeFiles/wavpack.dir/Debug/src/pack_dns.c.o
+[735/885] Building C object _deps/sdl3_mixer-build/external/wavpack-build/CMakeFiles/wavpack.dir/Debug/src/extra2.c.o
+[736/885] Building C object _deps/sdl3_mixer-build/external/wavpack-build/CMakeFiles/wavpack.dir/Debug/src/open_utils.c.o
+[737/885] Building C object _deps/sdl3_mixer-build/external/wavpack-build/CMakeFiles/wavpack.dir/Debug/src/tags.c.o
+[738/885] Building C object _deps/sdl3_mixer-build/external/wavpack-build/CMakeFiles/wavpack.dir/Debug/src/read_words.c.o
+[739/885] Building C object _deps/sdl3_mixer-build/external/wavpack-build/CMakeFiles/wavpack.dir/Debug/src/unpack_floats.c.o
+[740/885] Building C object _deps/sdl3_mixer-build/external/wavpack-build/CMakeFiles/wavpack.dir/Debug/src/tag_utils.c.o
+[741/885] Building C object _deps/sdl3_mixer-build/external/wavpack-build/CMakeFiles/wavpack.dir/Debug/src/pack_utils.c.o
+[742/885] Building C object _deps/sdl3_mixer-build/external/wavpack-build/CMakeFiles/wavpack.dir/Debug/src/unpack_seek.c.o
+[743/885] Building C object _deps/sdl3_mixer-build/external/wavpack-build/CMakeFiles/wavpack.dir/Debug/src/unpack_utils.c.o
+[744/885] Building ASM object _deps/sdl3_mixer-build/external/wavpack-build/CMakeFiles/wavpack.dir/Debug/src/unpack_x64.S.o
+[745/885] Building ASM object _deps/sdl3_mixer-build/external/wavpack-build/CMakeFiles/wavpack.dir/Debug/src/pack_x64.S.o
+[746/885] Building C object _deps/sdl3_mixer-build/external/wavpack-build/CMakeFiles/wavpack.dir/Debug/src/pack.c.o
+[747/885] Building C object _deps/sdl3_mixer-build/external/wavpack-build/CMakeFiles/wavpack.dir/Debug/src/write_words.c.o
+[748/885] Linking C shared library _deps/sdl3_mixer-build/external/vorbis-build/lib/Debug/libvorbisfile.so.3.3.8
+[749/885] Building C object _deps/sdl3_mixer-build/external/wavpack-build/CMakeFiles/wavpack.dir/Debug/src/unpack.c.o
+[750/885] Linking C shared library _deps/sdl3_mixer-build/external/opusfile-build/Debug/libopusfile.so.0.12
+[751/885] Building C object _deps/sdl3_mixer-build/external/wavpack-build/CMakeFiles/wavpack.dir/Debug/src/pack_dsd.c.o
+[752/885] Building C object _deps/sdl3_mixer-build/external/libmpg123-build/ports/cmake/src/compat/CMakeFiles/compat.dir/Debug/__/__/__/__/src/compat/compat_str.c.o
+[753/885] Linking C shared library _deps/sdl3_mixer-build/external/flac-build/src/libFLAC/Debug/libFLAC.so.8.3.0
+[754/885] Building C object _deps/sdl3_mixer-build/external/wavpack-build/CMakeFiles/wavpack.dir/Debug/src/unpack_dsd.c.o
+[755/885] Building C object _deps/sdl3_mixer-build/external/libmpg123-build/ports/cmake/src/compat/CMakeFiles/compat.dir/Debug/__/__/__/__/src/compat/compat.c.o
+[756/885] Linking C shared library _deps/sdl3_mixer-build/external/libxmp-build/Debug/libxmp.so.4.7.0
+[757/885] Building C object _deps/sdl3_mixer-build/external/libmpg123-build/ports/cmake/src/libmpg123/CMakeFiles/libmpg123.dir/Debug/__/__/__/__/src/libmpg123/equalizer.c.o
+[758/885] Building C object _deps/sdl3_mixer-build/external/libmpg123-build/ports/cmake/src/libmpg123/CMakeFiles/libmpg123.dir/Debug/__/__/__/__/src/libmpg123/dct64.c.o
+[759/885] Building C object _deps/sdl3_mixer-build/external/libmpg123-build/ports/cmake/src/libmpg123/CMakeFiles/libmpg123.dir/Debug/__/__/__/__/src/libmpg123/format.c.o
+[760/885] Linking CXX shared library _deps/sdl3_mixer-build/external/libgme-build/gme/Debug/libgme.so.0.6.4
+[761/885] Building C object _deps/sdl3_mixer-build/external/libmpg123-build/ports/cmake/src/libmpg123/CMakeFiles/libmpg123.dir/Debug/__/__/__/__/src/libmpg123/frame.c.o
+[762/885] Building C object _deps/sdl3_mixer-build/external/libmpg123-build/ports/cmake/src/libmpg123/CMakeFiles/libmpg123.dir/Debug/__/__/__/__/src/libmpg123/parse.c.o
+[763/885] Building C object _deps/sdl3_mixer-build/external/libmpg123-build/ports/cmake/src/libmpg123/CMakeFiles/libmpg123.dir/Debug/__/__/__/__/src/libmpg123/optimize.c.o
+[764/885] Building C object _deps/sdl3_mixer-build/external/libmpg123-build/ports/cmake/src/libmpg123/CMakeFiles/libmpg123.dir/Debug/__/__/__/__/src/libmpg123/index.c.o
+[765/885] Building C object _deps/sdl3_mixer-build/external/libmpg123-build/ports/cmake/src/libmpg123/CMakeFiles/libmpg123.dir/Debug/__/__/__/__/src/libmpg123/readers.c.o
+[766/885] Building C object _deps/sdl3_mixer-build/external/libmpg123-build/ports/cmake/src/libmpg123/CMakeFiles/libmpg123.dir/Debug/__/__/__/__/src/libmpg123/id3.c.o
+[767/885] Building C object _deps/sdl3_mixer-build/external/libmpg123-build/ports/cmake/src/libmpg123/CMakeFiles/libmpg123.dir/Debug/__/__/__/__/src/libmpg123/icy.c.o
+[768/885] Building C object _deps/sdl3_mixer-build/external/libmpg123-build/ports/cmake/src/libmpg123/CMakeFiles/libmpg123.dir/Debug/__/__/__/__/src/libmpg123/tabinit.c.o
+[769/885] Building C object _deps/sdl3_mixer-build/external/libmpg123-build/ports/cmake/src/libmpg123/CMakeFiles/libmpg123.dir/Debug/__/__/__/__/src/libmpg123/icy2utf8.c.o
+[770/885] Linking C shared library _deps/sdl3-build/Debug/libSDL3.so.0.4.4
+[771/885] Building C object _deps/sdl3_mixer-build/external/libmpg123-build/ports/cmake/src/libmpg123/CMakeFiles/libmpg123.dir/Debug/__/__/__/__/src/libmpg123/ntom.c.o
+[772/885] Building C object _deps/sdl3_mixer-build/external/libmpg123-build/ports/cmake/src/libmpg123/CMakeFiles/libmpg123.dir/Debug/__/__/__/__/src/libmpg123/libmpg123.c.o
+[773/885] Building C object _deps/sdl3_mixer-build/external/libmpg123-build/ports/cmake/src/libmpg123/CMakeFiles/libmpg123.dir/Debug/__/__/__/__/src/libmpg123/layer1.c.o
+[774/885] Building C object _deps/sdl3_mixer-build/external/libmpg123-build/ports/cmake/src/libmpg123/CMakeFiles/libmpg123.dir/Debug/__/__/__/__/src/libmpg123/layer2.c.o
+[775/885] Building C object _deps/sdl3_mixer-build/external/libmpg123-build/ports/cmake/src/libmpg123/CMakeFiles/libmpg123.dir/Debug/__/__/__/__/src/libmpg123/synth_8bit.c.o
+[776/885] Building C object _deps/sdl3_mixer-build/external/libmpg123-build/ports/cmake/src/libmpg123/CMakeFiles/libmpg123.dir/Debug/__/__/__/__/src/libmpg123/feature.c.o
+[777/885] Building ASM object _deps/sdl3_mixer-build/external/libmpg123-build/ports/cmake/src/libmpg123/CMakeFiles/libmpg123.dir/Debug/__/__/__/__/src/libmpg123/dct36_x86_64.S.o
+[778/885] Building C object _deps/sdl3_mixer-build/external/libmpg123-build/ports/cmake/src/libmpg123/CMakeFiles/libmpg123.dir/Debug/__/__/__/__/src/libmpg123/synth.c.o
+[779/885] Building C object _deps/sdl3_mixer-build/external/libmpg123-build/ports/cmake/src/libmpg123/CMakeFiles/libmpg123.dir/Debug/__/__/__/__/src/libmpg123/stringbuf.c.o
+[780/885] Building ASM object _deps/sdl3_mixer-build/external/libmpg123-build/ports/cmake/src/libmpg123/CMakeFiles/libmpg123.dir/Debug/__/__/__/__/src/libmpg123/synth_x86_64_float.S.o
+[781/885] Building ASM object _deps/sdl3_mixer-build/external/libmpg123-build/ports/cmake/src/libmpg123/CMakeFiles/libmpg123.dir/Debug/__/__/__/__/src/libmpg123/dct64_x86_64_float.S.o
+[782/885] Building ASM object _deps/sdl3_mixer-build/external/libmpg123-build/ports/cmake/src/libmpg123/CMakeFiles/libmpg123.dir/Debug/__/__/__/__/src/libmpg123/synth_x86_64_s32.S.o
+[783/885] Building ASM object _deps/sdl3_mixer-build/external/libmpg123-build/ports/cmake/src/libmpg123/CMakeFiles/libmpg123.dir/Debug/__/__/__/__/src/libmpg123/synth_stereo_x86_64_float.S.o
+[784/885] Building ASM object _deps/sdl3_mixer-build/external/libmpg123-build/ports/cmake/src/libmpg123/CMakeFiles/libmpg123.dir/Debug/__/__/__/__/src/libmpg123/synth_stereo_x86_64_s32.S.o
+[785/885] Building ASM object _deps/sdl3_mixer-build/external/libmpg123-build/ports/cmake/src/libmpg123/CMakeFiles/libmpg123.dir/Debug/__/__/__/__/src/libmpg123/dct36_avx.S.o
+[786/885] Building C object _deps/sdl3_mixer-build/external/libmpg123-build/ports/cmake/src/libmpg123/CMakeFiles/libmpg123.dir/Debug/__/__/__/__/src/libmpg123/dither.c.o
+[787/885] Building ASM object _deps/sdl3_mixer-build/external/libmpg123-build/ports/cmake/src/libmpg123/CMakeFiles/libmpg123.dir/Debug/__/__/__/__/src/libmpg123/dct64_avx_float.S.o
+[788/885] Building ASM object _deps/sdl3_mixer-build/external/libmpg123-build/ports/cmake/src/libmpg123/CMakeFiles/libmpg123.dir/Debug/__/__/__/__/src/libmpg123/synth_stereo_avx_float.S.o
+[789/885] Building C object _deps/sdl3_mixer-build/external/libmpg123-build/ports/cmake/src/libmpg123/CMakeFiles/libmpg123.dir/Debug/__/__/__/__/src/libmpg123/layer3.c.o
+[790/885] Building C object _deps/sdl3_mixer-build/external/libmpg123-build/ports/cmake/src/libmpg123/CMakeFiles/libmpg123.dir/Debug/__/__/__/__/src/libmpg123/synth_real.c.o
+[791/885] Building ASM object _deps/sdl3_mixer-build/external/libmpg123-build/ports/cmake/src/libmpg123/CMakeFiles/libmpg123.dir/Debug/__/__/__/__/src/libmpg123/synth_stereo_avx_s32.S.o
+[792/885] Building C object _deps/sdl3_mixer-build/external/libmpg123-build/ports/cmake/src/libmpg123/CMakeFiles/libmpg123.dir/Debug/__/__/__/__/src/libmpg123/synth_s32.c.o
+[793/885] Building ASM object _deps/sdl3_mixer-build/external/libmpg123-build/ports/cmake/src/libmpg123/CMakeFiles/libmpg123.dir/Debug/__/__/__/__/src/libmpg123/getcpuflags_x86_64.S.o
+[794/885] Building ASM object _deps/sdl3_mixer-build/external/libmpg123-build/ports/cmake/src/libmpg123/CMakeFiles/libmpg123.dir/Debug/__/__/__/__/src/libmpg123/synth_stereo_x86_64_accurate.S.o
+[795/885] Building ASM object _deps/sdl3_mixer-build/external/libmpg123-build/ports/cmake/src/libmpg123/CMakeFiles/libmpg123.dir/Debug/__/__/__/__/src/libmpg123/synth_x86_64_accurate.S.o
+[796/885] Building ASM object _deps/sdl3_mixer-build/external/libmpg123-build/ports/cmake/src/libmpg123/CMakeFiles/libmpg123.dir/Debug/__/__/__/__/src/libmpg123/synth_stereo_avx_accurate.S.o
+[797/885] Creating library symlink _deps/sdl3-build/Debug/libSDL3.so.0 _deps/sdl3-build/Debug/libSDL3.so
+[798/885] Building C object _deps/sdl3_mixer-build/external/libmpg123-build/ports/cmake/src/libmpg123/CMakeFiles/libmpg123.dir/Debug/__/__/__/__/src/libmpg123/lfs_wrap.c.o
+[799/885] Linking C shared library _deps/sdl3_mixer-build/external/wavpack-build/Debug/libwavpack.so.1.2.8
+[800/885] Building C object _deps/sdl3_mixer-build/CMakeFiles/SDL3_mixer-shared.dir/Debug/src/SDL_mixer_spatialization.c.o
+[801/885] Building C object _deps/sdl3_mixer-build/CMakeFiles/SDL3_mixer-shared.dir/Debug/src/decoder_fluidsynth.c.o
+[802/885] Building C object _deps/sdl3_mixer-build/CMakeFiles/SDL3_mixer-shared.dir/Debug/src/decoder_flac.c.o
+[803/885] Building C object _deps/sdl3_mixer-build/CMakeFiles/SDL3_mixer-shared.dir/Debug/src/decoder_aiff.c.o
+[804/885] Building C object _deps/sdl3_mixer-build/CMakeFiles/SDL3_mixer-shared.dir/Debug/src/decoder_au.c.o
+[805/885] Building C object _deps/sdl3_mixer-build/CMakeFiles/SDL3_mixer-shared.dir/Debug/src/SDL_mixer_metadata_tags.c.o
+[806/885] Building C object _deps/sdl3_mixer-build/CMakeFiles/SDL3_mixer-shared.dir/Debug/src/SDL_mixer.c.o
+[807/885] Building C object _deps/sdl3_mixer-build/CMakeFiles/SDL3_mixer-shared.dir/Debug/src/decoder_drmp3.c.o
+[808/885] Building C object _deps/sdl3_mixer-build/CMakeFiles/SDL3_mixer-shared.dir/Debug/src/decoder_opus.c.o
+[809/885] Building C object _deps/sdl3_mixer-build/CMakeFiles/SDL3_mixer-shared.dir/Debug/src/decoder_sinewave.c.o
+[810/885] Building C object _deps/sdl3_mixer-build/CMakeFiles/SDL3_mixer-shared.dir/Debug/src/decoder_gme.c.o
+[811/885] Building C object _deps/sdl3_mixer-build/CMakeFiles/SDL3_mixer-shared.dir/Debug/src/decoder_mpg123.c.o
+[812/885] Building C object _deps/sdl3_mixer-build/CMakeFiles/SDL3_mixer-shared.dir/Debug/src/decoder_raw.c.o
+[813/885] Building C object _deps/sdl3_mixer-build/CMakeFiles/SDL3_mixer-shared.dir/Debug/src/decoder_voc.c.o
+[814/885] Building C object _deps/sdl3_mixer-build/CMakeFiles/SDL3_mixer-shared.dir/Debug/src/decoder_vorbis.c.o
+[815/885] Building C object _deps/sdl3_mixer-build/CMakeFiles/SDL3_mixer-shared.dir/Debug/src/timidity/common.c.o
+[816/885] Building C object _deps/sdl3_mixer-build/CMakeFiles/SDL3_mixer-shared.dir/Debug/src/decoder_timidity.c.o
+[817/885] Building C object _deps/sdl3_mixer-build/CMakeFiles/SDL3_mixer-shared.dir/Debug/src/decoder_drflac.c.o
+[818/885] Building C object _deps/sdl3_mixer-build/CMakeFiles/SDL3_mixer-shared.dir/Debug/src/timidity/instrum.c.o
+[819/885] Building C object _deps/sdl3_mixer-build/CMakeFiles/SDL3_mixer-shared.dir/Debug/src/timidity/output.c.o
+[820/885] Building C object _deps/sdl3_mixer-build/CMakeFiles/SDL3_mixer-shared.dir/Debug/src/timidity/mix.c.o
+[821/885] Building C object _deps/sdl3_mixer-build/CMakeFiles/SDL3_mixer-shared.dir/Debug/src/timidity/readmidi.c.o
+[822/885] Building C object _deps/sdl3_mixer-build/CMakeFiles/SDL3_mixer-shared.dir/Debug/src/timidity/playmidi.c.o
+[823/885] Building C object _deps/sdl3_mixer-build/CMakeFiles/SDL3_mixer-shared.dir/Debug/src/decoder_wavpack.c.o
+[824/885] Building C object _deps/sdl3_mixer-build/CMakeFiles/SDL3_mixer-shared.dir/Debug/src/timidity/tables.c.o
+[825/885] Building C object _deps/sdl3_mixer-build/CMakeFiles/SDL3_mixer-shared.dir/Debug/src/decoder_wav.c.o
+[826/885] Creating library symlink _deps/sdl3_mixer-build/external/opusfile-build/Debug/libopusfile.so.0 _deps/sdl3_mixer-build/external/opusfile-build/Debug/libopusfile.so
+[827/885] Creating library symlink _deps/sdl3_mixer-build/external/flac-build/src/libFLAC/Debug/libFLAC.so.8 _deps/sdl3_mixer-build/external/flac-build/src/libFLAC/Debug/libFLAC.so
+[828/885] Creating library symlink _deps/sdl3_mixer-build/external/libgme-build/gme/Debug/libgme.so.0 _deps/sdl3_mixer-build/external/libgme-build/gme/Debug/libgme.so
+[829/885] Creating library symlink _deps/sdl3_mixer-build/external/libxmp-build/Debug/libxmp.so.4 _deps/sdl3_mixer-build/external/libxmp-build/Debug/libxmp.so
+[830/885] Creating library symlink _deps/sdl3_mixer-build/external/vorbis-build/lib/Debug/libvorbisfile.so.3 _deps/sdl3_mixer-build/external/vorbis-build/lib/Debug/libvorbisfile.so
+[831/885] Creating library symlink _deps/sdl3_mixer-build/external/wavpack-build/Debug/libwavpack.so.1 _deps/sdl3_mixer-build/external/wavpack-build/Debug/libwavpack.so
+[832/885] Building C object _deps/sdl3_mixer-build/CMakeFiles/SDL3_mixer-shared.dir/Debug/src/timidity/resample.c.o
+[833/885] Building C object _deps/sdl3_mixer-build/CMakeFiles/SDL3_mixer-shared.dir/Debug/src/decoder_xmp.c.o
+[834/885] Linking C shared library _deps/sdl3_mixer-build/external/libmpg123-build/ports/cmake/src/libmpg123/Debug/libmpg123.so
+[835/885] Building C object _deps/sdl3_mixer-build/CMakeFiles/SDL3_mixer-shared.dir/Debug/src/timidity/timidity.c.o
+[836/885] Building C object _deps/sdl3_mixer-build/CMakeFiles/SDL3_mixer-shared.dir/Debug/src/decoder_stb_vorbis.c.o
+[837/885] Linking C shared library _deps/sdl3_mixer-build/Debug/libSDL3_mixer.so.0.2.4
+[838/885] Building C object CMakeFiles/Project_AK.dir/Debug/external/glad/src/glad.c.o
+[839/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Engine/Inputs/PollEvent.cpp.o
+[840/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Engine/Inputs/Mouse.cpp.o
+[841/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Engine/GUI/Button.cpp.o
+[842/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Engine/GUI/TextBox.cpp.o
+[843/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Engine/Layer/Scene.cpp.o
+[844/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Engine/Component/Component.cpp.o
+[845/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Engine/GUI/Label.cpp.o
+[846/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Engine/Render/Batching/TextureArray.cpp.o
+[847/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Engine/Render/Color/RColor.cpp.o
+[848/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Engine/Render/Batching/RAPIBatch.cpp.o
+[849/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Engine/Physics/Collision.cpp.o
+[850/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Engine/Render/Image/ImagePixel.cpp.o
+[851/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Engine/Modules/BakerFont.cpp.o
+[852/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Engine/Object/Object.cpp.o
+[853/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Engine/Render/Shaders/RShader.cpp.o
+[854/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Engine/Render/Image/RImage.cpp.o
+[855/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Engine/Render/Geometry/RGeometry.cpp.o
+[856/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Engine/Render/Batching/RBatch.cpp.o
+[857/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Engine/Map/TileMap/TileMap.cpp.o
+[858/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Engine/Services/ClockManager.cpp.o
+[859/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Engine/Services/MusicManager.cpp.o
+[860/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Engine/Render/Render.cpp.o
+[861/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Engine/Services/FontManager.cpp.o
+[862/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Engine/Services/CSVManager.cpp.o
+[863/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Engine/Render/Image/AtlasData.cpp.o
+[864/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Engine/Services/SFXManager.cpp.o
+[865/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Engine/Services/AssetsManager.cpp.o
+[866/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Engine/Services/ScenesManager.cpp.o
+[867/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Engine/Utils/Log.cpp.o
+[868/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Engine/Services/ShaderManager.cpp.o
+[869/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Main/main.cpp.o
+[870/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Game/Scenes/Guia.cpp.o
+[871/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Engine/Text/TextAPI.cpp.o
+[872/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Engine/Utils/Path.cpp.o
+[873/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Engine/Text/Text.cpp.o
+[874/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Game/Systems/Functions.cpp.o
+[875/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Engine/Text/Font/Font.cpp.o
+[876/885] Creating library symlink _deps/sdl3_mixer-build/Debug/libSDL3_mixer.so.0 _deps/sdl3_mixer-build/Debug/libSDL3_mixer.so
+[877/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Game/Systems/Systems.cpp.o
+[878/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Game/Scenes/Plantilla.cpp.o
+[879/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Engine/Engine.cpp.o
+[880/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Game/Scenes/Demo.cpp.o
+[881/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Game/Scenes/MainMenu.cpp.o
+[882/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Engine/Services/WorldSaver.cpp.o
+[883/885] Building CXX object CMakeFiles/Project_AK.dir/Debug/src/Game/Game.cpp.o
+[884/885] Linking CXX executable Debug/Project_AK
+Compilacion terminada! 
+Ejecucion en proceso :)
+| ------------------------------------------------------------------------------------------------ |
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m | << SDL InitWindows Context created succesfully[0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m | << OpenGL Context created succesfully[0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m | << PollEvent Engine created succesfully[0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m | << OpenGL Context created succesfully[0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m | << Render Engine created succesfully[0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m | << SDL_Mixer created succesfully[0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m | << AssertsManager created Succesfully[0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m | << ScenesManager created Succesfully[0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m | << FontsManager created Succesfully[0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m | << SFXManager created Succesfully[0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m | << MusicManager created Succesfully[0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m | << ShadersManager created Succesfully[0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m | << WorldSaver created Succesfully[0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m | << ClockManager created Succesfully[0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m | << CSVManager created Succesfully[0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m | << Init Render context[0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m | << Amount of Displays: 1[0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m | << Display size; Width: 1920 Height: 1080[0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m | << Creating BatchingContext[0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m | -- SHADER COMPILATION [0][0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m |    >> Vertex Shader compile successfully[0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m |    >> Fragment Shader compile successfully[0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m |    >> Program linked successfully[0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m |    >> Shader program created succesfully[0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m | << Game application Init Succesfully[0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m | << Image loaded successfully[0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m | <<    ->/home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/Debug/assets/Font/PottaOne.png[0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m | << Channels: 1[0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m | << Font loaded: PottaOne (191 glyphs)[0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m | << Image loaded successfully[0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m | <<    ->/home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/Debug/assets/Font/Cabin.png[0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m | << Channels: 1[0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m | << Font loaded: Cabin (191 glyphs)[0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m | << Image loaded successfully[0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m | <<    ->/home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/Debug/assets/Font/CabinItalic.png[0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m | << Channels: 1[0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m | << Font loaded: CabinItalic (191 glyphs)[0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m | -- SHADER COMPILATION [1][0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m |    >> Vertex Shader compile successfully[0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m |    >> Fragment Shader compile successfully[0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m |    >> Program linked successfully[0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m |    >> Shader program created succesfully[0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m | << Object: StartGame[0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m | << Object: TEXTO DE PRUEBA[0m
+[2m[21:14:57] [0m[36m[INFO]  [0m[37m | << GameEngine Application is Running[0m
+[2m[21:14:59] [0m[36m[INFO]  [0m[37m | << Object: Player[0m
+[2m[21:14:59] [0m[36m[INFO]  [0m[37m | <<    ->/home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/Debug/assets/Music/MarineHoloLive.mp3[0m
+[2m[21:14:59] [0m[36m[INFO]  [0m[37m | <<    ->/home/atc/Documentos/Ashes_Of_The_Past_TECLA/build/Debug/assets/SFX/Shot_Gun.mp3[0m
+[2m[21:15:01] [0m[36m[INFO]  [0m[37m | << Object: StartGame[0m
+[2m[21:15:01] [0m[36m[INFO]  [0m[37m | << Object: TEXTO DE PRUEBA[0m
+[2m[21:15:01] [0m[36m[INFO]  [0m[37m | << Application next to close, waiting...[0m
+[2m[21:15:01] [0m[36m[INFO]  [0m[37m | << [ENGINE] Saving Engine status[0m
+[2m[21:15:01] [0m[36m[INFO]  [0m[37m | << [ENGINE] Destroying Engine, waiting...[0m
+[2m[21:15:01] [0m[36m[INFO]  [0m[37m | << [ENGINE] Destroying Game, waiting...[0m
+[2m[21:15:01] [0m[36m[INFO]  [0m[37m | << Destroying Game, waiting...[0m
+[2m[21:15:01] [0m[36m[INFO]  [0m[37m | << [ENGINE] Clearing all services...[0m
+[2m[21:15:01] [0m[36m[INFO]  [0m[37m | << [ENGINE] Destroying SDL_MIX, waiting...[0m
+[2m[21:15:01] [0m[36m[INFO]  [0m[37m | << [ENGINE] Destroying PollEventBuffer, waiting...[0m
+[2m[21:15:01] [0m[36m[INFO]  [0m[37m | << [ENGINE] Destroying Render, waiting...[0m
+[2m[21:15:01] [0m[36m[INFO]  [0m[37m | << [ENGINE] OnDestroy finished[0m
+[2m[21:15:01] [0m[36m[INFO]  [0m[37m | Engine Out, cya.[0m
+| ------------------------------------------------------------------------------------------------ |

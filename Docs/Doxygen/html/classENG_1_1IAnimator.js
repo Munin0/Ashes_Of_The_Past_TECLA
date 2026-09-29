@@ -1,0 +1,26 @@
+var classENG_1_1IAnimator =
+[
+    [ "IAnimator", "classENG_1_1IAnimator.html#ad45f52d22771fd0bace924baa2893954", null ],
+    [ "IAnimator", "classENG_1_1IAnimator.html#a7d83caa6002f5f0d0e45d6e9b134ff73", null ],
+    [ "~IAnimator", "classENG_1_1IAnimator.html#a1a113d1ed7444dd3377d49c7dba53ae0", null ],
+    [ "Advance", "classENG_1_1IAnimator.html#ae2224e5bba852b034d0d2e6066e73541", null ],
+    [ "GetCurrentFrame", "classENG_1_1IAnimator.html#a6ba987de5541dba46f71501804a5c1eb", null ],
+    [ "GetFrames", "classENG_1_1IAnimator.html#aa254cf5bfd603a539f12d2bab9fa5331", null ],
+    [ "GetName", "classENG_1_1IAnimator.html#ad6fb717d4b53ee9cad14016d2618a214", null ],
+    [ "GetScale", "classENG_1_1IAnimator.html#a91812a361f71848a3dad10706062fc80", null ],
+    [ "GetSpeed", "classENG_1_1IAnimator.html#a8e349fdc461b58fe0b773b24f99e110d", null ],
+    [ "GetStep", "classENG_1_1IAnimator.html#a2c553099dd5a8f63b7c63d7703dc1c2a", null ],
+    [ "Pause", "classENG_1_1IAnimator.html#a003878844151ac38ca7f3380b5e04387", null ],
+    [ "Play", "classENG_1_1IAnimator.html#a32c05b403b87621ef620bfd155300447", null ],
+    [ "Resume", "classENG_1_1IAnimator.html#af317efac499002a5cfc9796dfa461884", null ],
+    [ "Stop", "classENG_1_1IAnimator.html#a650bfa624fd69f00da894d9a84c90491", null ],
+    [ "m_currentFrame", "classENG_1_1IAnimator.html#a6d12d294fff8e92b55f5ec00761b5160", null ],
+    [ "m_elapsed", "classENG_1_1IAnimator.html#ae5e0f6df389b93ee5c12aab5a1b514c8", null ],
+    [ "m_frames", "classENG_1_1IAnimator.html#a5b1f8b656391c72bd5ae30b47a0d04a5", null ],
+    [ "m_keyAnimation", "classENG_1_1IAnimator.html#a46beff8e8ee217eda50a7662e0647b92", null ],
+    [ "m_playing", "classENG_1_1IAnimator.html#ad0134ddb858ad5c751e0039d146ff69e", null ],
+    [ "m_rectangles", "classENG_1_1IAnimator.html#aefa4d49be5e7a85f46c5835288d7a151", null ],
+    [ "m_scale", "classENG_1_1IAnimator.html#a216c618c75245676e4c15a669e6edce0", null ],
+    [ "m_speed", "classENG_1_1IAnimator.html#a1b5764209b6cd1a63c0d0208d97d232b", null ],
+    [ "m_step", "classENG_1_1IAnimator.html#a916ac45a61bc9ff23feff429b0c831c8", null ]
+];

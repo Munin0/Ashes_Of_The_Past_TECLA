@@ -1,0 +1,26 @@
+var classENG_1_1ISprite =
+[
+    [ "ISprite", "classENG_1_1ISprite.html#ac09a1ba7906c08d34d81e9a3e79ae2fa", null ],
+    [ "ISprite", "classENG_1_1ISprite.html#a43032e561896936f239f56e814d6436e", null ],
+    [ "ISprite", "classENG_1_1ISprite.html#ae72297b164df851e89b40e6b4da692b5", null ],
+    [ "~ISprite", "classENG_1_1ISprite.html#a3d68eb3c6a794e798ff7a37b1eff6c47", null ],
+    [ "GetAtlasLayer", "classENG_1_1ISprite.html#a74533dbdafc516f6d3e85d53c38bbb12", null ],
+    [ "GetHeight", "classENG_1_1ISprite.html#a0a117d5e3d8ba26ee383f9461bde924e", null ],
+    [ "GetImage", "classENG_1_1ISprite.html#af74e8f9608b6903a0aa692cad13f36cf", null ],
+    [ "GetKeyName", "classENG_1_1ISprite.html#a13247972d2647c7b9d42d3be47cffce4", null ],
+    [ "GetScale", "classENG_1_1ISprite.html#a882ea3269edbb17cd15e6ec042044c89", null ],
+    [ "GetUV", "classENG_1_1ISprite.html#a87de4c9b538d589876252f291f3382d2", null ],
+    [ "GetWidth", "classENG_1_1ISprite.html#a30214c134e944678a5ac72dd6b62d0b9", null ],
+    [ "IsAtlas", "classENG_1_1ISprite.html#af1749e7b3c202ce86b3a606797c3a9e4", null ],
+    [ "SetFrame", "classENG_1_1ISprite.html#a814e5ba56b926847abdd89a907851802", null ],
+    [ "m_animationKey", "classENG_1_1ISprite.html#a9acacca02954333c6e177277a0a58642", null ],
+    [ "m_atlasLayer", "classENG_1_1ISprite.html#a206475a83a1e332af0bfd6408c01535b", null ],
+    [ "m_height", "classENG_1_1ISprite.html#a9ef2199457e5bff27e4e5158ccefc21a", null ],
+    [ "m_image", "classENG_1_1ISprite.html#a19091c96cf51b92add4b6936e97bd534", null ],
+    [ "m_isAtlas", "classENG_1_1ISprite.html#ab18097f5ac2ba9531f6dc9e721c80469", null ],
+    [ "m_keyTexture", "classENG_1_1ISprite.html#a0248b54934caa166eb0085bdb671d64e", null ],
+    [ "m_scale", "classENG_1_1ISprite.html#a862802c93e1b682d20bd434ebca4a65a", null ],
+    [ "m_tileID", "classENG_1_1ISprite.html#a0e77213529d777141ff7577ef28fa91e", null ],
+    [ "m_uv", "classENG_1_1ISprite.html#a1c1722805cb5253a88621fa824c2aae1", null ],
+    [ "m_width", "classENG_1_1ISprite.html#a7aa96f4609237a9fdd0bebc2ca592a38", null ]
+];
