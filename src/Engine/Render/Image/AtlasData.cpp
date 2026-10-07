@@ -15,45 +15,42 @@
 
 namespace ENG
 {
-  namespace
+  struct PixelRect { int x = 0, y = 0, w = 0, h = 0; };
+
+  // Converts a region from JSON to pixels.
+  //  - Pixels: "x", "y", "w", "h"
+  //  - Grid:   "col", "row", and optional "cols", "rows" (default to 1)
+  PixelRect ReadRect(const nlohmann::json& j, int cellW, int cellH)
   {
-    struct PixelRect { int x = 0, y = 0, w = 0, h = 0; };
-
-    // Converts a region from JSON to pixels.
-    //  - Pixels: "x", "y", "w", "h"
-    //  - Grid:   "col", "row", and optional "cols", "rows" (default to 1)
-    PixelRect ReadRect(const nlohmann::json& j, int cellW, int cellH)
+    if (j.contains("x"))
     {
-      if (j.contains("x"))
-      {
-        return {
-          j.at("x").get<int>(), j.at("y").get<int>(),
-          j.at("w").get<int>(), j.at("h").get<int>()
-        };
-      }
-
-      if (cellW <= 0 || cellH <= 0)
-        throw std::runtime_error("Region with col/row but not defined on JSON: tileWidth/tileHeight");
-
-      const int col  = j.at("col").get<int>();
-      const int row  = j.at("row").get<int>();
-      const int cols = j.value("cols", 1);
-      const int rows = j.value("rows", 1);
-
-      return { col * cellW, row * cellH, cols * cellW, rows * cellH };
-    }
-
-    UVRect RegionToUV(const AtlasData& atlas, int x, int y, int w, int h)
-    {
-      const float cw = static_cast<float>(atlas.containerWidth);
-      const float ch = static_cast<float>(atlas.containerHeight);
-
-      return UVRect{
-        glm::vec2(x / cw,         y / ch),
-        glm::vec2((x + w) / cw,   (y + h) / ch),
-        glm::vec2(static_cast<float>(w), static_cast<float>(h))
+      return {
+        j.at("x").get<int>(), j.at("y").get<int>(),
+        j.at("w").get<int>(), j.at("h").get<int>()
       };
     }
+
+    if (cellW <= 0 || cellH <= 0)
+      throw std::runtime_error("Region with col/row but not defined on JSON: tileWidth/tileHeight");
+
+    const int col  = j.at("col").get<int>();
+    const int row  = j.at("row").get<int>();
+    const int cols = j.value("cols", 1);
+    const int rows = j.value("rows", 1);
+
+    return { col * cellW, row * cellH, cols * cellW, rows * cellH };
+  }
+
+  UVRect RegionToUV(const AtlasData& atlas, int x, int y, int w, int h)
+  {
+    const float cw = static_cast<float>(atlas.containerWidth);
+    const float ch = static_cast<float>(atlas.containerHeight);
+
+    return UVRect{
+      glm::vec2(x / cw,         y / ch),
+        glm::vec2((x + w) / cw,   (y + h) / ch),
+        glm::vec2(static_cast<float>(w), static_cast<float>(h))
+    };
   }
 
   UVRect GetFrameUV(const AtlasData& atlas, const std::string& animName, int frameIndex)

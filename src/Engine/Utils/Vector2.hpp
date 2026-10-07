@@ -327,6 +327,32 @@ namespace ENG
         return *this;
       }
       /**
+       * @brief Multiplies this vector component-wise by another vector.
+       *
+       * @param[in] v Vector to multiply by.
+       * @return Reference to this vector.
+       */
+      Vector2& operator*=(const Vector2& v)
+      {
+        this->x *= v.x;
+        this->y *= v.y;
+        return *this;
+      }
+      /**
+       * @brief Divides this vector component-wise by another vector.
+       *
+       * @param[in] v Vector to divide by.
+       * @return Reference to this vector.
+       */
+      Vector2& operator/=(const Vector2& v)
+      {
+        if (v.x != 0.0f)
+          this->x /= v.x;
+        if (v.y != 0.0f)
+          this->y /= v.y;
+        return *this;
+      }
+      /**
        * @brief Subtracts another vector from this vector, component by component.
        *
        * @param[in] v Vector to subtract.
