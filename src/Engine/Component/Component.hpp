@@ -54,8 +54,7 @@ namespace ENG
   {
     public:
       ~IStats() override {}
-      /*
-       * | Why using uint8_t.
+      /* | Why using uint8_t.
        * > Caps the stat to only 1 byte (8 bits), so only 0 to 255 point of life.
        */
       uint8_t m_hp;

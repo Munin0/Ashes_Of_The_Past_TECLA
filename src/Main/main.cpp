@@ -12,6 +12,7 @@
 #include <ios>
 #include <fstream>
 #include <memory>
+#include <random>
 #include <string>
 // | -------------------------------
 // STB Implementation 
@@ -66,6 +67,9 @@ int main(void)
     // Closing the file.
     f.close();
   }
+  // Seed for rand stuff <Random>
+  std::random_device rd;
+  std::mt19937 gen(rd());
   // Pointer to the Engine object.
   auto engine = std::make_unique<ENG::Engine>(config, std::make_unique<APP::Game>());
   // First configurations of the engine.

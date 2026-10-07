@@ -251,6 +251,16 @@ namespace ENG
        */
       const Vector2& GetPosition(void) const;
 
+      void SetClass(const std::string& c)
+      {
+        this->_class = c;
+      }
+
+      const std::string GetClass(void) const
+      {
+        return this->_class;
+      }
+
       /**
        * @brief Returns the size of the object's sprite.
        * @return The size of the sprite: { width, height }.
@@ -314,12 +324,10 @@ namespace ENG
     protected:
       /// @brief Layer the object belongs to.
       uint8_t layer;
-      
-      /// 
-      uint8_t TAG = 0;
 
       /// @brief Name of the object.
       std::string name;
+      std::string _class;
 
       /// @brief Stats of the object (health, strength, etc.).
       IStats stats;
