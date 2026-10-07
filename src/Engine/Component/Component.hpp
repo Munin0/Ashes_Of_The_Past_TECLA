@@ -97,7 +97,7 @@ namespace ENG
       const UVRect& GetUV(void) const {return this->m_uv;}
 
       //! Set the actual frame form the animation to draw and Update the UVRect to draw.
-      void SetFrame(int frameIndex);
+      void SetFrame(const std::string& animKey, int frameIndex);
     private:
       std::string             m_keyTexture; //! String Key to take the original texture from the Service::Assets().
       std::shared_ptr<RImage> m_image;      //! Shared_ptr.
@@ -120,9 +120,9 @@ namespace ENG
   {
     public:
       //! Constructor "Defatult", this create automatic the rectangles to draw.
-      IAnimator(std::string key, int frames, float speed, int step = 1, float scale = 1.0f);
+      IAnimator(const std::string& atlas, const std::string& key, float speed, int step = 1, float scale = 1.0f);
       //! Constructor needs the rectables to manage the animation.
-      IAnimator(std::string key, std::vector<ENG::Rectangle> _rects, float speed, int step = 1, float scale = 1.0f);
+      IAnimator(const std::string& atlas, const std::string& key, std::vector<ENG::Rectangle> _rects, float speed, int step = 1, float scale = 1.0f);
       //! Defatult destructor.
       ~IAnimator() override {}
 
@@ -140,8 +140,13 @@ namespace ENG
       //! GetThe current frame where is playin the animation.
       int GetCurrentFrame(void) const {return this->m_currentFrame;}
 
+      //! Set New animation for the player
+      void SetAnimation(const std::string& keyAnim)
+      {
+        this->m_keyAnimation = keyAnim;
+      }
       //! Get the name from the animation
-      const std::string& GetName(void)const {return this->m_keyAnimation;}
+      const std::string& GetKeyAnimation(void)const {return this->m_keyAnimation;}
       //! Get the amount of frames to pass.
       int GetFrames(void) const  { return this->m_frames;  }
       //! Get how many frames need to pass (If step is 1.0f, pass frame per frame).
@@ -152,7 +157,8 @@ namespace ENG
       float GetScale(void) const { return this->m_scale;   }
 
     private:
-      std::string m_keyAnimation;                 //! Key to get the texture, from the Service::Assets().
+      std::string m_keyAnimation;                 //! Key to get the animation, from the Service::Assets().
+      std::string m_keyAtlas;                     //! Key to get the texture, from the Service::Assets().
       std::vector<ENG::Rectangle> m_rectangles;   //! Rectangles of the animation.
       int         m_frames        = 0;            //! Amount of animation to draw.
       int         m_step          = 1;            //! How many frames advance.

@@ -1,0 +1,34 @@
+{
+  "name": "Player_Animations_Isometric",
+  "texture": "AtlasPlayer.png",
+  "tileSize": 64,
+  "animations":
+  {
+    "IddleS":  {"col": 0, "row": 0, "frameCount": 8},
+    "IddleSE": {"col": 0, "row": 1, "frameCount": 8},
+    "IddleSW":  {"col": 0, "row": 2, "frameCount": 8},
+    "IddleN": {"col": 0, "row": 5, "frameCount": 8},
+    "IddleNW":  {"col": 0, "row": 4, "frameCount": 8},
+    "IddleNE":  {"col": 0, "row": 6, "frameCount": 8},
+    "IddleW": {"col": 0, "row": 3, "frameCount": 8},
+    "IddleE": {"col": 0, "row": 7, "frameCount": 8},
+
+    "WalkS":  {"col": 9, "row": 0, "frameCount": 12},
+    "WalkSE": {"col": 9, "row": 1, "frameCount": 12},
+    "WalkSW":  {"col": 9, "row": 2, "frameCount": 12},
+    "WalkW": {"col": 9, "row": 3, "frameCount": 12},
+    "WalkNW":  {"col": 9, "row": 4, "frameCount": 12},
+    "WalkN": {"col": 9, "row": 5, "frameCount": 12},
+    "WalkNE":  {"col": 9, "row": 6, "frameCount": 12},
+    "WalkE": {"col": 9, "row": 7, "frameCount": 12},
+
+    "RunS":  {"col": 22, "row": 0, "frameCount": 6},
+    "RunSE": {"col": 22, "row": 1, "frameCount": 6},
+    "RunSW":  {"col": 22, "row": 2, "frameCount": 6},
+    "RunW": {"col": 22, "row": 3, "frameCount": 6},
+    "RunNW":  {"col": 22, "row": 4, "frameCount": 6},
+    "RunN": {"col": 22, "row": 5, "frameCount": 6},
+    "RunNE":  {"col": 22, "row": 6, "frameCount": 6},
+    "RunE": {"col": 22, "row": 7, "frameCount": 6}
+  }
+}
