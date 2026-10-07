@@ -25,31 +25,39 @@ namespace APP
     pPos.m_direction = {0,0};
   }
 
+  void System_AIMovement(ENG::Object& target, ENG::Object& source, float dt)
+  {
+    if(&target == &source)
+      return;
+    
+    auto* aSource = source.GetComponent<ENG::IAnimator>();
+
+    ENG::Vector2 direction = target.GetTransform().m_position - source.GetTransform().m_position;
+    float distance = direction.Length();
+
+    if (distance > 0.0001f)
+    {
+      direction.Normalize();
+      ENG::Vector2 movement = direction * source.GetTransform().m_velocity * dt;
+      aSource->SetAnimation(GetAnimationLooking("Walk",  direction));
+
+      source.GetTransform().m_position = source.GetTransform().m_position + movement;
+    }
+  }
+
   std::string GetAnimationLooking(const std::string& prefix, const ENG::Vector2& direction)
   {
-    std::string animation = prefix;
-    if(direction.x > 0 && direction.y == 0)           // East
-      animation.push_back('E');
-    else if(direction.x < 0 && direction.y == 0)      // West
-      animation.push_back('W');
+    // Rotation sin.
+    constexpr float T = 0.38f;
+    std::string anim = prefix;
 
-    if(direction.y < 0)                               // North
-    {
-      animation.push_back('N');
-      if(direction.x > 0)
-        animation.push_back('E');
-      if(direction.x < 0)
-        animation.push_back('W');
-    }
-    if(direction.y > 0)                               // South 
-    {
-      animation.push_back('S');
-      if(direction.x > 0)
-        animation.push_back('E');
-      if(direction.x < 0)
-        animation.push_back('W');
-    }
-    return animation;
+    if (direction.y < -T)      anim.push_back('N');
+    else if (direction.y > T)  anim.push_back('S');
+
+    if (direction.x > T)       anim.push_back('E');
+    else if (direction.x < -T) anim.push_back('W');
+
+    return anim;
   }
 
   std::unique_ptr<ENG::Object> CreateEntity(const ENG::Rectangle& rect, const std::string& entityName, const std::string& entityClass)
