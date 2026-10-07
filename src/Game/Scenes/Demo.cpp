@@ -15,7 +15,6 @@
 #include "Engine/Render/Batching/RBatch.hpp"
 #include "Engine/Services/ScenesManager.hpp"
 #include "Engine/Services/Services.hpp"
-#include "Engine/Utils/Log.hpp"
 #include "Engine/Utils/Vector2.hpp"
 /// | ------------------------------------ |
 #include "Game/Systems/Systems.hpp"
@@ -50,7 +49,7 @@ namespace APP
     auto idPlayer = pool.Add(std::make_unique<ENG::Object>("Player"));
     auto objPlayer = pool.Get(idPlayer);
     objPlayer->SetPosition(ENG::Vector2{500,500});
-    objPlayer->GetTransform().m_velocity = {100,100};
+    objPlayer->GetTransform().m_velocity = {1000,1000};
     objPlayer->AddComponent<ENG::ISprite>("Player", "IddleS", 0, 1.0f);
     objPlayer->AddComponent<ENG::IAnimator>("Player", "IddleS", 10.f, 1, 1.0f);
     objPlayer->GetComponent<ENG::IAnimator>()->Play();
@@ -93,7 +92,7 @@ namespace APP
 
     ENG::Services::SFX().LoadSFX("SFX/Shot_Gun.mp3", "GunShot", 2);
     ENG::Services::SFX().SetVolume("GunShot", 10.0f);
-    
+
     // ###############################
     // Final
     // Final configurations
@@ -114,6 +113,12 @@ namespace APP
       isRunning = false;
       ENG::Services::Scenes().PedingScene("MainMenu");
       ENG::Services::Music().StopMusic("Marine");
+    }
+
+    if (pollEvent.IsKeyPress(SDL_SCANCODE_L))
+    {
+      pool.Add(CreateEntity(cam->GetRectCamera(), "Native", "Native"));
+      this->renderQueue = pool.Sort();
     }
 
     if (pollEvent.IsKeyDown(SDL_SCANCODE_W))
@@ -191,7 +196,6 @@ namespace APP
 
   void DemoScene::Render(ENG::Batcher& b)
   {
-    // auto camRect = camera->GetRectCamera();
     RenderTileMaps(b, LAYER_GROUND, LAYER_PLAYER);      /// Layer back of the player
     for (auto& entry : renderQueue)
     {
@@ -200,8 +204,7 @@ namespace APP
     }
     RenderTileMaps(b, LAYER_PLAYER, LAYER_MAX);    /// Layer front of the player
 
-    ENG::Drawer::DrawRectangle({0,0,100,100},ENG::Color::Blue);
-    // ENG::Drawer::DrawCircleOutLine({150.0f, 150.0f}, 30.0f, ENG::Color::Yellow, 64);
+    ENG::Drawer::DrawRectangleOutline(cam->GetRectCamera(),ENG::Color::Blue);
     
   }
 
