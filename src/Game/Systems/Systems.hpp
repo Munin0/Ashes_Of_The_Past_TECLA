@@ -6,11 +6,14 @@
 #include "Engine/Utils/Vector2.hpp"
 #include <memory>
 #include <string>
+#include <cstdint>
 /// | ------------------------------------ |
 
 namespace APP
 {
   [[maybe_unused]] void System_PlayerMovement(ENG::Object& o, float dt);
+  
+  [[maybe_unused]] void System_AumentLevel(ENG::Object& who, uint32_t xp);
 
   [[maybe_unused]] void System_AIMovement(ENG::Object& target, ENG::Object& source, float dt);
 

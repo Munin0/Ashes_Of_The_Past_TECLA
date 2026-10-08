@@ -62,6 +62,12 @@ namespace ENG
       uint8_t m_str;
       uint8_t m_def;
       uint8_t m_agi;
+      uint8_t m_level = 1;
+      /*
+      * m_xp es la experiencia actual del personaje en el nivel actual
+      * Se usa uint32_t para que pueda almacenar una cantidad mayor de experiencia desde 0 a 4294 millones
+      */
+      uint32_t m_xp = 0;
   };
 
   //! ISprite, control the graphics to draw on the engine, this are only reference to the sprites.
