@@ -56,7 +56,9 @@ namespace ENG
       .m_hp_max = s.m_hp_max,
       .m_str = s.m_str,
       .m_def = s.m_def,
-      .m_agi = s.m_agi
+      .m_agi = s.m_agi,
+      .m_level = s.m_level,
+      .m_xp = s.m_xp
     };
 
     // IText
@@ -115,6 +117,8 @@ namespace ENG
     s.m_str    = state.m_sData.m_str;
     s.m_def    = state.m_sData.m_def;
     s.m_agi    = state.m_sData.m_agi;
+    s.m_level  = state.m_sData.m_level;
+    s.m_xp     = state.m_sData.m_xp;
 
     if(state.m_spData)
     {
