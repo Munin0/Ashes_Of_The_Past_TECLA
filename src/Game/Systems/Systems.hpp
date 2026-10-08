@@ -6,14 +6,20 @@
 #include "Engine/Utils/Vector2.hpp"
 #include <memory>
 #include <string>
+#include <cstdint>
 /// | ------------------------------------ |
 
 namespace APP
 {
   [[maybe_unused]] void System_PlayerMovement(ENG::Object& o, float dt);
-  void TogglePlayerRunning(ENG::Object& player);
-  void TryStartPlayerDash(ENG::Object& player);
-  void System_PlayerDash(ENG::Object& player, float dt);
+  
+  [[maybe_unused]] void TogglePlayerRunning(ENG::Object& player);
+  [[maybe_unused]] void TryStartPlayerDash(ENG::Object& player);
+  [[maybe_unused]] void System_PlayerDash(ENG::Object& player, float dt);
+  
+  [[maybe_unused]] void System_AumentLevel(ENG::Object& who, uint32_t xp);
+
+  [[maybe_unused]] void System_AIMovement(ENG::Object& target, ENG::Object& source, float dt);
 
   // Get were is looking the player with the Direction.
   [[maybe_unused]] std::string GetAnimationLooking(const std::string& prefix, const ENG::Vector2& direction);

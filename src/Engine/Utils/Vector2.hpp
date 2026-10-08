@@ -7,6 +7,7 @@
 #include "nlohmann/json.hpp"
 // | -------------------------------
 #include <cmath>
+#include <string>
 // | -------------------------------
 
 namespace ENG
@@ -365,6 +366,11 @@ namespace ENG
         return *this;
       }
       /// @}
+      
+      std::string ToString(void) const
+      {
+        return std::to_string(this->x) + " " + std::to_string(this->y);
+      }
     public:
       /// @brief Horizontal component.
       float x;

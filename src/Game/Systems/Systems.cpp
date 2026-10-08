@@ -13,9 +13,49 @@
 #include <string>
 #include <utility>
 /// | ------------------------------------ |
+#include "Engine/Utils/Log.hpp"
+/// | ------------------------------------ |
+#include <string>
+/// | ------------------------------------ |
 
 namespace APP
 {
+  constexpr uint8_t MaxLevel = 255;
+  constexpr int StandardThreshold = 1000;
+  // Se define un valor maximo para la experiencia total y evitar el overflow
+  constexpr uint32_t MaxXp = (StandardThreshold * (MaxLevel * (MaxLevel+1))/2);
+
+  // Se declara la funcion estatica ya que solo se utilizara dentro de este archivo
+  static uint32_t System_thresholdXp(uint8_t level)
+  {
+    return uint32_t(level * StandardThreshold);
+  }
+
+  void System_AumentLevel(ENG::Object& who, uint32_t xp)
+  {
+    auto& stats = who.GetStats();
+
+    // Se asegura que la experiencia no supere el valor maximo permitido
+    if(xp > MaxXp)  xp = MaxXp;
+    // Se asegura que el nivel minimo sea 1
+    if(stats.m_level == 0) stats.m_level = 1;
+    stats.m_xp += xp;
+    while(stats.m_xp >= System_thresholdXp(stats.m_level))
+    {
+      // Se verifica que el nivel no pase del maximo permitido
+      if(stats.m_level == MaxLevel) break;
+      stats.m_xp -= System_thresholdXp(stats.m_level);
+      stats.m_level++;
+      std::string texto = ("Se aumento el nivel del jugador a: " + std::to_string(stats.m_level) + " Actualmente tiene " + std::to_string(stats.m_xp) + " de experiencia");
+      LOG_INFO(" | << " + texto);
+    }
+    // Se asegura que si el nivel es el maximo la xp sea el maximo
+    if(stats.m_level == MaxLevel)
+    {
+      stats.m_xp = System_thresholdXp(MaxLevel);
+    }
+  }
+
   void System_PlayerMovement(ENG::Object& o, float dt)
   {
     auto& pPos = o.GetTransform();
@@ -108,30 +148,39 @@ namespace APP
 
 
   std::string GetAnimationLooking(const std::string& prefix, const ENG::Vector2& direction)
+  void System_AIMovement(ENG::Object& target, ENG::Object& source, float dt)
   {
-    std::string animation = prefix;
-    if(direction.x > 0 && direction.y == 0)           // East
-      animation.push_back('E');
-    else if(direction.x < 0 && direction.y == 0)      // West
-      animation.push_back('W');
+    if(&target == &source)
+      return;
+    
+    auto* aSource = source.GetComponent<ENG::IAnimator>();
 
-    if(direction.y < 0)                               // North
+    ENG::Vector2 direction = target.GetTransform().m_position - source.GetTransform().m_position;
+    float distance = direction.Length();
+
+    if (distance > 0.0001f)
     {
-      animation.push_back('N');
-      if(direction.x > 0)
-        animation.push_back('E');
-      if(direction.x < 0)
-        animation.push_back('W');
+      direction.Normalize();
+      ENG::Vector2 movement = direction * source.GetTransform().m_velocity * dt;
+      aSource->SetAnimation(GetAnimationLooking("Walk",  direction));
+
+      source.GetTransform().m_position = source.GetTransform().m_position + movement;
     }
-    if(direction.y > 0)                               // South 
-    {
-      animation.push_back('S');
-      if(direction.x > 0)
-        animation.push_back('E');
-      if(direction.x < 0)
-        animation.push_back('W');
-    }
-    return animation;
+  }
+
+  std::string GetAnimationLooking(const std::string& prefix, const ENG::Vector2& direction)
+  {
+    // Rotation sin.
+    constexpr float T = 0.38f;
+    std::string anim = prefix;
+
+    if (direction.y < -T)      anim.push_back('N');
+    else if (direction.y > T)  anim.push_back('S');
+
+    if (direction.x > T)       anim.push_back('E');
+    else if (direction.x < -T) anim.push_back('W');
+
+    return anim;
   }
 
   std::unique_ptr<ENG::Object> CreateEntity(const ENG::Rectangle& rect, const std::string& entityName, const std::string& entityClass)

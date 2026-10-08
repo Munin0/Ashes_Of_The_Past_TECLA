@@ -97,7 +97,7 @@ namespace ENG
   /**
    * @brief Serializable gameplay stats of an object.
    *
-   * All the stats are unsigned 8-bit values (0 to 255).
+   * All the stats are unsigned 8-bit and 32-bit values (0 to 255 and 0 to 4294967295 respectively).
    */
   struct IStatsData
   {
@@ -111,8 +111,12 @@ namespace ENG
     uint8_t m_def;
     /// @brief Agility.
     uint8_t m_agi;
+    /// @brief Level of the object.
+    uint8_t m_level = 1;
+    /// @brief Current experience points of the object.
+    uint32_t m_xp = 0;
     /// @brief Enables JSON conversion of all the members.
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(IStatsData, m_hp,m_hp_max,m_str,m_def,m_agi)
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE(IStatsData, m_hp,m_hp_max,m_str,m_def,m_agi,m_level,m_xp)
   };
 
   /**
