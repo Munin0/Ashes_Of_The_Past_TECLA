@@ -184,6 +184,7 @@ namespace APP
       {
         System_PlayerMovement(*obj, dt);
       }
+      System_AIMovement(*pool.Get(PLAYER),*obj, dt);
       obj->Update(dt);
     }
     cam->Update(dt);
