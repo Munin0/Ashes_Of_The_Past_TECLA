@@ -227,7 +227,6 @@ namespace APP
     RenderTileMaps(b, LAYER_PLAYER, LAYER_MAX);    /// Layer front of the player
 
     ENG::Drawer::DrawRectangleOutline(cam->GetRectCamera(),ENG::Color::Blue);
-    
   }
 
   void DemoScene::Destroy()
