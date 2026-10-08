@@ -13,6 +13,10 @@ namespace APP
 {
   [[maybe_unused]] void System_PlayerMovement(ENG::Object& o, float dt);
   
+  [[maybe_unused]] void TogglePlayerRunning(ENG::Object& player);
+  [[maybe_unused]] void TryStartPlayerDash(ENG::Object& player);
+  [[maybe_unused]] void System_PlayerDash(ENG::Object& player, float dt);
+  
   [[maybe_unused]] void System_AumentLevel(ENG::Object& who, uint32_t xp);
 
   [[maybe_unused]] void System_AIMovement(ENG::Object& target, ENG::Object& source, float dt);

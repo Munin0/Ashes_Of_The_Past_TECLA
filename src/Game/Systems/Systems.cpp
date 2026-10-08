@@ -2,6 +2,8 @@
 #include "Systems.hpp"
 /// | ------------------------------------ |
 #include "Engine/Component/Component.hpp"
+#include "Game/Components/Dash.hpp"
+#include "Game/Components/Movement.hpp"
 #include "Engine/Object/Object.hpp"
 #include "Engine/Utils/RawGeometry.hpp"
 #include "Engine/Utils/Utils.hpp"
@@ -65,6 +67,87 @@ namespace APP
     pPos.m_direction = {0,0};
   }
 
+  void TogglePlayerRunning(ENG::Object& player)
+  {
+    auto* movement = player.GetComponent<APP::Movement>();
+    if (!movement)
+      return;
+
+    auto* dash = player.GetComponent<APP::Dash>();
+    if (dash && dash->state == Dash::State::Dashing)
+      return;
+
+    auto& transform = player.GetTransform();
+    switch (movement->state)
+    {
+      case Movement::State::Walking:
+        movement->state = Movement::State::Running;
+        transform.m_velocity = movement->runningVelocity;
+        break;
+
+      case Movement::State::Running:
+        movement->state = Movement::State::Walking;
+        transform.m_velocity = movement->walkingVelocity;
+        break;
+    }
+  }
+
+  void TryStartPlayerDash(ENG::Object& player)
+  {
+    auto* dash = player.GetComponent<APP::Dash>();
+    if (!dash || dash->state != Dash::State::Ready)
+      return;
+
+    auto& transform = player.GetTransform();
+    if (transform.m_direction.x == 0.0f &&
+        transform.m_direction.y == 0.0f)
+      return;
+
+    dash->direction = transform.m_direction;
+    dash->direction.Normalize();
+    dash->normalVelocity = transform.m_velocity;
+    dash->timer = 0.0f;
+    dash->state = Dash::State::Dashing;
+  }
+
+  void System_PlayerDash(ENG::Object& player, float dt)
+  {
+    auto* dash = player.GetComponent<APP::Dash>();
+    if (!dash)
+      return;
+
+    auto& transform = player.GetTransform();
+    switch (dash->state)
+    {
+      case Dash::State::Ready:
+        break;
+
+      case Dash::State::Dashing:
+        transform.m_velocity = dash->normalVelocity * dash->speedMultiplier;
+        transform.m_direction = dash->direction;
+        dash->timer += dt;
+
+        if (dash->timer >= dash->duration)
+        {
+          transform.m_velocity = dash->normalVelocity;
+          dash->timer = 0.0f;
+          dash->state = Dash::State::Cooldown;
+        }
+        break;
+
+      case Dash::State::Cooldown:
+        dash->timer += dt;
+        if (dash->timer >= dash->cooldown)
+        {
+          dash->timer = 0.0f;
+          dash->state = Dash::State::Ready;
+        }
+        break;
+    }
+  }
+
+
+  std::string GetAnimationLooking(const std::string& prefix, const ENG::Vector2& direction)
   void System_AIMovement(ENG::Object& target, ENG::Object& source, float dt)
   {
     if(&target == &source)

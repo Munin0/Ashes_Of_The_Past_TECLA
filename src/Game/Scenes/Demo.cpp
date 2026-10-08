@@ -18,6 +18,8 @@
 #include "Engine/Utils/Vector2.hpp"
 /// | ------------------------------------ |
 #include "Game/Systems/Systems.hpp"
+#include "Game/Components/Dash.hpp"
+#include "Game/Components/Movement.hpp"
 #include "SDL3/SDL_properties.h"
 #include "SDL3/SDL_scancode.h"
 #include "SDL3_mixer/SDL_mixer.h"
@@ -49,11 +51,14 @@ namespace APP
     auto idPlayer = pool.Add(std::make_unique<ENG::Object>("Player"));
     auto objPlayer = pool.Get(idPlayer);
     objPlayer->SetPosition(ENG::Vector2{500,500});
-    objPlayer->GetTransform().m_velocity = {1000,1000};
+    auto& movement = objPlayer->AddComponent<APP::Movement>(); // 
+    objPlayer->GetTransform().m_velocity = movement.walkingVelocity;
     objPlayer->AddComponent<ENG::ISprite>("Player", "IddleS", 0, 1.0f);
     objPlayer->AddComponent<ENG::IAnimator>("Player", "IddleS", 10.f, 1, 1.0f);
     objPlayer->GetComponent<ENG::IAnimator>()->Play();
     objPlayer->AddComponent<ENG::IBoundingBox>(ENG::Vector2{64,64});
+    objPlayer->AddComponent<APP::Dash>();
+    objPlayer->GetTransform().m_direction = {0,0};
     
     // ###############################
     // Tilemap 
@@ -89,9 +94,6 @@ namespace APP
     ENG::Services::Music().LoadMusic("Music/MarineHoloLive.mp3", "Marine", options);
     // ENG::Services::Music().SetVolume("Marine", 10.0f);
     // ENG::Services::Music().PlayMusic("Marine");
-
-    ENG::Services::SFX().LoadSFX("SFX/Shot_Gun.mp3", "GunShot", 2);
-    ENG::Services::SFX().SetVolume("GunShot", 10.0f);
 
     // ###############################
     // Final
@@ -161,10 +163,28 @@ namespace APP
       player->GetComponent<ENG::IAnimator>()->SetAnimation(GetAnimationLooking("Walk", transform.m_direction));
       player->GetComponent<ENG::IAnimator>()->Resume();
     }
-    if(player->GetTransform().m_direction == ENG::Vector2{0.f,0.f})
+    if (pollEvent.IsKeyPress(SDL_SCANCODE_X))
+    {
+      TogglePlayerRunning(*player);
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    if (pollEvent.IsKeyPress(SDL_SCANCODE_SPACE))
+    {
+      TryStartPlayerDash(*player);
+    }
+
+    auto* dash = player->GetComponent<APP::Dash>();
+    if (dash && dash->state == Dash::State::Dashing)
+    {
+      player->GetComponent<ENG::IAnimator>()->SetAnimation(GetAnimationLooking("Walk", dash->direction));
+      player->GetComponent<ENG::IAnimator>()->Resume();
+    }
+    else if(player->GetTransform().m_direction == ENG::Vector2{0.f,0.f})
     {
       player->GetComponent<ENG::IAnimator>()->Stop();
     }
+    ////////////////////////////////////////
 
     float wheel = pollEvent.GetMouseWheel();
     if (wheel != 0.0f)
@@ -182,6 +202,7 @@ namespace APP
       auto obj = pool.Get(o);
       if(obj->GetName() == "Player")
       {
+        System_PlayerDash(*obj, dt);
         System_PlayerMovement(*obj, dt);
       }
       System_AIMovement(*pool.Get(PLAYER),*obj, dt);
