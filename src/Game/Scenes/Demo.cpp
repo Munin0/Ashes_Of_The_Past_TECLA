@@ -22,6 +22,7 @@
 #include "SDL3/SDL_scancode.h"
 #include "SDL3_mixer/SDL_mixer.h"
 /// | ------------------------------------ |
+#include <algorithm>
 #include <memory>
 #include <string>
 #include <utility>
@@ -48,8 +49,11 @@ namespace APP
     auto idPlayer = pool.Add(std::make_unique<ENG::Object>("Player"));
     auto objPlayer = pool.Get(idPlayer);
     objPlayer->SetPosition(ENG::Vector2{500,500});
-    objPlayer->GetTransform().m_velocity = {100,100};
-    objPlayer->AddComponent<ENG::IBoundingBox>(ENG::Vector2{16,16});
+    objPlayer->GetTransform().m_velocity = {1000,1000};
+    objPlayer->AddComponent<ENG::ISprite>("Player", "IddleS", 0, 1.0f);
+    objPlayer->AddComponent<ENG::IAnimator>("Player", "IddleS", 10.f, 1, 1.0f);
+    objPlayer->GetComponent<ENG::IAnimator>()->Play();
+    objPlayer->AddComponent<ENG::IBoundingBox>(ENG::Vector2{64,64});
     
     // ###############################
     // Tilemap 
@@ -83,12 +87,12 @@ namespace APP
     options = SDL_CreateProperties();
     SDL_SetNumberProperty(options, MIX_PROP_PLAY_LOOPS_NUMBER, -1);
     ENG::Services::Music().LoadMusic("Music/MarineHoloLive.mp3", "Marine", options);
-    ENG::Services::Music().SetVolume("Marine", 10.0f);
-    ENG::Services::Music().PlayMusic("Marine");
+    // ENG::Services::Music().SetVolume("Marine", 10.0f);
+    // ENG::Services::Music().PlayMusic("Marine");
 
     ENG::Services::SFX().LoadSFX("SFX/Shot_Gun.mp3", "GunShot", 2);
     ENG::Services::SFX().SetVolume("GunShot", 10.0f);
-    
+
     // ###############################
     // Final
     // Final configurations
@@ -101,6 +105,8 @@ namespace APP
   void DemoScene::Inputs(float dt)
   {
     auto& pollEvent = ENG::PollEvent::Get();
+    auto player = pool.Get(PLAYER);
+    auto& transform = player->GetTransform();
 
     if (pollEvent.IsKeyPress(SDL_SCANCODE_P))
     {
@@ -109,50 +115,64 @@ namespace APP
       ENG::Services::Music().StopMusic("Marine");
     }
 
-    if (pollEvent.IsKeyPress(SDL_SCANCODE_F1))
+    if (pollEvent.IsKeyPress(SDL_SCANCODE_L))
     {
-      ENG::Services::SFX().PlaySFX("GunShot");
-    }
-
-    if (pollEvent.IsKeyPress(SDL_SCANCODE_KP_PLUS))
-    {
-      auto& m = ENG::Services::Music();
-      auto  v = m.GetVolume("Marine");
-      v += 10.0f;
-      m.SetVolume("Marine", v);
-    }
-
-    if (pollEvent.IsKeyPress(SDL_SCANCODE_KP_MINUS))
-    {
-      auto& m = ENG::Services::Music();
-      float v = m.GetVolume("Marine");
-      v -= 10.0f;
-      m.SetVolume("Marine", v);
+      pool.Add(CreateEntity(cam->GetRectCamera(), "Native", "Native"));
+      this->renderQueue = pool.Sort();
     }
 
     if (pollEvent.IsKeyDown(SDL_SCANCODE_W))
     {
-      pool.Get(PLAYER)->GetTransform().m_direction.y -= 1.0f;
+      transform.m_direction.y -= 1.0f;
+      if(pollEvent.IsKeyDown(SDL_SCANCODE_A))
+      {
+        transform.m_direction.x -= 1.0f;
+      }
+      else if (pollEvent.IsKeyDown(SDL_SCANCODE_D))
+      {
+        transform.m_direction.x += 1.0f;
+      }
+      player->GetComponent<ENG::IAnimator>()->SetAnimation(GetAnimationLooking("Walk", transform.m_direction));
+      player->GetComponent<ENG::IAnimator>()->Resume();
     }
-    if (pollEvent.IsKeyDown(SDL_SCANCODE_S))
+    else if (pollEvent.IsKeyDown(SDL_SCANCODE_S))
     {
-      pool.Get(PLAYER)->GetTransform().m_direction.y += 1.0f;
+      transform.m_direction.y += 1.0f;
+      if(pollEvent.IsKeyDown(SDL_SCANCODE_A))
+      {
+        transform.m_direction.x -= 1.0f;
+      }
+      else if(pollEvent.IsKeyDown(SDL_SCANCODE_D))
+      {
+        transform.m_direction.x += 1.0f;
+      }
+      player->GetComponent<ENG::IAnimator>()->SetAnimation(GetAnimationLooking("Walk", transform.m_direction));
+      player->GetComponent<ENG::IAnimator>()->Resume();
     }
-    if (pollEvent.IsKeyDown(SDL_SCANCODE_A))
+    else if (pollEvent.IsKeyDown(SDL_SCANCODE_A))
     {
-      pool.Get(PLAYER)->GetTransform().m_direction.x -= 1.0f;
+      transform.m_direction.x -= 1.0f;
+      player->GetComponent<ENG::IAnimator>()->SetAnimation(GetAnimationLooking("Walk", transform.m_direction));
+      player->GetComponent<ENG::IAnimator>()->Resume();
     }
-    if (pollEvent.IsKeyDown(SDL_SCANCODE_D))
+    else if (pollEvent.IsKeyDown(SDL_SCANCODE_D))
     {
-      pool.Get(PLAYER)->GetTransform().m_direction.x += 1.0f;
+      transform.m_direction.x += 1.0f;
+      player->GetComponent<ENG::IAnimator>()->SetAnimation(GetAnimationLooking("Walk", transform.m_direction));
+      player->GetComponent<ENG::IAnimator>()->Resume();
+    }
+    if(player->GetTransform().m_direction == ENG::Vector2{0.f,0.f})
+    {
+      player->GetComponent<ENG::IAnimator>()->Stop();
     }
 
-    // float wheel = pollEvent.GetMouseWheel();
-    // if (wheel != 0.0f)
-    // {
-    //   float zoom = camera->GetZoom() + wheel * 0.1f;
-    //   camera->SetZoom(std::clamp(zoom, 2.0f, 3.0f));
-    // }
+    float wheel = pollEvent.GetMouseWheel();
+    if (wheel != 0.0f)
+    {
+      float zoom = cam->GetZoom() + wheel * 0.1f;
+      cam->SetZoom(std::clamp(zoom, 1.5f, 2.0f));
+    }
+
   }
 
   void DemoScene::Update(float dt)
@@ -176,7 +196,6 @@ namespace APP
 
   void DemoScene::Render(ENG::Batcher& b)
   {
-    // auto camRect = camera->GetRectCamera();
     RenderTileMaps(b, LAYER_GROUND, LAYER_PLAYER);      /// Layer back of the player
     for (auto& entry : renderQueue)
     {
@@ -185,8 +204,7 @@ namespace APP
     }
     RenderTileMaps(b, LAYER_PLAYER, LAYER_MAX);    /// Layer front of the player
 
-    ENG::Drawer::DrawRectangle({0,0,100,100},ENG::Color::Blue);
-    // ENG::Drawer::DrawCircleOutLine({150.0f, 150.0f}, 30.0f, ENG::Color::Yellow, 64);
+    ENG::Drawer::DrawRectangleOutline(cam->GetRectCamera(),ENG::Color::Blue);
     
   }
 

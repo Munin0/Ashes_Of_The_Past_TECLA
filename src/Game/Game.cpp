@@ -40,6 +40,7 @@ namespace APP
     ENG::Services::Fonts().LoadFont(std::make_unique<ENG::Font>("Cabin"));
     ENG::Services::Fonts().LoadFont(std::make_unique<ENG::Font>("CabinItalic"));
     /// Load All Atlas 
+    ENG::Services::Assets().LoadAtlas("Atlas/Player/Player.json", "Player");
 
     /// Adding Shaders
     ENG::Services::Shaders().Load("mono.fs","mono.vs","Mono");

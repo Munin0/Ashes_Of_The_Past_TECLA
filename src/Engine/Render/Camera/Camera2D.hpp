@@ -85,7 +85,7 @@ namespace ENG
       {
         if(m_target != nullptr)
           m_position = m_target->m_position;
-        if(m_target_bb != nullptr)
+        else if(m_target_bb != nullptr)
         {
           m_position = m_target_bb->GetCenter();
         }
@@ -206,12 +206,12 @@ namespace ENG
        */
       Rectangle GetRectCamera() const
       {
-        Vector2 halfExtent = m_viewportSize * 0.5f / m_zoom;
+        Vector2 size = m_viewportSize / m_zoom;
         Rectangle rectCamera = {
-          .x = m_position.x - halfExtent.x,
-          .y = m_position.y - halfExtent.y,
-          .w = m_position.x + halfExtent.x,
-          .h = m_position.y + halfExtent.y
+          .x = m_position.x - size.x / 2.f,
+          .y = m_position.y - size.y / 2.f,
+          .w = size.x,
+          .h = size.y
         };
 
         return rectCamera;

@@ -63,6 +63,8 @@ namespace ENG
   {
     /// @brief Key of the animation.
     std::string m_key;
+    /// @brief Key of the atlas.
+    std::string m_keyAtlas;
     /// @brief Number of frames of the animation.
     int m_frames;
     /// @brief Step between frames of the animation.

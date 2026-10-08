@@ -35,7 +35,6 @@ namespace ENG
     if(!sprite)
       return;
     glm::vec2 pos = this->GetPosition();
-    glm::vec2 size = this->GetSizeSprite() * sprite->GetScale();
     glm::vec4 color = {1.0f,1.0f,1.0f,1.0f};
 
     if(HasComponent<IColor>())
@@ -53,10 +52,12 @@ namespace ENG
     if(sprite->IsAtlas())
     {
       const UVRect& uv = sprite->GetUV();
+      glm::vec2 size = this->GetSizeSprite() * sprite->GetScale();
       b.DrawAtlasSprite(pos, size, sprite->GetAtlasLayer(), uv.uvMin, uv.uvMax, color);
     }
     else
     {
+      glm::vec2 size = this->GetSizeSprite() * sprite->GetScale();
       b.DrawTexture(pos, size, sprite->GetImage(), color);
     }
   }
@@ -70,7 +71,7 @@ namespace ENG
     {
       anim->Advance(dt);
       if(auto* sprite = this->GetComponent<ISprite>())
-        sprite->SetFrame(anim->GetCurrentFrame());
+        sprite->SetFrame(anim->GetKeyAnimation(),anim->GetCurrentFrame());
     }
   }
 
@@ -134,7 +135,7 @@ namespace ENG
     // IAnimator
     if (auto* an = GetComponent<IAnimator>())
     {
-      state.m_anData = {.m_key = an->GetName(),
+      state.m_anData = {.m_key = an->GetKeyAnimation(),
         .m_frames = an->GetFrames(),
         .m_step = an->GetStep(),
         .m_speed = an->GetSpeed(),
@@ -196,7 +197,7 @@ namespace ENG
     {
       AddComponent<IAnimator>(
           state.m_anData->m_key,
-          state.m_anData->m_frames,
+          state.m_anData->m_keyAtlas,
           state.m_anData->m_speed,
           state.m_anData->m_step,
           state.m_anData->m_scale
