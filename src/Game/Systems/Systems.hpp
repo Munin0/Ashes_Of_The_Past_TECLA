@@ -21,10 +21,9 @@ namespace APP
 
   [[maybe_unused]] void System_AIMovement(ENG::Object& target, ENG::Object& source, float dt);
 
-  // Get were is looking the player with the Direction.
-  [[maybe_unused]] std::string GetAnimationLooking(const std::string& prefix, const ENG::Vector2& direction);
+  [[maybe_unused]] std::string System_GetAnimationLooking(const std::string& prefix, const ENG::Vector2& direction);
 
-  [[maybe_unused]] std::unique_ptr<ENG::Object> CreateEntity(const ENG::Rectangle& rect, const std::string& entityName, const std::string& entityClass); 
+  [[maybe_unused]] std::unique_ptr<ENG::Object> System_CreateEntity(const ENG::Rectangle& rect, const std::string& entityName, const std::string& entityClass); 
 
-  [[maybe_unused]] ENG::Vector2 GetRandomPosition(const ENG::Rectangle& where);
+  [[maybe_unused]] ENG::Vector2 System_GetRandomPosition(const ENG::Rectangle& where);
 }

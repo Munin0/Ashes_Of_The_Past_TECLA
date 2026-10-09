@@ -9,6 +9,7 @@
 #include "Engine/Utils/Utils.hpp"
 #include "Engine/Utils/Vector2.hpp"
 /// | ------------------------------------ |
+#include <cstdint>
 #include <memory>
 #include <string>
 #include <utility>
@@ -80,14 +81,14 @@ namespace APP
     auto& transform = player.GetTransform();
     switch (movement->state)
     {
+      case Movement::State::Running:
+        movement->timer = 0.0f;
+        movement->state = Movement::State::Walking;
+        transform.m_velocity = movement->walkingVelocity;
+        break;
       case Movement::State::Walking:
         movement->state = Movement::State::Running;
         transform.m_velocity = movement->runningVelocity;
-        break;
-
-      case Movement::State::Running:
-        movement->state = Movement::State::Walking;
-        transform.m_velocity = movement->walkingVelocity;
         break;
     }
   }
@@ -146,8 +147,6 @@ namespace APP
     }
   }
 
-
-  std::string GetAnimationLooking(const std::string& prefix, const ENG::Vector2& direction)
   void System_AIMovement(ENG::Object& target, ENG::Object& source, float dt)
   {
     if(&target == &source)
@@ -162,13 +161,13 @@ namespace APP
     {
       direction.Normalize();
       ENG::Vector2 movement = direction * source.GetTransform().m_velocity * dt;
-      aSource->SetAnimation(GetAnimationLooking("Walk",  direction));
+      aSource->SetAnimation(System_GetAnimationLooking("Walk",  direction));
 
       source.GetTransform().m_position = source.GetTransform().m_position + movement;
     }
   }
 
-  std::string GetAnimationLooking(const std::string& prefix, const ENG::Vector2& direction)
+  std::string System_GetAnimationLooking(const std::string& prefix, const ENG::Vector2& direction)
   {
     // Rotation sin.
     constexpr float T = 0.38f;
@@ -183,12 +182,12 @@ namespace APP
     return anim;
   }
 
-  std::unique_ptr<ENG::Object> CreateEntity(const ENG::Rectangle& rect, const std::string& entityName, const std::string& entityClass)
+  std::unique_ptr<ENG::Object> System_CreateEntity(const ENG::Rectangle& rect, const std::string& entityName, const std::string& entityClass)
   {
     auto entity = std::make_unique<ENG::Object>(entityName);
     /// Example Enemy43
     entity->SetName(entityName + std::to_string(entity->GetCountObj())); 
-    entity->GetTransform().m_position = GetRandomPosition(rect);
+    entity->GetTransform().m_position = System_GetRandomPosition(rect);
     entity->GetTransform().m_velocity = {100,100};
 
     if(entityClass == "Native")
@@ -204,14 +203,14 @@ namespace APP
     return std::move(entity);
   }
 
-  ENG::Vector2 GetRandomPosition(const ENG::Rectangle& where)
+  ENG::Vector2 System_GetRandomPosition(const ENG::Rectangle& where)
   {
     constexpr float kMargin = 128.f;
     ENG::Vector2 newPosition = {0, 0};
     const float right = where.x +  where.w;
     const float down = where.y + where.h;
 
-    switch (ENG::GetRandomNumber(0, 4))
+    switch (ENG::GetRandomNumber(0, 3))
     {
       case 0: // U
         newPosition.x = (float)ENG::GetRandomNumber(where.x,right);
