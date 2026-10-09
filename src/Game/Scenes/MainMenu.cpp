@@ -5,6 +5,7 @@
 #include "Engine/GUI/Button.hpp"
 #include "Engine/Inputs/Mouse.hpp"
 #include "Engine/Layer/Scene.hpp"
+#include "Engine/Map/TileMap/TileMap.hpp"
 #include "Engine/Object/Object.hpp"
 #include "Engine/Physics/Collision.hpp"
 #include "Engine/Render/Batching/RBatch.hpp"
@@ -47,8 +48,6 @@
       /// Screen Size
       auto sizeScreen = ENG::Render::Get().GetScreenSize();
       auto f_CabinItalic = ENG::Services::Fonts().GetFont("CabinItalic");
-    
-      ENG::Services::CSV().Load("Dialogs/dialog.csv","Dialogos");
 
       // ###############################
       // Objects
@@ -56,11 +55,11 @@
       // ###############################
       ENG::ObjectID btStartID = pool.Add(std::make_unique<ENG::Button>("StartGame", ENG::Vector2{100,50} ));
       auto startBT = static_cast<ENG::Button*>(pool.Get(btStartID));
-
       startBT->SetPosition({100,100});
       startBT->SetData(std::string("DemoScene"));
       startBT->SetFunction(ChangeSceneButton);
       startBT->SetLayer(LAYER_UI);
+      // startBT->SetTexture(const std::string &atlas, "Btn_Gray_Normal");
       startBT->SetFont(*f_CabinItalic);
       startBT->SetText("Start Game");
       startBT->SetTextSize(24);

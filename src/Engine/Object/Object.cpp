@@ -9,6 +9,7 @@
 #include "Engine/Utils/Vector2.hpp"
 #include "Engine/Component/Component.hpp"
 #include "Engine/Services/WorldSaver.hpp"
+#include "Game/Components/Movement.hpp"
 // | -------------------------------
 #include <glm/common.hpp>
 #include <glm/ext/vector_float4.hpp>
@@ -72,6 +73,17 @@ namespace ENG
       anim->Advance(dt);
       if(auto* sprite = this->GetComponent<ISprite>())
         sprite->SetFrame(anim->GetKeyAnimation(),anim->GetCurrentFrame());
+    }
+
+    if(auto* mov = this->GetComponent<APP::Movement>())
+    {
+      if(mov->timer < 10.f && mov->state == APP::Movement::State::Running)
+        mov->timer += mov->step;
+      else if(mov->timer == 10.0f)
+      {
+        mov->timer = 0.0f;
+        mov->state = APP::Movement::State::Walking;
+      }
     }
   }
 
