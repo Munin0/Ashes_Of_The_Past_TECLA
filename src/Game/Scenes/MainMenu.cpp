@@ -12,6 +12,7 @@
 #include "Engine/Render/Color/RColor.hpp"
 #include "Engine/Render/Render.hpp"
 #include "Engine/Text/Text.hpp"
+#include "Engine/Text/TextAPI.hpp"
 #include "Engine/Utils/Log.hpp"
 #include "Engine/Utils/Vector2.hpp"
 #include "Engine/Object/ObjectPool.hpp"
@@ -25,6 +26,7 @@
 #include "SDL3/SDL_mouse.h"
 #include "SDL3/SDL_scancode.h"
   /// | ------------------------------------ |
+#include <cmath>
 #include <memory>
 #include <string>
   /// | ------------------------------------ |
@@ -48,30 +50,44 @@
       /// Screen Size
       auto sizeScreen = ENG::Render::Get().GetScreenSize();
       auto f_CabinItalic = ENG::Services::Fonts().GetFont("CabinItalic");
+      auto f_Ithaca = ENG::Services::Fonts().GetFont("Ithaca");
 
       // ###############################
       // Objects
       // Configuration of the Object entities
       // ###############################
-      ENG::ObjectID btStartID = pool.Add(std::make_unique<ENG::Button>("StartGame", ENG::Vector2{100,50} ));
+      ENG::ObjectID btStartID = pool.Add(std::make_unique<ENG::Button>("Button_Play", ENG::Vector2{300,150} ));
       auto startBT = static_cast<ENG::Button*>(pool.Get(btStartID));
-      startBT->SetPosition({100,100});
+      startBT->SetPosition({sizeScreen.x / 2.0f - 150.0f, sizeScreen.y / 2.0f});
       startBT->SetData(std::string("DemoScene"));
       startBT->SetFunction(ChangeSceneButton);
       startBT->SetLayer(LAYER_UI);
-      // startBT->SetTexture(const std::string &atlas, "Btn_Gray_Normal");
-      startBT->SetFont(*f_CabinItalic);
+      startBT->SetTexture("GUI", "Btn_Gray_Normal");
+      startBT->SetFont(*f_Ithaca);
       startBT->SetText("Start Game");
-      startBT->SetTextSize(24);
+      startBT->SetTextSize(48);
       startBT->SetTextColor(ENG::Color::Black);
 
+
+      ENG::ObjectID btExitID = pool.Add(std::make_unique<ENG::Button>("Button_Exit", ENG::Vector2{300,150} ));
+      auto exitBT = static_cast<ENG::Button*>(pool.Get(btExitID));
+      exitBT->SetPosition({sizeScreen.x / 2.0f - 150.0f, sizeScreen.y / 2.0f + 200.f});
+      exitBT->SetData(&this->isRunning);
+      exitBT->SetFunction(ExitGameButton);
+      exitBT->SetLayer(LAYER_UI);
+      exitBT->SetTexture("GUI", "Btn_Gray_Normal");
+      exitBT->SetFont(*f_Ithaca);
+      exitBT->SetText("Exit Game");
+      exitBT->SetTextSize(48);
+      exitBT->SetTextColor(ENG::Color::Black);
       // ###############################
       // Objects Text
       // Configuration of the Object Text
       // ###############################
-      ENG::ObjectID textID = pool.Add(std::make_unique<ENG::Text>(ENG::Vector2{100,100}, 120.0f, "TEXTO DE PRUEBA"));
+      auto v = ENG::TextAPI::Get().GetMeasureTextEx(f_Ithaca, "Ashes of the past", 120.f);
+      ENG::ObjectID textID = pool.Add(std::make_unique<ENG::Text>(ENG::Vector2{sizeScreen.x / 2.f - v.x / 2.0f, 300.f}, 120.0f, "Ashes of the past"));
       auto* textObj = static_cast<ENG::Text*>(pool.Get(textID));
-      textObj->SetFont(f_CabinItalic);
+      textObj->SetFont(f_Ithaca);
       textObj->AddComponent<ENG::IColor>(ENG::Color::Black);
 
       // ###############################
@@ -136,12 +152,19 @@
 
         if(auto b = dynamic_cast<ENG::Button*>(pool.Get(o)))
         {
-          if(ENG::CollisionPointRect(ENG::GetMousePosition(), b->GetRect()) && mousePressed)
+          if(auto resolution = ENG::CollisionPointRect(ENG::GetMousePosition(), b->GetRect()))
           {
-            b->Action();
-            isRunning = false;
-            mousePressed = false;
+            if(resolution)
+              b->SetTexture("GUI", "Btn_Gray_Hover");
+            if (resolution && mousePressed)
+            {
+              b->Action();
+              isRunning = false;
+              mousePressed = false;
+            }
           }
+          else
+            b->SetTexture("GUI", "Btn_Gray_Normal");
         }
       }
       mousePressed = false;

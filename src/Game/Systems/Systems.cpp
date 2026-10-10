@@ -82,7 +82,6 @@ namespace APP
     switch (movement->state)
     {
       case Movement::State::Running:
-        movement->timer = 0.0f;
         movement->state = Movement::State::Walking;
         transform.m_velocity = movement->walkingVelocity;
         break;

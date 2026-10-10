@@ -19,4 +19,11 @@ namespace APP
     }
   }
   
+  void ExitGameButton(std::any _)
+  {
+    if(auto* p = std::any_cast<bool>(&_))
+    {
+      *p = !*p;
+    }
+  }
 }

@@ -75,16 +75,16 @@ namespace ENG
         sprite->SetFrame(anim->GetKeyAnimation(),anim->GetCurrentFrame());
     }
 
-    if(auto* mov = this->GetComponent<APP::Movement>())
-    {
-      if(mov->timer < 10.f && mov->state == APP::Movement::State::Running)
-        mov->timer += mov->step;
-      else if(mov->timer == 10.0f)
-      {
-        mov->timer = 0.0f;
-        mov->state = APP::Movement::State::Walking;
-      }
-    }
+    // if(auto* mov = this->GetComponent<APP::Movement>())
+    // {
+    //   if(mov->timer < 10.f && mov->state == APP::Movement::State::Running)
+    //     mov->timer += mov->step;
+    //   else if(mov->timer == 10.0f)
+    //   {
+    //     mov->timer = 0.0f;
+    //     mov->state = APP::Movement::State::Walking;
+    //   }
+    // }
   }
 
   void Object::SetPosition(float x, float y)
