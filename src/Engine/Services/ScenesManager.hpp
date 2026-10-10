@@ -71,6 +71,15 @@ namespace ENG
        */
       void PedingScene(const std::string& id);
       /**
+       * @brief Requests a change to another scene.
+       *
+       * The change is not applied immediately: it is applied the next frame 
+       * ChangeScene() is called.
+       *
+       * @param[in] idPedding ID of the scene to change to.
+       */
+      bool ArePeddingScene(void) const;
+      /**
        * @brief Destroys a scene.
        *
        * @param[in] id ID of the scene to destroy.

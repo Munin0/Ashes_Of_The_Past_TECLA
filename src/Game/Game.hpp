@@ -27,6 +27,8 @@ namespace APP
       void OnUpdateFixed(float dt) override;
       //! Render all stuf of the Game, #Inheritance.
       void OnRender(float dt) override;
+
+    public:
     private:
       bool m_gameRunning = false;     //! Boolean, if the game is running.
   };
