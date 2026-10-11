@@ -18,6 +18,7 @@
 #define LAYER_TOP         30
 
 #define LAYER_FX          40
+#define LAYER_UI_BG       49
 #define LAYER_UI          50
 #define LAYER_MAX         255
 // | -------------------------------

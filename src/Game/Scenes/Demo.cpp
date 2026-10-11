@@ -87,12 +87,10 @@ namespace APP
     //  audio
     //  loading audios part
     // ###############################
-
-    /// option for this music
-    SDL_PropertiesID options;
-    options = SDL_CreateProperties();
-    SDL_SetNumberProperty(options, MIX_PROP_PLAY_LOOPS_NUMBER, -1);
-    ENG::Services::Music().LoadMusic("Music/MarineHoloLive.mp3", "Marine", options);
+    // SDL_PropertiesID options;
+    // options = SDL_CreateProperties();
+    // SDL_SetNumberProperty(options, MIX_PROP_PLAY_LOOPS_NUMBER, -1);
+    // ENG::Services::Music().LoadMusic("Music/Ambient_MainMenu.mp3", "Ambient_MainMenu", options);
     // ENG::Services::Music().SetVolume("Marine", 10.0f);
     // ENG::Services::Music().PlayMusic("Marine");
 

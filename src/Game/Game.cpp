@@ -42,7 +42,8 @@ namespace APP
     /// Load All Atlas 
     ENG::Services::Assets().LoadAtlas("Atlas/Player/Player.json", "Player");
     ENG::Services::Assets().LoadAtlas("Atlas/GUI/GUI_Atlas.json", "GUI");
-
+    /// Load All Images
+    ENG::Services::Assets().Load("Background/Castle.png", "BackgroundMainMenu");
     /// Adding Shaders
     ENG::Services::Shaders().Load("mono.fs","mono.vs","Mono");
     /// Adding Scenes
