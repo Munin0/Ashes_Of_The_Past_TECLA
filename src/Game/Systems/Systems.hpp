@@ -26,4 +26,7 @@ namespace APP
   [[maybe_unused]] std::unique_ptr<ENG::Object> System_CreateEntity(const ENG::Rectangle& rect, const std::string& entityName, const std::string& entityClass); 
 
   [[maybe_unused]] ENG::Vector2 System_GetRandomPosition(const ENG::Rectangle& where);
+
+  //Attack System
+  [[maybe_unused]] bool System_MeleeAttack(ENG::Object& player, std::vector<ENG::Object*> close_enemies);
 }

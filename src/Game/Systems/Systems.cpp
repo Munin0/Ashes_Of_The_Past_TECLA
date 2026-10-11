@@ -231,4 +231,9 @@ namespace APP
     return newPosition;  
 
   }
+
+  //Attack Systems
+  bool System_MeleeAttack(ENG::Object& player, std::vector<ENG::Object*> close_enemies){
+    
+  }
 }
