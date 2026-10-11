@@ -14,6 +14,8 @@ namespace APP
 
         explicit ITemplateStat(std::string name);
 
+        ITemplateStat(T min, T current, std::string name);
+
         ~ITemplateStat() override = default;
 
         T getCurrent() const;

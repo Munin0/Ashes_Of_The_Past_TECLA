@@ -20,6 +20,7 @@
 #include "Game/Systems/Systems.hpp"
 #include "Game/Components/Dash.hpp"
 #include "Game/Components/Movement.hpp"
+#include "Game/Components/Stats.hpp"
 #include "SDL3/SDL_properties.h"
 #include "SDL3/SDL_scancode.h"
 #include "SDL3_mixer/SDL_mixer.h"
@@ -59,6 +60,10 @@ namespace APP
     objPlayer->GetComponent<ENG::IAnimator>()->Play();
     objPlayer->AddComponent<ENG::IBoundingBox>(ENG::Vector2{64,64});
     objPlayer->AddComponent<APP::Dash>();
+    objPlayer->AddComponent<APP::HealtStat>();
+    objPlayer->AddComponent<APP::DefenseStat>();
+    objPlayer->AddComponent<APP::StrengthStat>();
+    objPlayer->AddComponent<APP::XPStat>();
     objPlayer->GetTransform().m_direction = {0,0};
     
     // ###############################

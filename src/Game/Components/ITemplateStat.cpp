@@ -21,6 +21,20 @@ namespace APP
     {}
 
     template<typename T>
+    ITemplateStat<T>::ITemplateStat(T min, T current, std::string name)
+        :stat_name(std::move(name)),
+        max_value(std::numeric_limits<T>::max()),
+        min_value(min),
+        current_value(current_value)
+    {
+        if (min_value > max_value)
+            throw std::invalid_argument("ITemplateStat minimum cannot exceed maximum");
+
+        current_value = std::clamp(current_value, min_value, max_value);
+    }
+
+
+    template<typename T>
     T ITemplateStat<T>::getCurrent() const
     {
         return current_value;
