@@ -82,7 +82,7 @@ namespace ENG
        * After the call the vector has a length of 1 and keeps its direction.
        * A zero-length vector is left unchanged.
        */
-      void Normalize()
+      Vector2 Normalize()
       {
         float length = Length();
         if(length != 0.0f)
@@ -90,6 +90,7 @@ namespace ENG
           this->x /= length;
           this->y /= length;
         }
+        return *this;
       }
       /**
        * @brief Returns the length (magnitude) of ~this vector.

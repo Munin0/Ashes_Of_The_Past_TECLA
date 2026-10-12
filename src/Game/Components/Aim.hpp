@@ -1,8 +1,9 @@
+/// | ------------------------------------ |
 #pragma once
-
+/// | ------------------------------------ |
 #include "Engine/Component/Component.hpp"
 #include "Engine/Utils/Vector2.hpp"
-
+/// | ------------------------------------ |
 
 namespace APP
 {

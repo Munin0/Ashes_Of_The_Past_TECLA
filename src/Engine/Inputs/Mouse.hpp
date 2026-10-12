@@ -11,6 +11,6 @@ namespace ENG
    *
    * @return The position of the mouse on screen.
    */
-  [[maybe_unused]] const Vector2 GetMousePosition(void);
+  [[maybe_unused]] Vector2 GetMousePosition(void);
 }
 
