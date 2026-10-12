@@ -3,18 +3,13 @@
 /// | ------------------------------------ |
 #include "Engine/Component/Component.hpp"
 #include "Game/Components/Aim.hpp"
-#include "Game/Components/Dash.hpp"
-#include "Game/Components/Movement.hpp"
-#include "Game/Components/Shield.hpp"
 #include "Engine/Object/Object.hpp"
 #include "Engine/Utils/RawGeometry.hpp"
 #include "Engine/Utils/Utils.hpp"
 #include "Engine/Utils/Vector2.hpp"
 /// | ------------------------------------ |
 #include <cstdint>
-#include <memory>
 #include <string>
-#include <utility>
 /// | ------------------------------------ |
 #include "Engine/Utils/Log.hpp"
 /// | ------------------------------------ |
@@ -74,197 +69,9 @@ namespace APP
     aim->direction = direction; //save direction//
   }
 
-  void System_PlayerMovement(ENG::Object& o, float dt)
+  void System_PlayerTrabuco(ENG::Object& player)
   {
-    auto& pPos = o.GetTransform();
-    pPos.m_direction.Normalize();
-
-    auto delta = pPos.m_direction * pPos.m_velocity * dt;
-    delta.y *= 0.5f;
-    pPos.m_position += delta;
-    pPos.m_direction = {0,0};
   }
-
-  void TogglePlayerRunning(ENG::Object& player)
-  {
-    auto* movement = player.GetComponent<APP::Movement>();
-    if (!movement)
-      return;
-
-    auto* dash = player.GetComponent<APP::Dash>();
-    if (dash && dash->state == Dash::State::Dashing)
-      return;
-
-    auto& transform = player.GetTransform();
-    switch (movement->state)
-    {
-      case Movement::State::Running:
-        movement->state = Movement::State::Walking;
-        transform.m_velocity = movement->walkingVelocity;
-        break;
-      case Movement::State::Walking:
-        movement->state = Movement::State::Running;
-        transform.m_velocity = movement->runningVelocity;
-        break;
-    }
-  }
-
-  void TryStartPlayerDash(ENG::Object& player)
-  {
-    auto* dash = player.GetComponent<APP::Dash>();
-    if (!dash || dash->state != Dash::State::Ready)
-      return;
-
-    auto& transform = player.GetTransform();
-    if (transform.m_direction.x == 0.0f &&
-        transform.m_direction.y == 0.0f)
-      return;
-
-    dash->direction = transform.m_direction;
-    dash->direction.Normalize();
-    dash->normalVelocity = transform.m_velocity;
-    dash->timer = 0.0f;
-    dash->state = Dash::State::Dashing;
-  }
-
-  void System_PlayerDash(ENG::Object& player, float dt)
-  {
-    auto* dash = player.GetComponent<APP::Dash>();
-    if (!dash)
-      return;
-
-    auto& transform = player.GetTransform();
-    switch (dash->state)
-    {
-      case Dash::State::Ready:
-        break;
-
-      case Dash::State::Dashing:
-        transform.m_velocity = dash->normalVelocity * dash->speedMultiplier;
-        transform.m_direction = dash->direction;
-        dash->timer += dt;
-
-        if (dash->timer >= dash->duration)
-        {
-          transform.m_velocity = dash->normalVelocity;
-          dash->timer = 0.0f;
-          dash->state = Dash::State::Cooldown;
-        }
-        break;
-
-      case Dash::State::Cooldown:
-        dash->timer += dt;
-        if (dash->timer >= dash->cooldown)
-        {
-          dash->timer = 0.0f;
-          dash->state = Dash::State::Ready;
-        }
-        break;
-    }
-  }
-
-  void TogglePlayerShield(ENG::Object& player)
-  {
-    auto* shield = player.GetComponent<APP::Shield>();
-    if (!shield || shield->state == Shield::State::Cooldown)
-      return;
-
-    if(shield->state == Shield::State::Active){
-      shield->state = Shield::State::Ready;
-      return;
-    }
-
-    if(shield->state == Shield::State::Ready){
-      shield->state = Shield::State::Active;
-    }
-  }
-
-  void System_PlayerShield(ENG::Object& player, float dt)
-  {
-    auto* shield = player.GetComponent<APP::Shield>();
-    if(!shield)
-      return;
-
-    switch (shield->state)
-    {
-      case Shield::State::Ready:
-        break;
-
-      case Shield::State::Active: //Futura implementacion mecanica de escudo mientras esta activo
-        break;
-
-      case Shield::State::Cooldown:
-        shield->timer += dt;
-    
-        if (shield->timer >= shield->cooldown)
-        {
-          shield->hp = shield->MaxHp;
-          shield->timer = 0.0f;
-          shield->state = Shield::State::Ready;
-        }
-        break;
-    }
-  }
-
-  void ApplyPlayerDamage(ENG::Object& player, uint8_t damage, const ENG::Vector2& directionToSource){
-    auto* shield = player.GetComponent<APP::Shield>();
-    bool resultShieldDamage = false;
-
-    if(shield && shield->state == Shield::State::Active)
-      resultShieldDamage = TryBlockShield(player,damage,directionToSource);
-    if(resultShieldDamage)
-    {
-      ApplyShieldDamage(player, damage);
-      return;
-    }
-
-    if(damage >= player.GetStats().m_hp){
-      player.GetStats().m_hp = 0;
-    } else{
-      player.GetStats().m_hp -= damage;
-    }
-  }
-
-
-  bool TryBlockShield(ENG::Object& player, uint8_t damage, const ENG::Vector2& directionToSource){
-      auto* shield = player.GetComponent<APP::Shield>();
-      auto* aim = player.GetComponent<APP::Aim>();
-      if(!aim || !shield || shield->state != Shield::State::Active)
-        return false;
-
-      auto incomingDirection = directionToSource;
-      if (incomingDirection.Length() <= 0.0001f) // evitar normalizacion de vectores nulo.s
-        return false;
-
-      incomingDirection.Normalize();
-
-      const float alignment =
-        aim->direction.x * incomingDirection.x + 
-        aim->direction.y * incomingDirection.y;
-
-      if (alignment < shield->minimumBlockDot)
-        return false;
-
-      return true;
-  }
-
-  void ApplyShieldDamage(ENG::Object& player, uint8_t damage){
-     auto* shield = player.GetComponent<APP::Shield>();
-      if(!shield || shield->state != Shield::State::Active)
-        return;
-     if(damage >= shield->hp){
-      shield->hp = 0;
-      shield->timer = 0.0f;
-      shield->state = Shield::State::Cooldown;
-    } else {
-      shield->hp -= damage;
-    }
-  }
-
-  void System_PlayerTrabuco(ENG::Object& player){
-    
-  }
-
 
   void System_AIMovement(ENG::Object& target, ENG::Object& source, float dt)
   {
@@ -299,27 +106,6 @@ namespace APP
     else if (direction.x < -T) anim.push_back('W');
 
     return anim;
-  }
-
-  std::unique_ptr<ENG::Object> System_CreateEntity(const ENG::Rectangle& rect, const std::string& entityName, const std::string& entityClass)
-  {
-    auto entity = std::make_unique<ENG::Object>(entityName);
-    /// Example Enemy43
-    entity->SetName(entityName + std::to_string(entity->GetCountObj())); 
-    entity->GetTransform().m_position = System_GetRandomPosition(rect);
-    entity->GetTransform().m_velocity = {100,100};
-
-    if(entityClass == "Native")
-    {
-      entity->SetClass(entityClass);
-      entity->AddComponent<ENG::ISprite>("Player", "IddleS", 0, 1.0f);
-      entity->AddComponent<ENG::IAnimator>("Player", "IddleS", 10.f, 1, 1.0f);
-      entity->GetComponent<ENG::IAnimator>()->Play();
-    }
-    entity->AddComponent<ENG::IBoundingBox>(ENG::Vector2{64,64});
-    // Give AI
-    
-    return std::move(entity);
   }
 
   ENG::Vector2 System_GetRandomPosition(const ENG::Rectangle& where)
