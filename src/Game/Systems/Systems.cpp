@@ -2,8 +2,10 @@
 #include "Systems.hpp"
 /// | ------------------------------------ |
 #include "Engine/Component/Component.hpp"
+#include "Game/Components/Aim.hpp"
 #include "Game/Components/Dash.hpp"
 #include "Game/Components/Movement.hpp"
+#include "Game/Components/Shield.hpp"
 #include "Engine/Object/Object.hpp"
 #include "Engine/Utils/RawGeometry.hpp"
 #include "Engine/Utils/Utils.hpp"
@@ -54,6 +56,21 @@ namespace APP
     {
       stats.m_xp = System_thresholdXp(MaxLevel);
     }
+  }
+
+  void System_Aim(ENG::Object& entity, const ENG::Vector2& targetPosition)
+  {
+    auto* aim = entity.GetComponent<APP::Aim>();
+    if (!aim)
+      return;
+
+    auto direction = targetPosition - entity.GetPosition();
+    constexpr float minimumAimDistance = 0.0001f; //seguridad
+    if (direction.Length() <= minimumAimDistance)
+      return;
+
+    direction.Normalize(); 
+    aim->direction = direction; //save direction//
   }
 
   void System_PlayerMovement(ENG::Object& o, float dt)
@@ -146,8 +163,109 @@ namespace APP
     }
   }
 
+  void TogglePlayerShield(ENG::Object& player)
+  {
+    auto* shield = player.GetComponent<APP::Shield>();
+    if (!shield || shield->state == Shield::State::Cooldown)
+      return;
 
-  std::string GetAnimationLooking(const std::string& prefix, const ENG::Vector2& direction)
+    if(shield->state == Shield::State::Active){
+      shield->state = Shield::State::Ready;
+      return;
+    }
+
+    if(shield->state == Shield::State::Ready){
+      shield->state = Shield::State::Active;
+    }
+  }
+
+  void System_PlayerShield(ENG::Object& player, float dt)
+  {
+    auto* shield = player.GetComponent<APP::Shield>();
+    if(!shield)
+      return;
+
+    switch (shield->state)
+    {
+      case Shield::State::Ready:
+        break;
+
+      case Shield::State::Active: //Futura implementacion mecanica de escudo mientras esta activo
+        break;
+
+      case Shield::State::Cooldown:
+        shield->timer += dt;
+    
+        if (shield->timer >= shield->cooldown)
+        {
+          shield->hp = shield->MaxHp;
+          shield->timer = 0.0f;
+          shield->state = Shield::State::Ready;
+        }
+        break;
+    }
+  }
+
+  void ApplyPlayerDamage(ENG::Object& player, uint8_t damage, const ENG::Vector2& directionToSource){
+    auto* shield = player.GetComponent<APP::Shield>();
+    bool resultShieldDamage = false;
+
+    if(shield && shield->state == Shield::State::Active)
+      resultShieldDamage = TryBlockShield(player,damage,directionToSource);
+    if(resultShieldDamage)
+    {
+      ApplyShieldDamage(player, damage);
+      return;
+    }
+
+    if(damage >= player.GetStats().m_hp){
+      player.GetStats().m_hp = 0;
+    } else{
+      player.GetStats().m_hp -= damage;
+    }
+  }
+
+
+  bool TryBlockShield(ENG::Object& player, uint8_t damage, const ENG::Vector2& directionToSource){
+      auto* shield = player.GetComponent<APP::Shield>();
+      auto* aim = player.GetComponent<APP::Aim>();
+      if(!aim || !shield || shield->state != Shield::State::Active)
+        return false;
+
+      auto incomingDirection = directionToSource;
+      if (incomingDirection.Length() <= 0.0001f) // evitar normalizacion de vectores nulo.s
+        return false;
+
+      incomingDirection.Normalize();
+
+      const float alignment =
+        aim->direction.x * incomingDirection.x + 
+        aim->direction.y * incomingDirection.y;
+
+      if (alignment < shield->minimumBlockDot)
+        return false;
+
+      return true;
+  }
+
+  void ApplyShieldDamage(ENG::Object& player, uint8_t damage){
+     auto* shield = player.GetComponent<APP::Shield>();
+      if(!shield || shield->state != Shield::State::Active)
+        return;
+     if(damage >= shield->hp){
+      shield->hp = 0;
+      shield->timer = 0.0f;
+      shield->state = Shield::State::Cooldown;
+    } else {
+      shield->hp -= damage;
+    }
+  }
+
+  void System_PlayerTrabuco(ENG::Object& player){
+    
+  }
+
+
   void System_AIMovement(ENG::Object& target, ENG::Object& source, float dt)
   {
     if(&target == &source)

@@ -12,10 +12,20 @@
 namespace APP
 {
   [[maybe_unused]] void System_PlayerMovement(ENG::Object& o, float dt);
+  [[maybe_unused]] void System_Aim(ENG::Object& entity, const ENG::Vector2& targetPosition);
   
   [[maybe_unused]] void TogglePlayerRunning(ENG::Object& player);
   [[maybe_unused]] void TryStartPlayerDash(ENG::Object& player);
   [[maybe_unused]] void System_PlayerDash(ENG::Object& player, float dt);
+
+  [[maybe_unused]] void System_PlayerShield(ENG::Object& player, float dt);
+  [[maybe_unused]] void TogglePlayerShield(ENG::Object& player);
+  [[maybe_unused]] void ApplyPlayerDamage(ENG::Object& player, uint8_t damage, const ENG::Vector2& directionToSource);
+  [[maybe_unused]] void ApplyShieldDamage(ENG::Object& player, uint8_t damage);
+  [[maybe_unused]] bool TryBlockShield(ENG::Object& player, uint8_t damage, const ENG::Vector2& directionToSource);
+
+  [[maybe_unused]] void System_PlayerTrabuco(ENG::Object& player);
+
   
   [[maybe_unused]] void System_AumentLevel(ENG::Object& who, uint32_t xp);
 
