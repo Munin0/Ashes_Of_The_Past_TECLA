@@ -1,5 +1,9 @@
+/// | ------------------------------------ |
 #pragma once
+/// | ------------------------------------ |
+#include "Engine/Utils/Vector2.hpp"
 #include "Engine/Component/Component.hpp"
+/// | ------------------------------------ |
 
 namespace APP
 {
@@ -17,7 +21,7 @@ namespace APP
     ENG::Vector2 normalVelocity = {0, 0};
     float timer = 0.0f;
     float duration = 0.5f;
-    float cooldown = 10.0f;
+    float cooldown = 5.0f;
     float speedMultiplier = 2.8f;
   };
 }

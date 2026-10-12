@@ -79,8 +79,8 @@ namespace ENG
   {
     if(_volume < 0.0f)
       _volume = 0.0f;
-    if(_volume > 100.0f)
-      _volume = 100.0f;
+    if(_volume > 1000.0f)
+      _volume = 1000.0f;
     auto it = m_music.find(key);
     if(it == m_music.end())
       return;

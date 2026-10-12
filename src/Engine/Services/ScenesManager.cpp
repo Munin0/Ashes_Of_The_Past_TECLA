@@ -64,4 +64,8 @@ namespace ENG
     m_arePeding = true;
   }
 
+  bool ScenesManager::ArePeddingScene(void) const
+  {
+    return m_arePeding; 
+  }
 }

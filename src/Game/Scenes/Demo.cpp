@@ -51,7 +51,8 @@ namespace APP
     auto idPlayer = pool.Add(std::make_unique<ENG::Object>("Player"));
     auto objPlayer = pool.Get(idPlayer);
     objPlayer->SetPosition(ENG::Vector2{500,500});
-    auto& movement = objPlayer->AddComponent<APP::Movement>(); // 
+    auto& movement = objPlayer->AddComponent<APP::Movement>();
+    movement.step = 0.5f;
     objPlayer->GetTransform().m_velocity = movement.walkingVelocity;
     objPlayer->AddComponent<ENG::ISprite>("Player", "IddleS", 0, 1.0f);
     objPlayer->AddComponent<ENG::IAnimator>("Player", "IddleS", 10.f, 1, 1.0f);
@@ -86,12 +87,10 @@ namespace APP
     //  audio
     //  loading audios part
     // ###############################
-
-    /// option for this music
-    SDL_PropertiesID options;
-    options = SDL_CreateProperties();
-    SDL_SetNumberProperty(options, MIX_PROP_PLAY_LOOPS_NUMBER, -1);
-    ENG::Services::Music().LoadMusic("Music/MarineHoloLive.mp3", "Marine", options);
+    // SDL_PropertiesID options;
+    // options = SDL_CreateProperties();
+    // SDL_SetNumberProperty(options, MIX_PROP_PLAY_LOOPS_NUMBER, -1);
+    // ENG::Services::Music().LoadMusic("Music/Ambient_MainMenu.mp3", "Ambient_MainMenu", options);
     // ENG::Services::Music().SetVolume("Marine", 10.0f);
     // ENG::Services::Music().PlayMusic("Marine");
 
@@ -119,7 +118,7 @@ namespace APP
 
     if (pollEvent.IsKeyPress(SDL_SCANCODE_L))
     {
-      pool.Add(CreateEntity(cam->GetRectCamera(), "Native", "Native"));
+      pool.Add(System_CreateEntity(cam->GetRectCamera(), "Native", "Native"));
       this->renderQueue = pool.Sort();
     }
 
@@ -134,7 +133,7 @@ namespace APP
       {
         transform.m_direction.x += 1.0f;
       }
-      player->GetComponent<ENG::IAnimator>()->SetAnimation(GetAnimationLooking("Walk", transform.m_direction));
+      player->GetComponent<ENG::IAnimator>()->SetAnimation(System_GetAnimationLooking("Walk", transform.m_direction));
       player->GetComponent<ENG::IAnimator>()->Resume();
     }
     else if (pollEvent.IsKeyDown(SDL_SCANCODE_S))
@@ -148,22 +147,22 @@ namespace APP
       {
         transform.m_direction.x += 1.0f;
       }
-      player->GetComponent<ENG::IAnimator>()->SetAnimation(GetAnimationLooking("Walk", transform.m_direction));
+      player->GetComponent<ENG::IAnimator>()->SetAnimation(System_GetAnimationLooking("Walk", transform.m_direction));
       player->GetComponent<ENG::IAnimator>()->Resume();
     }
     else if (pollEvent.IsKeyDown(SDL_SCANCODE_A))
     {
       transform.m_direction.x -= 1.0f;
-      player->GetComponent<ENG::IAnimator>()->SetAnimation(GetAnimationLooking("Walk", transform.m_direction));
+      player->GetComponent<ENG::IAnimator>()->SetAnimation(System_GetAnimationLooking("Walk", transform.m_direction));
       player->GetComponent<ENG::IAnimator>()->Resume();
     }
     else if (pollEvent.IsKeyDown(SDL_SCANCODE_D))
     {
       transform.m_direction.x += 1.0f;
-      player->GetComponent<ENG::IAnimator>()->SetAnimation(GetAnimationLooking("Walk", transform.m_direction));
+      player->GetComponent<ENG::IAnimator>()->SetAnimation(System_GetAnimationLooking("Walk", transform.m_direction));
       player->GetComponent<ENG::IAnimator>()->Resume();
     }
-    if (pollEvent.IsKeyPress(SDL_SCANCODE_X))
+    if (pollEvent.IsKeyPress(SDL_SCANCODE_LSHIFT))
     {
       TogglePlayerRunning(*player);
     }
@@ -177,7 +176,7 @@ namespace APP
     auto* dash = player->GetComponent<APP::Dash>();
     if (dash && dash->state == Dash::State::Dashing)
     {
-      player->GetComponent<ENG::IAnimator>()->SetAnimation(GetAnimationLooking("Walk", dash->direction));
+      player->GetComponent<ENG::IAnimator>()->SetAnimation(System_GetAnimationLooking("Walk", dash->direction));
       player->GetComponent<ENG::IAnimator>()->Resume();
     }
     else if(player->GetTransform().m_direction == ENG::Vector2{0.f,0.f})
@@ -227,7 +226,6 @@ namespace APP
     RenderTileMaps(b, LAYER_PLAYER, LAYER_MAX);    /// Layer front of the player
 
     ENG::Drawer::DrawRectangleOutline(cam->GetRectCamera(),ENG::Color::Blue);
-    
   }
 
   void DemoScene::Destroy()

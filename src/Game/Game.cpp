@@ -2,8 +2,8 @@
 #include "Game.hpp"
 /// | ------------------------------------ |
 #include "Engine/Inputs/PollEvent.hpp"
-#include "Engine/Render/Batching/RAPIBatch.hpp"
-#include "Engine/Render/Color/RColor.hpp"
+#include "Engine/Modules/BakerFont.hpp"
+#include "Engine/Modules/LanguageRanges.hpp"
 #include "Engine/Text/Font/Font.hpp"
 #include "Engine/Utils/Log.hpp"
 #include "Engine/Services/ScenesManager.hpp"
@@ -31,17 +31,19 @@ namespace APP
     LOG_INFO(" | << Game application Init Succesfully");
     
     /// Baking fonts
-    // ENG::BakerFont baker("Font/TTF/Roboto.ttf");
+    // ENG::BakerFont baker("Font/TTF/Ithaca.ttf");
     // baker.Bake( {ENG::Language::English, ENG::Language::Spanish} );
-    // baker.SaveToDisk("assets/Font/","Roboto");
-
+    // baker.SaveToDisk("assets/Font/","Ithaca");
     /// Load All Fonts
     ENG::Services::Fonts().LoadFont(std::make_unique<ENG::Font>("PottaOne"));
+    ENG::Services::Fonts().LoadFont(std::make_unique<ENG::Font>("Ithaca"));
     ENG::Services::Fonts().LoadFont(std::make_unique<ENG::Font>("Cabin"));
     ENG::Services::Fonts().LoadFont(std::make_unique<ENG::Font>("CabinItalic"));
     /// Load All Atlas 
     ENG::Services::Assets().LoadAtlas("Atlas/Player/Player.json", "Player");
-
+    ENG::Services::Assets().LoadAtlas("Atlas/GUI/GUI_Atlas.json", "GUI");
+    /// Load All Images
+    ENG::Services::Assets().Load("Background/Castle.png", "BackgroundMainMenu");
     /// Adding Shaders
     ENG::Services::Shaders().Load("mono.fs","mono.vs","Mono");
     /// Adding Scenes
@@ -82,7 +84,11 @@ namespace APP
   {
     auto s_current = ENG::Services::Scenes().GetCurrent();
     // while running the current scene
-    if(!s_current->IsRunning())
+    if(!s_current->IsRunning() && !ENG::Services::Scenes().ArePeddingScene())
+    {
+      m_gameRunning = !m_gameRunning;
+    }
+    if(!s_current->IsRunning() && ENG::Services::Scenes().ArePeddingScene())
     {
       s_current->Destroy();
       ENG::Services::Scenes().ChangeScene();
@@ -105,9 +111,5 @@ namespace APP
   {
     auto& b = ENG::Render::Get().GetBatcher();
     ENG::Services::Scenes().GetCurrent()->Render(b);
-    auto screen = ENG::Render::Get().GetScreenSize();
-
-    ENG::Drawer::DrawLine({screen.x / 2,0.0f},{screen.x / 2, screen.y}, ENG::Color::Red);
-    ENG::Drawer::DrawLine({ 0.0f/ 2,screen.y/2.0f},{screen.x, screen.y/2.0f}, ENG::Color::Red);
   }
 }
