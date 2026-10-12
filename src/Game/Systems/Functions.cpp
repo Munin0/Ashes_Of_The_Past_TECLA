@@ -15,6 +15,10 @@ namespace APP
   {
     if(auto* idScene = std::any_cast<std::string>(&_))
     {
+      /// Stoping current music
+      auto* m = &ENG::Services::Music();
+      m->StopMusic(m->GetCurrentMusic());
+
       ENG::Services::Scenes().PedingScene(*idScene);
     }
   }

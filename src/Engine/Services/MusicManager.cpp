@@ -21,6 +21,7 @@ namespace ENG
       LOG_ERROR( " | << Can't found music >PlayMusic(): " + key);
       return;
     }
+    this->m_current = key;
     auto p = it->second;
     MIX_PlayTrack(p.track, p.options);
   }

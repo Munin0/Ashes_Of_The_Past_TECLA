@@ -6,7 +6,6 @@
 #include "Engine/Render/Camera/Camera2D.hpp"
 #include "Engine/Render/Color/RColor.hpp"
 #include "Engine/Render/Render.hpp"
-/// | ------------------------------------ |
 #include "Engine/Layer/Scene.hpp"
 #include "Engine/Object/Object.hpp"
 #include "Engine/Object/ObjectPool.hpp"
@@ -15,8 +14,11 @@
 #include "Engine/Render/Batching/RBatch.hpp"
 #include "Engine/Services/ScenesManager.hpp"
 #include "Engine/Services/Services.hpp"
+#include "Engine/Text/TextAPI.hpp"
+#include "Engine/Utils/Log.hpp"
 #include "Engine/Utils/Vector2.hpp"
 /// | ------------------------------------ |
+#include "Game/FactoryEnemies/Factory.hpp"
 #include "Game/Systems/Systems.hpp"
 #include "Game/Components/Dash.hpp"
 #include "Game/Components/Movement.hpp"
@@ -34,7 +36,8 @@
 
 namespace APP
 {
-  DemoScene::DemoScene(const std::string& id) : ENG::Scene{}
+  DemoScene::DemoScene(const std::string& id)
+    : ENG::Scene{}, factoryEnemies{1000, 5.0f, 1.0f}
   {
     sceneID = id;
   }
@@ -43,7 +46,7 @@ namespace APP
   {
     if (isInit)
       return;
-
+    
     // ###############################
     // Objects  
     // Configuration of the Object entities 
@@ -116,11 +119,11 @@ namespace APP
       ENG::Services::Music().StopMusic("Marine");
     }
 
-    if (pollEvent.IsKeyPress(SDL_SCANCODE_L))
-    {
-      pool.Add(System_CreateEntity(cam->GetRectCamera(), "Native", "Native"));
-      this->renderQueue = pool.Sort();
-    }
+    // if (pollEvent.IsKeyPress(SDL_SCANCODE_L))
+    // {
+    //   pool.Add(System_CreateEntity(cam->GetRectCamera(), "Native", "Native"));
+    //   this->renderQueue = pool.Sort();
+    // }
 
     if (pollEvent.IsKeyDown(SDL_SCANCODE_W))
     {
@@ -196,6 +199,14 @@ namespace APP
 
   void DemoScene::Update(float dt)
   {
+    /// Adding Enemies per frame
+    if(factoryEnemies.CanSpawnEnemy())
+    {
+      pool.Add(factoryEnemies.CreateEnemy(this->cam->GetRectCamera(),"Native"));
+      this->renderQueue = pool.Sort();
+    }
+
+    /// Objects Update
     for (auto& o : pool.GetAllIDs())
     {
       auto obj = pool.Get(o);
@@ -207,6 +218,9 @@ namespace APP
       System_AIMovement(*pool.Get(PLAYER),*obj, dt);
       obj->Update(dt);
     }
+
+    /// Update all Modules
+    factoryEnemies.UpdateFactoryEnemies();
     cam->Update(dt);
   }
 
@@ -225,7 +239,18 @@ namespace APP
     }
     RenderTileMaps(b, LAYER_PLAYER, LAYER_MAX);    /// Layer front of the player
 
-    ENG::Drawer::DrawRectangleOutline(cam->GetRectCamera(),ENG::Color::Blue);
+    ENG::Drawer::DrawRectangleOutline(cam->GetRectCamera(),ENG::Color::Blue); 
+    ENG::TextAPI::Get().DrawText(
+        *ENG::Services::Fonts().GetFont("Ithaca"),
+        50.f, 50.f, 16.f,
+        ENG::TextAPI::Get().FormatText("Entites: %u" , factoryEnemies.GetTotalEnemies())
+        );
+    ENG::TextAPI::Get().DrawText(
+        *ENG::Services::Fonts().GetFont("Ithaca"),
+        50.f, 80.f, 16.f,
+        ENG::TextAPI::Get().FormatText("FPS: %f" , ENG::Services::Clock().GetFPS())
+        );
+
   }
 
   void DemoScene::Destroy()

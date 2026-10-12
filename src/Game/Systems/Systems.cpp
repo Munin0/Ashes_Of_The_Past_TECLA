@@ -181,27 +181,6 @@ namespace APP
     return anim;
   }
 
-  std::unique_ptr<ENG::Object> System_CreateEntity(const ENG::Rectangle& rect, const std::string& entityName, const std::string& entityClass)
-  {
-    auto entity = std::make_unique<ENG::Object>(entityName);
-    /// Example Enemy43
-    entity->SetName(entityName + std::to_string(entity->GetCountObj())); 
-    entity->GetTransform().m_position = System_GetRandomPosition(rect);
-    entity->GetTransform().m_velocity = {100,100};
-
-    if(entityClass == "Native")
-    {
-      entity->SetClass(entityClass);
-      entity->AddComponent<ENG::ISprite>("Player", "IddleS", 0, 1.0f);
-      entity->AddComponent<ENG::IAnimator>("Player", "IddleS", 10.f, 1, 1.0f);
-      entity->GetComponent<ENG::IAnimator>()->Play();
-    }
-    entity->AddComponent<ENG::IBoundingBox>(ENG::Vector2{64,64});
-    // Give AI
-    
-    return std::move(entity);
-  }
-
   ENG::Vector2 System_GetRandomPosition(const ENG::Rectangle& where)
   {
     constexpr float kMargin = 128.f;
