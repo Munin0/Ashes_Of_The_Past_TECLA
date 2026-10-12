@@ -2,6 +2,7 @@
 #include "Demo.hpp"
 /// | ------------------------------------ |
 #include "Engine/Component/Component.hpp"
+#include "Engine/Inputs/Mouse.hpp"
 #include "Engine/Render/Batching/RAPIBatch.hpp"
 #include "Engine/Render/Camera/Camera2D.hpp"
 #include "Engine/Render/Color/RColor.hpp"
@@ -19,9 +20,11 @@
 #include "Engine/Utils/Vector2.hpp"
 /// | ------------------------------------ |
 #include "Game/FactoryEnemies/Factory.hpp"
+#include "Game/Components/Shield.hpp"
 #include "Game/Systems/Systems.hpp"
 #include "Game/Components/Dash.hpp"
 #include "Game/Components/Movement.hpp"
+#include "SDL3/SDL_mouse.h"
 #include "SDL3/SDL_properties.h"
 #include "SDL3/SDL_scancode.h"
 #include "SDL3_mixer/SDL_mixer.h"
@@ -53,15 +56,18 @@ namespace APP
     // ###############################
     auto idPlayer = pool.Add(std::make_unique<ENG::Object>("Player"));
     auto objPlayer = pool.Get(idPlayer);
+    objPlayer->GetStats().m_hp = 100;
+    objPlayer->GetStats().m_hp_max = 100;
     objPlayer->SetPosition(ENG::Vector2{500,500});
-    auto& movement = objPlayer->AddComponent<APP::Movement>();
-    movement.step = 0.5f;
-    objPlayer->GetTransform().m_velocity = movement.walkingVelocity;
     objPlayer->AddComponent<ENG::ISprite>("Player", "IddleS", 0, 1.0f);
     objPlayer->AddComponent<ENG::IAnimator>("Player", "IddleS", 10.f, 1, 1.0f);
     objPlayer->GetComponent<ENG::IAnimator>()->Play();
     objPlayer->AddComponent<ENG::IBoundingBox>(ENG::Vector2{64,64});
-    objPlayer->AddComponent<APP::Dash>();
+
+    objPlayer->AddComponent<APP::Shield>(1.0f, 5.0f, 100);
+    objPlayer->AddComponent<APP::Dash>(5.0f, 2.0f, .5f);
+
+    objPlayer->AddComponent<APP::Movement>(ENG::Vector2{100.f,100.f}, ENG::Vector2{250.f,250.f}, 2.0f, .5f, 5.0f);
     objPlayer->GetTransform().m_direction = {0,0};
     
     // ###############################
@@ -124,6 +130,10 @@ namespace APP
     //   pool.Add(System_CreateEntity(cam->GetRectCamera(), "Native", "Native"));
     //   this->renderQueue = pool.Sort();
     // }
+    if(pollEvent.IsMouseButtonDown(SDL_BUTTON_RIGHT))
+    {
+      player->GetComponent<Shield>()->ActiveShield();
+    }
 
     if (pollEvent.IsKeyDown(SDL_SCANCODE_W))
     {
@@ -167,19 +177,19 @@ namespace APP
     }
     if (pollEvent.IsKeyPress(SDL_SCANCODE_LSHIFT))
     {
-      TogglePlayerRunning(*player);
+      player->GetComponent<Movement>()->ApplyRun();
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////
     if (pollEvent.IsKeyPress(SDL_SCANCODE_SPACE))
     {
-      TryStartPlayerDash(*player);
+      player->GetComponent<Dash>()->TryDash(player->GetTransform());
     }
 
-    auto* dash = player->GetComponent<APP::Dash>();
-    if (dash && dash->state == Dash::State::Dashing)
+    auto d = player->GetComponent<APP::Dash>();
+    if (d->GetState() == DashState::Dashing)
     {
-      player->GetComponent<ENG::IAnimator>()->SetAnimation(System_GetAnimationLooking("Walk", dash->direction));
+      player->GetComponent<ENG::IAnimator>()->SetAnimation(System_GetAnimationLooking("Walk", d->GetDirecction()));
       player->GetComponent<ENG::IAnimator>()->Resume();
     }
     else if(player->GetTransform().m_direction == ENG::Vector2{0.f,0.f})
@@ -212,8 +222,13 @@ namespace APP
       auto obj = pool.Get(o);
       if(obj->GetName() == "Player")
       {
-        System_PlayerDash(*obj, dt);
-        System_PlayerMovement(*obj, dt);
+        auto d = obj->GetComponent<Dash>();
+        auto mv = obj->GetComponent<Movement>();
+
+        obj->GetComponent<Shield>()->UpdateShield(*obj, 10, ENG::GetMousePosition().Normalize());
+        d->UpdateDash(obj->GetTransform(), dt);
+        mv->ApplyMovement(obj->GetTransform(), dt);
+        mv->UpdateMovement(obj->GetTransform(), dt, d->IsDashing());
       }
       System_AIMovement(*pool.Get(PLAYER),*obj, dt);
       obj->Update(dt);
