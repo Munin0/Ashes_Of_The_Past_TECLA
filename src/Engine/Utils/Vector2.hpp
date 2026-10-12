@@ -227,17 +227,12 @@ namespace ENG
       /**
        * @brief Inequality comparison.
        *
-       * @warning This is not the negation of operator==: it returns true
-       *          only when both x and y differ. Vectors that share one
-       *          component (e.g. { 1, 2 } and { 1, 3 }) are reported as
-       *          "not different".
-       *
        * @param[in] v Vector to compare with.
-       * @return true if x differs from v.x and y differs from v.y.
+       * @return true if either x or y differs from v.
        */
       bool operator!=(const Vector2& v) const
       {
-        return (this->x != v.x && this->y != v.y);
+        return !(*this == v);
       }
       /**
        * @brief Component-wise "less than".
