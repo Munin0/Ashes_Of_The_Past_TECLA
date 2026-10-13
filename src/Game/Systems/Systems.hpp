@@ -3,6 +3,7 @@
 /// | ------------------------------------ |
 #include "Engine/Object/Object.hpp"
 #include "Engine/Utils/RawGeometry.hpp"
+#include "Engine/Object/ObjectPool.hpp"
 #include "Engine/Utils/Vector2.hpp"
 #include <memory>
 #include <string>
@@ -11,6 +12,8 @@
 
 namespace APP
 {
+  [[maybe_unused]] bool System_CollisionRectTriangle(const ENG::Rectangle& rect, const ENG::Triangle& triangle);
+
   [[maybe_unused]] void System_PlayerMovement(ENG::Object& o, float dt);
   
   [[maybe_unused]] void TogglePlayerRunning(ENG::Object& player);
@@ -28,5 +31,5 @@ namespace APP
   [[maybe_unused]] ENG::Vector2 System_GetRandomPosition(const ENG::Rectangle& where);
 
   //Attack System
-  [[maybe_unused]] bool System_MeleeAttack(ENG::Object& player, std::vector<ENG::Object*> close_enemies);
+  [[maybe_unused]] bool System_MeleeAttack(ENG::Object& player, std::vector<uint32_t> allObjectsIds, ENG::ObjectPool& pool);
 }

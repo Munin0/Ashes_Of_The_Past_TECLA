@@ -65,6 +65,11 @@ namespace ENG
 
   void Object::Update(float dt)
   {
+    const auto& box = this->GetComponent<ENG::IBoundingBox>();
+    if(box){
+      box->Update(transform.m_position);
+    }
+    
     for (auto& bb : boundingBoxes)
       bb.Update(this->GetTransform().m_position);
 
@@ -92,11 +97,23 @@ namespace ENG
     transform.m_prev_position = transform.m_position;
     transform.m_position.x = x;
     transform.m_position.y = y;
+    const auto& box = this->GetComponent<ENG::IBoundingBox>();
+    if(box){
+      box->Update(transform.m_position);
+    }
+    for (auto& bb : boundingBoxes)
+      bb.Update(transform.m_position);
   }
 
   void Object::SetPosition(const Vector2& new_pos)
   {
     this->transform.m_position = new_pos;
+    const auto& box = this->GetComponent<ENG::IBoundingBox>();
+    if(box){
+      box->Update(transform.m_position);
+    }
+    for (auto& bb : boundingBoxes)
+      bb.Update(transform.m_position);
   }
 
   const Vector2& Object::GetPosition(void) const

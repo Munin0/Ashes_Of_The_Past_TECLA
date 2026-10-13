@@ -25,7 +25,7 @@ namespace APP
         :stat_name(std::move(name)),
         max_value(std::numeric_limits<T>::max()),
         min_value(min),
-        current_value(current_value)
+        current_value(current)
     {
         if (min_value > max_value)
             throw std::invalid_argument("ITemplateStat minimum cannot exceed maximum");
@@ -77,4 +77,12 @@ namespace APP
         min_value = newMin;
         current_value = std::clamp(current_value, min_value, max_value);
     }
+
+    template class ITemplateStat<uint8_t>;
+    template class ITemplateStat<uint32_t>;
+    template class ITemplateStat<uint64_t>;
+    template class ITemplateStat<uint16_t>;
+    template class ITemplateStat<int>;
+    template class ITemplateStat<float>;
+    template class ITemplateStat<double>;
 }

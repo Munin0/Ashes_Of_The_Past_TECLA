@@ -4,11 +4,15 @@
 #include "Engine/Component/Component.hpp"
 #include "Game/Components/Dash.hpp"
 #include "Game/Components/Movement.hpp"
+#include "Game/Components/Stats.hpp"
 #include "Engine/Object/Object.hpp"
 #include "Engine/Utils/RawGeometry.hpp"
 #include "Engine/Utils/Utils.hpp"
 #include "Engine/Utils/Vector2.hpp"
+#include "Engine/Services/Services.hpp"
 /// | ------------------------------------ |
+#include <algorithm>
+#include <array>
 #include <cstdint>
 #include <memory>
 #include <string>
@@ -17,10 +21,118 @@
 #include "Engine/Utils/Log.hpp"
 /// | ------------------------------------ |
 #include <string>
+#include <iostream>
 /// | ------------------------------------ |
 
 namespace APP
 {
+  bool System_CollisionRectTriangle(const ENG::Rectangle& rect, const ENG::Triangle& triangle)
+  {
+    LOG_DEBUG("[RectTriangle] Inicio: rect=(" + std::to_string(rect.x) + ", " +
+              std::to_string(rect.y) + ", " + std::to_string(rect.w) + ", " +
+              std::to_string(rect.h) + "), triangle.a=(" +
+              std::to_string(triangle.a.x) + ", " + std::to_string(triangle.a.y) +
+              "), triangle.b=(" + std::to_string(triangle.b.x) + ", " +
+              std::to_string(triangle.b.y) + "), triangle.c=(" +
+              std::to_string(triangle.c.x) + ", " + std::to_string(triangle.c.y) + ")");
+
+    const float left = std::min(rect.x, rect.x + rect.w);
+    const float right = std::max(rect.x, rect.x + rect.w);
+    const float top = std::min(rect.y, rect.y + rect.h);
+    const float bottom = std::max(rect.y, rect.y + rect.h);
+    LOG_DEBUG("[RectTriangle] Rect normalizado: left=" + std::to_string(left) +
+              ", right=" + std::to_string(right) + ", top=" + std::to_string(top) +
+              ", bottom=" + std::to_string(bottom));
+
+    const std::array<ENG::Vector2, 4> rectangleVertices = {{
+      {left, top},
+      {right, top},
+      {right, bottom},
+      {left, bottom}
+    }};
+    const std::array<ENG::Vector2, 3> triangleVertices = {{
+      triangle.a,
+      triangle.b,
+      triangle.c
+    }};
+    for (std::size_t i = 0; i < rectangleVertices.size(); ++i)
+    {
+      LOG_DEBUG("[RectTriangle] rectVertex[" + std::to_string(i) + "]=(" +
+                std::to_string(rectangleVertices[i].x) + ", " +
+                std::to_string(rectangleVertices[i].y) + ")");
+    }
+    for (std::size_t i = 0; i < triangleVertices.size(); ++i)
+    {
+      LOG_DEBUG("[RectTriangle] triangleVertex[" + std::to_string(i) + "]=(" +
+                std::to_string(triangleVertices[i].x) + ", " +
+                std::to_string(triangleVertices[i].y) + ")");
+    }
+
+    const auto separatedOnAxis = [&](const ENG::Vector2& axis, const std::string& axisName)
+    {
+      float rectMin = rectangleVertices[0].x * axis.x + rectangleVertices[0].y * axis.y;
+      float rectMax = rectMin;
+      for (const auto& vertex : rectangleVertices)
+      {
+        const float projection = vertex.x * axis.x + vertex.y * axis.y;
+        rectMin = std::min(rectMin, projection);
+        rectMax = std::max(rectMax, projection);
+      }
+
+      float triangleMin = triangleVertices[0].x * axis.x + triangleVertices[0].y * axis.y;
+      float triangleMax = triangleMin;
+      for (const auto& vertex : triangleVertices)
+      {
+        const float projection = vertex.x * axis.x + vertex.y * axis.y;
+        triangleMin = std::min(triangleMin, projection);
+        triangleMax = std::max(triangleMax, projection);
+      }
+
+      const bool separated = rectMax < triangleMin || triangleMax < rectMin;
+      LOG_DEBUG("[RectTriangle] Eje " + axisName + "=(" + std::to_string(axis.x) +
+                ", " + std::to_string(axis.y) + "), proyeccion rect=[" +
+                std::to_string(rectMin) + ", " + std::to_string(rectMax) +
+                "], triangulo=[" + std::to_string(triangleMin) + ", " +
+                std::to_string(triangleMax) + "], separados=" +
+                std::string(separated ? "true" : "false"));
+      return separated;
+    };
+
+    LOG_DEBUG("[RectTriangle] Probando ejes X e Y del rectangulo");
+    if (separatedOnAxis({1.0f, 0.0f}, "rect-X"))
+    {
+      LOG_DEBUG("[RectTriangle] Resultado: no colisiona; separados en el eje X");
+      return false;
+    }
+    if (separatedOnAxis({0.0f, 1.0f}, "rect-Y"))
+    {
+      LOG_DEBUG("[RectTriangle] Resultado: no colisiona; separados en el eje Y");
+      return false;
+    }
+
+    for (std::size_t i = 0; i < triangleVertices.size(); ++i)
+    {
+      const auto& start = triangleVertices[i];
+      const auto& end = triangleVertices[(i + 1) % triangleVertices.size()];
+      const ENG::Vector2 edge = end - start;
+      const ENG::Vector2 normal{-edge.y, edge.x};
+      const std::string axisName = "triangle-edge-" + std::to_string(i);
+      LOG_DEBUG("[RectTriangle] Probando arista " + std::to_string(i) +
+                ": inicio=(" + std::to_string(start.x) + ", " +
+                std::to_string(start.y) + "), fin=(" + std::to_string(end.x) +
+                ", " + std::to_string(end.y) + "), normal=(" +
+                std::to_string(normal.x) + ", " + std::to_string(normal.y) + ")");
+      if (separatedOnAxis(normal, axisName))
+      {
+        LOG_DEBUG("[RectTriangle] Resultado: no colisiona; separados en " + axisName);
+        return false;
+      }
+    }
+
+    LOG_DEBUG("[RectTriangle] Resultado: colisiona; no se encontro eje separador");
+    return true;
+  }
+
   constexpr uint8_t MaxLevel = 255;
   constexpr int StandardThreshold = 1000;
   // Se define un valor maximo para la experiencia total y evitar el overflow
@@ -197,6 +309,10 @@ namespace APP
       entity->GetComponent<ENG::IAnimator>()->Play();
     }
     entity->AddComponent<ENG::IBoundingBox>(ENG::Vector2{64,64});
+    auto hp = entity->AddComponent<APP::HealtStat>();
+    auto str = entity->AddComponent<APP::StrengthStat>();
+    auto def = entity->AddComponent<APP::DefenseStat>();
+
     // Give AI
     
     return std::move(entity);
@@ -233,7 +349,232 @@ namespace APP
   }
 
   //Attack Systems
-  bool System_MeleeAttack(ENG::Object& player, std::vector<ENG::Object*> close_enemies){
+  bool System_MeleeAttack(ENG::Object& player, std::vector<uint32_t> allObjectsIds, ENG::ObjectPool& pool){
+    static bool attackActive = true;
+    static float dt_attack = 0;
+
+    // LOG_DEBUG("[MeleeAttack] Inicio. Jugador=\"" + player.GetName() +
+    //           "\", cantidad de ids=" + std::to_string(allObjectsIds.size()) +
+    //           ", attackActive=" + std::string(attackActive ? "true" : "false") +
+    //           ", dt_attack=" + std::to_string(dt_attack));
+
+    auto* playerBoundingBox = player.GetComponent<ENG::IBoundingBox>();
+    auto* animator = player.GetComponent<ENG::IAnimator>();
+    auto* attackDistance = player.GetComponent<APP::MeleeAttackDistance>();
+    auto* attackRange = player.GetComponent<APP::MeleeAttackRange>();
+    auto* attackVelocity = player.GetComponent<APP::MeleeAttackVelocity>();
+    auto* strength = player.GetComponent<APP::StrengthStat>();
+
+    // LOG_DEBUG("[MeleeAttack] Componentes: IBoundingBox=" +
+    //           std::string(playerBoundingBox ? "presente" : "null") +
+    //           ", IAnimator=" + (animator ? "presente" : "null") +
+    //           ", MeleeAttackDistance=" + (attackDistance ? "presente" : "null") +
+    //           ", MeleeAttackRange=" + (attackRange ? "presente" : "null") +
+    //           ", MeleeAttackVelocity=" + (attackVelocity ? "presente" : "null") +
+    //           ", StrengthStat=" + (strength ? "presente" : "null"));
+    if (!playerBoundingBox || !animator || !attackDistance || !attackRange ||
+        !attackVelocity || !strength)
+    {
+      LOG_ERROR("[MeleeAttack] Cancelado: falta un componente requerido del jugador");
+      return false;
+    }
+
+    constexpr float sen45 = 0.7071f;
+    const auto player_position_center = playerBoundingBox->GetCenter();
+    const std::string animationKey = animator->GetKeyAnimation();
+    const auto directionLooking = animationKey.substr(4);
+    int current_direction = 5;
+    const float attk_dist = attackDistance->getCurrent();
+    const float attk_range = attackRange->getCurrent();
+    const float attk_vel = attackVelocity->getCurrent();
+    const uint8_t attk_damage = strength->getCurrent();
+
+    // LOG_DEBUG("[MeleeAttack] Centro jugador=(" +
+    //           std::to_string(player_position_center.x) + ", " +
+    //           std::to_string(player_position_center.y) + ")");
+    // LOG_DEBUG("[MeleeAttack] animationKey=\"" + animationKey +
+    //           "\", directionLooking=\"" + directionLooking + "\"");
+    // LOG_DEBUG("[MeleeAttack] attk_dist=" + std::to_string(attk_dist) +
+    //           ", attk_range=" + std::to_string(attk_range) +
+    //           ", attk_vel=" + std::to_string(attk_vel) +
+    //           ", attk_damage=" + std::to_string(static_cast<unsigned>(attk_damage)) +
+    //           ", sen45=" + std::to_string(sen45));
+
+    ENG::Vector2 allDirections[8] = {{-1, -1}, {0, -1}, {1, -1}, {1, 0}, {1, 1}, {0, 1}, {-1, 1}, {-1, 0}};
+
+    // LOG_DEBUG("[MeleeAttack] Resolviendo direccion");
+    if(directionLooking == "N"){
+      current_direction = 1;
+    }else if(directionLooking == "S"){
+      current_direction = 5;
+    }else if(directionLooking == "E"){
+      current_direction = 3;
+    }else if(directionLooking == "W"){
+      current_direction = 7;
+    }else if(directionLooking == "NE"){
+      current_direction = 2;
+    }else if(directionLooking == "SE"){
+      current_direction = 4;
+    }else if(directionLooking == "NW"){
+      current_direction = 0;
+    }else if(directionLooking == "SW"){
+      current_direction = 6;
+    }else
+    {
+      current_direction = 5;
+    }
+    // LOG_DEBUG("[MeleeAttack] current_direction=" + std::to_string(current_direction) +
+    //           ", vector=(" + std::to_string(allDirections[current_direction].x) +
+    //           ", " + std::to_string(allDirections[current_direction].y) + ")");
+
+    ENG::Vector2 attack_vertex[4]; //points of the triangle attack
+    attack_vertex[0] = player_position_center; //the first point is the player position
+
+    //calculation of the two remaining attack points
+    bool isDiagonal = (std::abs(allDirections[current_direction].x) + std::abs(allDirections[current_direction].y)) == 2;
+    // LOG_DEBUG("[MeleeAttack] isDiagonal=" + std::string(isDiagonal ? "true" : "false") +
+    //           ", vertice0=(" + std::to_string(attack_vertex[0].x) + ", " +
+    //           std::to_string(attack_vertex[0].y) + ")");
     
+    if(isDiagonal){
+      float dist = attk_dist * sen45; //sen(45) = 0.7071 (law of sines)
+      // LOG_DEBUG("[MeleeAttack] Rama diagonal: dist=" + std::to_string(dist));
+
+      attack_vertex[1] = ENG::Vector2( // center point of attack
+        player_position_center.x + (dist * allDirections[current_direction].x),
+        player_position_center.y + (dist * allDirections[current_direction].y)
+      );
+      // LOG_DEBUG("[MeleeAttack] vertice1=(" + std::to_string(attack_vertex[1].x) +
+      //           ", " + std::to_string(attack_vertex[1].y) + ")");
+
+      float dist_for_range = (attk_range / 2) * sen45;
+      int idx = current_direction - 2 < 0 ?  (( 8 + current_direction) - 2) : current_direction - 2;
+      // LOG_DEBUG("[MeleeAttack] dist_for_range=" + std::to_string(dist_for_range) +
+      //           ", indice lateral 1=" + std::to_string(idx));
+
+      attack_vertex[2] = ENG::Vector2( //range vertex 1
+        attack_vertex[1].x + (dist_for_range * allDirections[idx].x),
+        attack_vertex[1].y + (dist_for_range * allDirections[idx].y)
+      );
+      // LOG_DEBUG("[MeleeAttack] vertice2=(" + std::to_string(attack_vertex[2].x) +
+      //           ", " + std::to_string(attack_vertex[2].y) + ")");
+
+      idx = (current_direction + 2) % 8;
+      // LOG_DEBUG("[MeleeAttack] indice lateral 2=" + std::to_string(idx));
+
+      attack_vertex[3] = ENG::Vector2( //range vertex 2
+        attack_vertex[1].x + (dist_for_range * allDirections[idx].x),
+        attack_vertex[1].y + (dist_for_range * allDirections[idx].y)
+      );
+      // LOG_DEBUG("[MeleeAttack] vertice3=(" + std::to_string(attack_vertex[3].x) +
+      //           ", " + std::to_string(attack_vertex[3].y) + ")");
+
+    }else{
+      float dist_for_range = attk_range / 2;
+      bool isVertical = allDirections[current_direction].y != 0;
+      // LOG_DEBUG("[MeleeAttack] Rama cardinal: dist_for_range=" +
+      //           std::to_string(dist_for_range) + ", isVertical=" +
+      //           std::string(isVertical ? "true" : "false"));
+
+      attack_vertex[1] = ENG::Vector2( // center point of attack
+        player_position_center.x + (attk_dist * allDirections[current_direction].x),
+        player_position_center.y + (attk_dist * allDirections[current_direction].y)
+      );
+      // LOG_DEBUG("[MeleeAttack] vertice1=(" + std::to_string(attack_vertex[1].x) +
+      //           ", " + std::to_string(attack_vertex[1].y) + ")");
+
+      attack_vertex[2] = ENG::Vector2(
+        attack_vertex[1].x + (dist_for_range * (isVertical ? -1 : 0)),
+        attack_vertex[1].y + (dist_for_range * (isVertical ? 0 : -1))
+      );
+      // LOG_DEBUG("[MeleeAttack] vertice2=(" + std::to_string(attack_vertex[2].x) +
+      //           ", " + std::to_string(attack_vertex[2].y) + ")");
+
+      attack_vertex[3] = ENG::Vector2(
+        attack_vertex[1].x + (dist_for_range * (isVertical ? 1 : 0)),
+        attack_vertex[1].y + (dist_for_range * (isVertical ? 0 : 1))
+      );
+      // LOG_DEBUG("[MeleeAttack] vertice3=(" + std::to_string(attack_vertex[3].x) +
+      //           ", " + std::to_string(attack_vertex[3].y) + ")");
+    }
+
+    //get possibly enemies in attack area
+    std::vector<ENG::Object*> close_enemies;
+
+    // LOG_DEBUG("[MeleeAttack] Inicio de revision de objetivos");
+    for (const auto id : allObjectsIds)
+    {
+      // LOG_DEBUG("[MeleeAttack] Buscando id=" + std::to_string(id));
+      auto* enemy = pool.Get(id);
+      if (!enemy)
+      {
+        LOG_ERROR("[MeleeAttack] No se encontro objeto con id=" +
+                  std::to_string(id) + "; se omite");
+        continue;
+      }
+      // LOG_DEBUG("[MeleeAttack] Objeto encontrado: \"" + enemy->GetName() + "\"");
+
+      if(enemy->GetName().substr(0, 6) != "Native")
+      {
+        // LOG_DEBUG("[MeleeAttack] Objeto omitido: no coincide con el filtro Native");
+        continue;
+      }
+
+      const auto& boundingBoxe = enemy->GetComponent<ENG::IBoundingBox>();
+      if (!boundingBoxe)
+      {
+        LOG_ERROR("[MeleeAttack] Objeto \"" + enemy->GetName() +
+                  "\" no tiene bounding box; se omite");
+        continue;
+      }
+
+      auto* enemyHealth = enemy->GetComponent<APP::HealtStat>();
+      if (!enemyHealth)
+      {
+        LOG_ERROR("[MeleeAttack] Objeto \"" + enemy->GetName() +
+                  "\" no tiene HealtStat; se omite");
+        continue;
+      }
+
+      const auto& boundingBox = boundingBoxe[0];
+      ENG::Vector2 position = boundingBox.GetPosition();
+      ENG::Vector2 size = boundingBox.GetSize();
+      // LOG_DEBUG("[MeleeAttack] Rect enemigo: posicion=(" +
+      //           std::to_string(position.x) + ", " + std::to_string(position.y) +
+      //           "), tamano=(" + std::to_string(size.x) + ", " +
+      //           std::to_string(size.y) + ")");
+
+      ENG::Vector2 center = ENG::Vector2(
+        (attack_vertex[0].x + attack_vertex[2].x + attack_vertex[3].x)/2,
+        (attack_vertex[0].y + attack_vertex[2].y + attack_vertex[3].y)/2
+      );
+      // LOG_DEBUG("[MeleeAttack] Centro triangulo=(" + std::to_string(center.x) +
+      //           ", " + std::to_string(center.y) + ")");
+
+      //in collision?
+      const ENG::Rectangle enemyRect{position.x, position.y, size.x, size.y};
+      const ENG::Triangle attackTriangle{
+        attack_vertex[0], attack_vertex[2], attack_vertex[3], center
+      };
+      // LOG_DEBUG("[MeleeAttack] Llamando System_CollisionRectTriangle");
+      const bool collision = System_CollisionRectTriangle(enemyRect, attackTriangle);
+      // LOG_DEBUG("[MeleeAttack] Resultado de colision=" +
+      //           std::string(collision ? "true" : "false"));
+
+      if(collision){
+        const auto healthBefore = enemyHealth->getCurrent();
+        // LOG_DEBUG("[MeleeAttack] Aplicando dano=" +
+        //           std::to_string(static_cast<unsigned>(attk_damage)) +
+        //           ", vida antes=" +
+        //           std::to_string(static_cast<unsigned>(healthBefore)));
+        enemyHealth->receiveDamage(attk_damage);
+        const auto healthAfter = enemyHealth->getCurrent();
+        // LOG_DEBUG("[MeleeAttack] Vida despues=" +
+        //           std::to_string(static_cast<unsigned>(healthAfter)));
+        return true;
+      }
+    }
+
+    return false;
   }
 }

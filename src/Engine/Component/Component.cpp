@@ -129,7 +129,7 @@ namespace ENG
   }
 
   IBoundingBox::IBoundingBox(const Vector2& dim, bool isTrigger)
-    : IComponents{}, m_size(dim), m_isTrigger(isTrigger)
+    : IComponents{}, m_position(0.0f, 0.0f), m_size(dim), m_isTrigger(isTrigger)
   {}
 
   IColor::IColor(const Color& c)

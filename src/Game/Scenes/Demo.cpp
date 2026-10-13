@@ -64,6 +64,9 @@ namespace APP
     objPlayer->AddComponent<APP::DefenseStat>();
     objPlayer->AddComponent<APP::StrengthStat>();
     objPlayer->AddComponent<APP::XPStat>();
+    objPlayer->AddComponent<APP::MeleeAttackDistance>();
+    objPlayer->AddComponent<APP::MeleeAttackRange>();
+    objPlayer->AddComponent<APP::MeleeAttackVelocity>();
     objPlayer->GetTransform().m_direction = {0,0};
     
     // ###############################
@@ -115,6 +118,7 @@ namespace APP
     auto& pollEvent = ENG::PollEvent::Get();
     auto player = pool.Get(PLAYER);
     auto& transform = player->GetTransform();
+    auto poolIDs = pool.GetAllIDs();
 
     if (pollEvent.IsKeyPress(SDL_SCANCODE_P))
     {
@@ -191,6 +195,15 @@ namespace APP
       player->GetComponent<ENG::IAnimator>()->Stop();
     }
     ////////////////////////////////////////
+
+
+    //////////////////Attacks//////////////////////
+    if(pollEvent.IsMouseButtonPress(SDL_BUTTON_LEFT))
+    {
+      System_MeleeAttack(*player, poolIDs, pool);
+    }
+
+    //////////////////Attacks//////////////////////
 
     float wheel = pollEvent.GetMouseWheel();
     if (wheel != 0.0f)
