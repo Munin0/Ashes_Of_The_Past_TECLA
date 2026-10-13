@@ -82,4 +82,9 @@ namespace ENG
    * @return true if the circles overlap, false otherwise.
    */
   [[maybe_unused]] bool CollisionCircle(const Circle& a, const Circle& b);
+
+
+
+  [[maybe_unused]] bool CollisionRectTriangle(const ENG::Rectangle& rect, const ENG::Triangle& triangle);
+
 }

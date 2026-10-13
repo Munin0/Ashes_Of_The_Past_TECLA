@@ -2,8 +2,8 @@
 #include "Systems.hpp"
 /// | ------------------------------------ |
 #include "Engine/Component/Component.hpp"
-#include "Game/Components/Dash.hpp"
-#include "Game/Components/Movement.hpp"
+#include "Engine/Object/ObjectPool.hpp"
+#include "Engine/Physics/Collision.hpp"
 #include "Game/Components/Stats.hpp"
 #include "Game/Components/Aim.hpp"
 #include "Engine/Object/Object.hpp"
@@ -12,82 +12,18 @@
 #include "Engine/Utils/Vector2.hpp"
 #include "Engine/Render/Batching/RAPIBatch.hpp"
 #include "Engine/Render/Color/RColor.hpp"
-#include "Engine/Services/Services.hpp"
-/// | ------------------------------------ |
-#include <algorithm>
-#include <array>
-#include <cstdint>
-#include <string>
-#include <algorithm>
-/// | ------------------------------------ |
 #include "Engine/Utils/Log.hpp"
 /// | ------------------------------------ |
+#include <algorithm>
+#include <cstdint>
+#include <cstdlib>
 #include <string>
-#include <iostream>
+#include <string>
+#include <vector>
 /// | ------------------------------------ |
 
 namespace APP
 {
-  bool System_CollisionRectTriangle(const ENG::Rectangle& rect, const ENG::Triangle& triangle)
-  {
-    const float left = std::min(rect.x, rect.x + rect.w);
-    const float right = std::max(rect.x, rect.x + rect.w);
-    const float top = std::min(rect.y, rect.y + rect.h);
-    const float bottom = std::max(rect.y, rect.y + rect.h);
-
-    const std::array<ENG::Vector2, 4> rectangleVertices = {{
-      {left, top},
-      {right, top},
-      {right, bottom},
-      {left, bottom}
-    }};
-    const std::array<ENG::Vector2, 3> triangleVertices = {{
-      triangle.a,
-      triangle.b,
-      triangle.c
-    }};
-
-    const auto separatedOnAxis = [&](const ENG::Vector2& axis)
-    {
-      float rectMin = rectangleVertices[0].x * axis.x + rectangleVertices[0].y * axis.y;
-      float rectMax = rectMin;
-      for (const auto& vertex : rectangleVertices)
-      {
-        const float projection = vertex.x * axis.x + vertex.y * axis.y;
-        rectMin = std::min(rectMin, projection);
-        rectMax = std::max(rectMax, projection);
-      }
-
-      float triangleMin = triangleVertices[0].x * axis.x + triangleVertices[0].y * axis.y;
-      float triangleMax = triangleMin;
-      for (const auto& vertex : triangleVertices)
-      {
-        const float projection = vertex.x * axis.x + vertex.y * axis.y;
-        triangleMin = std::min(triangleMin, projection);
-        triangleMax = std::max(triangleMax, projection);
-      }
-
-      return rectMax < triangleMin || triangleMax < rectMin;
-    };
-
-    if (separatedOnAxis({1.0f, 0.0f}))
-      return false;
-    if (separatedOnAxis({0.0f, 1.0f}))
-      return false;
-
-    for (std::size_t i = 0; i < triangleVertices.size(); ++i)
-    {
-      const auto& start = triangleVertices[i];
-      const auto& end = triangleVertices[(i + 1) % triangleVertices.size()];
-      const ENG::Vector2 edge = end - start;
-      const ENG::Vector2 normal{-edge.y, edge.x};
-      if (separatedOnAxis(normal))
-        return false;
-    }
-
-    return true;
-  }
-
   constexpr uint8_t MaxLevel = 255;
   constexpr int StandardThreshold = 1000;
   // Se define un valor maximo para la experiencia total y evitar el overflow
@@ -99,7 +35,7 @@ namespace APP
     return uint32_t(level * StandardThreshold);
   }
 
-  static bool System_GetMeleeAttackTriangle(ENG::Object& player, ENG::Triangle& attackTriangle)
+  bool System_GetMeleeAttackTriangle(ENG::Object& player, ENG::Triangle& attackTriangle)
   {
     auto* playerBoundingBox = player.GetComponent<ENG::IBoundingBox>();
     auto* animator = player.GetComponent<ENG::IAnimator>();
@@ -300,6 +236,12 @@ namespace APP
     if (direction.x > T)       anim.push_back('E');
     else if (direction.x < -T) anim.push_back('W');
 
+    /// Si la direccion es (0,0) o demasiado corta no se agrego sufijo y la
+    /// clave quedaria invalida (ej. "Walk"); el atlas solo tiene variantes
+    /// direccionales, asi que se usa "S" como direccion por defecto.
+    if (anim.size() == prefix.size())
+      anim.push_back('S');
+
     return anim;
   }
 
@@ -367,14 +309,14 @@ namespace APP
     if(essence <= stats.m_essence) return true;
     return false;    
   }
-}
+
   //Attack Systems////////////////////////////////////////////////////////////////////////////////////////////////////////
   bool System_MeleeAttack(ENG::Object& player, std::vector<uint32_t> allObjectsIds, ENG::ObjectPool& pool)
   {
     auto* playerBoundingBox = player.GetComponent<ENG::IBoundingBox>();
     auto* strength = player.GetComponent<APP::StrengthStat>();
     ENG::Triangle attackTriangle;
-    if (!playerBoundingBox || !strength || !System_GetMeleeAttackTriangle(player, attackTriangle))
+    if (!playerBoundingBox || !strength || !System_GetMeleeAttackTriangle(player, attackTriangle) )
       return false;
 
 
@@ -428,13 +370,13 @@ namespace APP
       const ENG::Rectangle enemyRect{
         enemyPosition.x, enemyPosition.y, enemySize.x, enemySize.y
       };
-      if (!System_CollisionRectTriangle(enemyRect, attackTriangle))
+      if (!ENG::CollisionRectTriangle(enemyRect, attackTriangle))
         continue;
 
       hitAnyEnemy = true;
       enemyHealth->receiveDamage(attackDamage);
-      if (enemyHealth->isDead())
-        LOG_INFO("El enemigo murio: " + enemy->GetName());
+      // if (enemyHealth->isDead())
+      //   LOG_INFO("El enemigo murio: " + enemy->GetName());
     }
 
     return hitAnyEnemy;
