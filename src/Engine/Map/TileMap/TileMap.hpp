@@ -12,6 +12,7 @@
 #include <vector>
 // | -------------------------------
 #define LAYER_GROUND      0
+#define LAYER_COLLISION   1
 #define LAYER_WORLD       10
 #define LAYER_PLAYER      20
 #define LAYER_MIDDLE      25
@@ -137,6 +138,12 @@ namespace ENG
       const std::string& GetName(void) const { return m_name; }
 
       /**
+       * @brief Tells whether this is a collision layer.
+       * @return true if the layer name indicates collision.
+       */
+      bool IsCollisionLayer() const { return m_name == "Collision"; }
+
+      /**
        * @brief Returns the width of the map.
        * @return Width, in tiles.
        */
@@ -147,6 +154,40 @@ namespace ENG
        * @return Height, in tiles.
        */
       int GetHeight(void) const { return m_height; }
+
+      /**
+       * @brief Converts a world-space point into fractional tile-grid
+       *        coordinates.
+       *
+       * The result is not floored: the integer part is the tile and the
+       * fractional part is the position inside it. Works for both
+       * orthogonal and isometric maps (the isometric case is the inverse of
+       * the GridToScreen() mapping).
+       *
+       * @param[in] world Point in world space.
+       * @return The { col, row } grid coordinates (fractional).
+       */
+      Vector2 WorldToGrid(const Vector2& world) const;
+
+      /**
+       * @brief Tells whether the tile at (col, row) is occupied.
+       *
+       * A cell is occupied when it holds a tile of this layer. Cells outside
+       * the map bounds are considered empty.
+       *
+       * @param[in] col Column of the cell.
+       * @param[in] row Row of the cell.
+       * @return true if the cell has a tile, false otherwise.
+       */
+      bool IsCellBlocked(int col, int row) const;
+
+      /**
+       * @brief Tells whether the tile under a world-space point is occupied.
+       *
+       * @param[in] world Point in world space.
+       * @return true if the tile under @p world has a tile, false otherwise.
+       */
+      bool IsBlockedAtWorld(const Vector2& world) const;
 
     private:
       void RenderIsometric(Batcher& b, const Rectangle& rect) const;

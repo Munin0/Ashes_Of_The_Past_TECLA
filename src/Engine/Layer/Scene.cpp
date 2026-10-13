@@ -28,6 +28,7 @@ namespace ENG
     {
       if (map.GetLayer() >= minLayer && map.GetLayer() < maxLayer)
       {
+        if (map.IsCollisionLayer()) continue;
         map.Render(b);
       }
     }

@@ -33,5 +33,6 @@ namespace APP
       ENG::ObjectPool pool;
       std::vector<ENG::RenderEntry> renderQueue;
       std::unique_ptr<ENG::Camera2D> cam;
+      bool m_isColliding = false;
   };
 }

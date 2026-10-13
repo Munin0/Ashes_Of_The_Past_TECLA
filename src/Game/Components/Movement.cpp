@@ -2,17 +2,22 @@
 #include "Movement.hpp"
 /// | ------------------------------------ |
 #include "Engine/Component/Component.hpp"
+#include "Engine/Utils/Vector2.hpp"
 /// | ------------------------------------ |
 
 namespace APP
 {
   void Movement::ApplyMovement(ENG::ITransform& transform, float dt)
   {
+    if(transform.m_direction == ENG::Vector2{0.f, 0.f})
+      return;
     transform.m_direction.Normalize();
 
     auto delta = transform.m_direction * transform.m_velocity * dt;
     delta.y *= 0.5f;
+    transform.m_prev_position = transform.m_position;
     transform.m_position += delta;
+    transform.m_prev_direction = transform.m_direction;
     transform.m_direction = {0,0};
   }
 

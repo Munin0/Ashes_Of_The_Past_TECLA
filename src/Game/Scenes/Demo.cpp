@@ -11,6 +11,7 @@
 #include "Engine/Object/Object.hpp"
 #include "Engine/Object/ObjectPool.hpp"
 #include "Engine/Map/TileMap/TileMap.hpp"
+#include "Engine/Physics/Collision.hpp"
 #include "Engine/Inputs/PollEvent.hpp"
 #include "Engine/Render/Batching/RBatch.hpp"
 #include "Engine/Services/ScenesManager.hpp"
@@ -40,7 +41,7 @@
 namespace APP
 {
   DemoScene::DemoScene(const std::string& id)
-    : ENG::Scene{}, factoryEnemies{1000, 5.0f, 1.0f}
+    : ENG::Scene{}, factoryEnemies{1000, 5.0f, 0.1f}
   {
     sceneID = id;
   }
@@ -58,9 +59,9 @@ namespace APP
     auto objPlayer = pool.Get(idPlayer);
     objPlayer->GetStats().m_hp = 100;
     objPlayer->GetStats().m_hp_max = 100;
-    objPlayer->SetPosition(ENG::Vector2{500,500});
-    objPlayer->AddComponent<ENG::ISprite>("Player", "IddleS", 0, 1.0f);
-    objPlayer->AddComponent<ENG::IAnimator>("Player", "IddleS", 10.f, 1, 1.0f);
+    objPlayer->SetPosition(ENG::Vector2{30,50});
+    objPlayer->AddComponent<ENG::ISprite>("Player", "IddleNE", 0, 1.0f);
+    objPlayer->AddComponent<ENG::IAnimator>("Player", "IddleNE", 10.f, 1, 1.0f);
     objPlayer->GetComponent<ENG::IAnimator>()->Play();
     objPlayer->AddComponent<ENG::IBoundingBox>(ENG::Vector2{64,64});
 
@@ -70,6 +71,7 @@ namespace APP
     objPlayer->AddComponent<APP::Movement>(ENG::Vector2{100.f,100.f}, ENG::Vector2{250.f,250.f}, 2.0f, .5f, 5.0f);
     objPlayer->GetTransform().m_direction = {0,0};
     
+    objPlayer->GetTransform().m_prev_direction = {0 , 1.f};
     // ###############################
     // Tilemap 
     // Configuration of the Tilemaps
@@ -117,84 +119,77 @@ namespace APP
     auto& pollEvent = ENG::PollEvent::Get();
     auto player = pool.Get(PLAYER);
     auto& transform = player->GetTransform();
+    auto* animator = player->GetComponent<ENG::IAnimator>();
+    auto* movement = player->GetComponent<APP::Movement>();
+    auto* dash = player->GetComponent<APP::Dash>();
 
-    if (pollEvent.IsKeyPress(SDL_SCANCODE_P))
-    {
-      isRunning = false;
-      ENG::Services::Scenes().PedingScene("MainMenu");
-      ENG::Services::Music().StopMusic("Marine");
-    }
-
-    // if (pollEvent.IsKeyPress(SDL_SCANCODE_L))
-    // {
-    //   pool.Add(System_CreateEntity(cam->GetRectCamera(), "Native", "Native"));
-    //   this->renderQueue = pool.Sort();
-    // }
     if(pollEvent.IsMouseButtonDown(SDL_BUTTON_RIGHT))
     {
       player->GetComponent<Shield>()->ActiveShield();
     }
 
-    if (pollEvent.IsKeyDown(SDL_SCANCODE_W))
-    {
-      transform.m_direction.y -= 1.0f;
-      if(pollEvent.IsKeyDown(SDL_SCANCODE_A))
-      {
-        transform.m_direction.x -= 1.0f;
-      }
-      else if (pollEvent.IsKeyDown(SDL_SCANCODE_D))
-      {
-        transform.m_direction.x += 1.0f;
-      }
-      player->GetComponent<ENG::IAnimator>()->SetAnimation(System_GetAnimationLooking("Walk", transform.m_direction));
-      player->GetComponent<ENG::IAnimator>()->Resume();
-    }
-    else if (pollEvent.IsKeyDown(SDL_SCANCODE_S))
-    {
-      transform.m_direction.y += 1.0f;
-      if(pollEvent.IsKeyDown(SDL_SCANCODE_A))
-      {
-        transform.m_direction.x -= 1.0f;
-      }
-      else if(pollEvent.IsKeyDown(SDL_SCANCODE_D))
-      {
-        transform.m_direction.x += 1.0f;
-      }
-      player->GetComponent<ENG::IAnimator>()->SetAnimation(System_GetAnimationLooking("Walk", transform.m_direction));
-      player->GetComponent<ENG::IAnimator>()->Resume();
-    }
-    else if (pollEvent.IsKeyDown(SDL_SCANCODE_A))
-    {
-      transform.m_direction.x -= 1.0f;
-      player->GetComponent<ENG::IAnimator>()->SetAnimation(System_GetAnimationLooking("Walk", transform.m_direction));
-      player->GetComponent<ENG::IAnimator>()->Resume();
-    }
-    else if (pollEvent.IsKeyDown(SDL_SCANCODE_D))
-    {
-      transform.m_direction.x += 1.0f;
-      player->GetComponent<ENG::IAnimator>()->SetAnimation(System_GetAnimationLooking("Walk", transform.m_direction));
-      player->GetComponent<ENG::IAnimator>()->Resume();
-    }
     if (pollEvent.IsKeyPress(SDL_SCANCODE_LSHIFT))
     {
-      player->GetComponent<Movement>()->ApplyRun();
+      movement->ApplyRun();
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
     if (pollEvent.IsKeyPress(SDL_SCANCODE_SPACE))
     {
-      player->GetComponent<Dash>()->TryDash(player->GetTransform());
+      dash->TryDash(player->GetTransform());
     }
 
-    auto d = player->GetComponent<APP::Dash>();
-    if (d->GetState() == DashState::Dashing)
+    ENG::Vector2 inputDir{0.f, 0.f};
+    bool moving = false;
+    if (pollEvent.IsKeyDown(SDL_SCANCODE_W))
     {
-      player->GetComponent<ENG::IAnimator>()->SetAnimation(System_GetAnimationLooking("Walk", d->GetDirecction()));
-      player->GetComponent<ENG::IAnimator>()->Resume();
+      inputDir.y -= 1.0f;
+      moving = true;
     }
-    else if(player->GetTransform().m_direction == ENG::Vector2{0.f,0.f})
+    if (pollEvent.IsKeyDown(SDL_SCANCODE_S))
     {
-      player->GetComponent<ENG::IAnimator>()->Stop();
+      inputDir.y += 1.0f;
+      moving = true;
+    }
+    if (pollEvent.IsKeyDown(SDL_SCANCODE_A))
+    {
+      inputDir.x -= 1.0f;
+      moving = true;
+    }
+    if (pollEvent.IsKeyDown(SDL_SCANCODE_D))
+    {
+      inputDir.x += 1.0f;
+      moving = true;
+    }
+    transform.m_direction = inputDir;
+
+    if (transform.m_direction.x != 0.f || transform.m_direction.y != 0.f)
+    {
+      transform.m_prev_direction = transform.m_direction;
+    }
+
+    if (dash->GetState() == DashState::Dashing)
+    {
+      animator->SetAnimation(System_GetAnimationLooking("Walk", dash->GetDirecction()));
+      animator->Resume();
+      return;
+    }
+
+    if (moving)
+    {
+      if (movement->IsRunning())
+      {
+        animator->SetAnimation(System_GetAnimationLooking("Run", player->GetTransform().m_direction));
+      }
+      else
+      {
+        animator->SetAnimation(System_GetAnimationLooking("Walk", player->GetTransform().m_direction));
+      }
+      animator->Resume();
+    }
+    else
+    {
+      animator->SetAnimation(System_GetAnimationLooking("Iddle", player->GetTransform().m_prev_direction));
+      animator->Resume();
     }
     ////////////////////////////////////////
 
@@ -230,8 +225,25 @@ namespace APP
         mv->ApplyMovement(obj->GetTransform(), dt);
         mv->UpdateMovement(obj->GetTransform(), dt, d->IsDashing());
       }
+
       System_AIMovement(*pool.Get(PLAYER),*obj, dt);
       obj->Update(dt);
+
+      if(obj->GetName() == "Player")
+      {
+        m_isColliding = false;
+        for (auto& map : tileMaps)
+        {
+          if (map.IsCollisionLayer())
+          {
+            if (ENG::CollisionTileMapIsometric(*obj, map, true))
+            {
+              m_isColliding = true;
+              break;
+            }
+          }
+        }
+      }
     }
 
     /// Update all Modules
@@ -255,6 +267,24 @@ namespace APP
     RenderTileMaps(b, LAYER_PLAYER, LAYER_MAX);    /// Layer front of the player
 
     ENG::Drawer::DrawRectangleOutline(cam->GetRectCamera(),ENG::Color::Blue); 
+    if (auto* player = pool.Get(PLAYER))
+    {
+      if (auto* box = player->GetComponent<ENG::IBoundingBox>())
+      {
+        const auto sz = box->GetSize();
+        float fw = sz.x * 0.4f, fh = std::max(2.0f, sz.y * 0.12f);
+        ENG::Drawer::DrawRectangleOutline(
+            ENG::Vector2{box->GetPosition().x + (sz.x - fw) * 0.5f, box->GetPosition().y + sz.y - fh},
+            ENG::Vector2{fw, fh}, ENG::Color::Red);
+      }
+    }
+
+
+    ENG::TextAPI::Get().DrawText(
+        *ENG::Services::Fonts().GetFont("Ithaca"),
+        50.f, 110.f, 16.f,
+        ENG::TextAPI::Get().FormatText("Collision: %s", m_isColliding ? "YES" : "NO")
+        );
     ENG::TextAPI::Get().DrawText(
         *ENG::Services::Fonts().GetFont("Ithaca"),
         50.f, 50.f, 16.f,

@@ -26,7 +26,7 @@ namespace ENG
   Object::Object(const std::string& _name)
   {
     name        = _name;
-    LOG_INFO(" | << Object: " + name);
+    //LOG_INFO(" | << Object: " + name);
     Object::countObject ++;
   }
   
@@ -65,8 +65,8 @@ namespace ENG
 
   void Object::Update(float dt)
   {
-    for (auto& bb : boundingBoxes)
-      bb.Update(this->GetTransform().m_position);
+    if(auto bb  = GetComponent<IBoundingBox>())
+      bb->Update(this->GetTransform().m_position);
 
     if(auto* anim = this->GetComponent<IAnimator>())
     {

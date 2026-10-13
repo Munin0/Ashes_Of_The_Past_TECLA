@@ -24,6 +24,8 @@ namespace APP
       void ApplyRun(void);
       void ApplyMovement(ENG::ITransform& tranform, float dt);
       void UpdateMovement(ENG::ITransform& transform, float dt, bool entityDashing);
+
+      bool IsRunning(void) const { return this->m_state == MovementState::Running;}
     private:
       MovementState   m_state = MovementState::Walking;
       float           m_timer = 0.0f;

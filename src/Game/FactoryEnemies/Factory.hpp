@@ -27,7 +27,7 @@ namespace APP
 
       std::unique_ptr<ENG::Object> CreateEnemy(const ENG::Rectangle& rect, const std::string& classEnemy);
       void UpdateFactoryEnemies();
-      bool CanSpawnEnemy() const;
+      bool CanSpawnEnemy();
       uint32_t GetTotalEnemies(void) const {return this->m_countEnemies;}
     private:
       int ConvertClassToID(const std::string_view& s);

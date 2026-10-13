@@ -98,7 +98,7 @@ namespace APP
     // Rotation sin.
     constexpr float T = 0.38f;
     std::string anim = prefix;
-
+    
     if (direction.y < -T)      anim.push_back('N');
     else if (direction.y > T)  anim.push_back('S');
 

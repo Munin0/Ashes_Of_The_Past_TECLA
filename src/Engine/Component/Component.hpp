@@ -42,6 +42,7 @@ namespace ENG
       Vector2 m_prev_position;    //! The prev position of the Object (1 Frame behind).
       Vector2 m_velocity;         //! Velocity from the object, (X, Y).
       Vector2 m_direction;        //! Direction from the object, (X , Y).
+      Vector2 m_prev_direction;   //! Prev direction from the object, (X , Y).
       float   m_angle;            //! Rotation of the object (NOT WORKING RIGHT NOW)
   };
 
