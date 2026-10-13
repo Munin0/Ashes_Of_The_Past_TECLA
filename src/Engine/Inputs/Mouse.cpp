@@ -8,7 +8,7 @@
 
 namespace ENG
 {
-  const Vector2 GetMousePosition(void)
+  Vector2 GetMousePosition(void)
   {
     float x,y;
     SDL_GetMouseState(&x, &y);

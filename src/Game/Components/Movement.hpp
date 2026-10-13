@@ -7,18 +7,31 @@
 
 namespace APP
 {
-  struct Movement : public ENG::IComponents
+  enum class MovementState
   {
-    enum class State
-    {
-      Walking,
-      Running
-    };
+    Walking,
+    Running,
+    Cooldown
+  };
 
-    State state = State::Walking;
-    float timer = 0.0f;
-    float step = 0.0f;
-    ENG::Vector2 walkingVelocity = {100, 100};
-    ENG::Vector2 runningVelocity = {220, 220};
+  class Movement : public ENG::IComponents
+  {
+    public:
+      explicit Movement(const ENG::Vector2& walkinV, const ENG::Vector2& runningV, float cooldown, float step, float duration)
+        : ENG::IComponents{}, m_walkingV{walkinV}, m_runningV{runningV}, m_cooldown{cooldown}, m_step{step}, m_duration{duration}
+      {}
+
+      void ApplyRun(void);
+      void ApplyMovement(ENG::ITransform& tranform, float dt);
+      void UpdateMovement(ENG::ITransform& transform, float dt, bool entityDashing);
+    private:
+      MovementState   m_state = MovementState::Walking;
+      float           m_timer = 0.0f;
+      float           m_cooldown = 0.0f;
+      float           m_duration = 0.0f;
+      float           m_step = 0.0f;
+      ENG::Vector2    m_walkingV;
+      ENG::Vector2    m_runningV;
+
   };
 }

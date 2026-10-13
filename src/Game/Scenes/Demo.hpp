@@ -6,6 +6,7 @@
 #include "Engine/Render/Batching/RBatch.hpp"
 #include "Engine/Render/Batching/RenderEntry.hpp"
 #include "Engine/Render/Camera/Camera2D.hpp"
+#include "Game/FactoryEnemies/Factory.hpp"
 /// | ------------------------------------ |
 #include <memory>
 #include <string>
@@ -28,6 +29,7 @@ namespace APP
       void Render(ENG::Batcher& b)  override;
     
     private:
+      APP::FactoryEnemies factoryEnemies;
       ENG::ObjectPool pool;
       std::vector<ENG::RenderEntry> renderQueue;
       std::unique_ptr<ENG::Camera2D> cam;
