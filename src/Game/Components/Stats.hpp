@@ -11,6 +11,8 @@ namespace APP
 
             void receiveDamage(uint8_t damage);
 
+            bool isDead() const;
+
     };
 
     class StrengthStat : public ITemplateStat<uint8_t>

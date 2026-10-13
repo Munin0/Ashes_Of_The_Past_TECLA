@@ -198,7 +198,7 @@ namespace APP
 
 
     //////////////////Attacks//////////////////////
-    if(pollEvent.IsMouseButtonPress(SDL_BUTTON_LEFT))
+    if(pollEvent.IsKeyPress(SDL_SCANCODE_N))
     {
       System_MeleeAttack(*player, poolIDs, pool);
     }
@@ -241,6 +241,8 @@ namespace APP
     for (auto& entry : renderQueue)
     {
       auto* obj = pool.Get(entry.id);
+      if(obj->GetComponent<APP::HealtStat>()->isDead())
+        continue;
       obj->Draw(b);
     }
     RenderTileMaps(b, LAYER_PLAYER, LAYER_MAX);    /// Layer front of the player
