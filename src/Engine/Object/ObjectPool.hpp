@@ -177,8 +177,6 @@ namespace ENG
         size_t index     = it->second;
         size_t lastIndex = dense.size() - 1;
 
-        LOG_DEBUG( " | << Objeto removido " + dense[index]->GetName());
-
         std::swap(dense[index],    dense[lastIndex]);
         std::swap(denseID[index], denseID[lastIndex]);
 

@@ -6,6 +6,7 @@
 #include "Engine/Physics/Collision.hpp"
 #include "Game/Components/Stats.hpp"
 #include "Game/Components/Aim.hpp"
+#include "Game/Components/Shield.hpp"
 #include "Engine/Object/Object.hpp"
 #include "Engine/Utils/RawGeometry.hpp"
 #include "Engine/Utils/Utils.hpp"
@@ -45,17 +46,25 @@ namespace APP
       return false;
 
     constexpr float diagonalFactor = 0.7071f;
-    const ENG::Vector2 playerPosition = player.GetTransform().m_position;
-    const ENG::Vector2 playerSize = playerBoundingBox->GetSize();
-    const ENG::Vector2 playerCenter{
-      playerPosition.x + playerSize.x / 2.0f,
-      playerPosition.y + playerSize.y / 2.0f
-    };
+    const ENG::Vector2 playerCenter = playerBoundingBox->GetCenter();
 
     const std::string animationKey = animator->GetKeyAnimation();
     if (animationKey.size() < 4)
       return false;
-    const std::string directionLooking = animationKey.substr(4);
+
+    /// La clave es prefijo + sufijo de direccion. El prefijo puede medir 3
+    /// ("Run"), 4 ("Walk") o 5 ("Iddle"), asi que no se puede recortar con un
+    /// tamano fijo: se detecta por el sufijo. Las diagonales van primero para
+    /// que "NE" no se confunda con "E".
+    std::string directionLooking;
+    if      (animationKey.ends_with("NE")) directionLooking = "NE";
+    else if (animationKey.ends_with("NW")) directionLooking = "NW";
+    else if (animationKey.ends_with("SE")) directionLooking = "SE";
+    else if (animationKey.ends_with("SW")) directionLooking = "SW";
+    else if (animationKey.ends_with("N"))  directionLooking = "N";
+    else if (animationKey.ends_with("S"))  directionLooking = "S";
+    else if (animationKey.ends_with("E"))  directionLooking = "E";
+    else if (animationKey.ends_with("W"))  directionLooking = "W";
 
     int currentDirection = 5;
     if (directionLooking == "N") currentDirection = 1;
@@ -135,7 +144,7 @@ namespace APP
     if (System_GetMeleeAttackTriangle(player, attackTriangle))
     {
       ENG::Drawer::DrawTriangleOutline(
-        attackTriangle.a, attackTriangle.b, attackTriangle.c, ENG::Color::Red, 2.0f);
+        attackTriangle.a, attackTriangle.b, attackTriangle.c, ENG::Color::Red, 1.0f);
     }
 
     for (const uint32_t id : allObjectsIds)
@@ -150,13 +159,13 @@ namespace APP
         continue;
 
       const ENG::Vector2 enemySize = enemyBoundingBox->GetSize();
-      const ENG::Vector2 enemyPosition = enemy->GetTransform().m_position;
+      const ENG::Vector2 enemyPosition = enemyBoundingBox->GetPosition();
       const float left = std::min(enemyPosition.x, enemyPosition.x + enemySize.x);
       const float right = std::max(enemyPosition.x, enemyPosition.x + enemySize.x);
       const float top = std::min(enemyPosition.y, enemyPosition.y + enemySize.y);
       const float bottom = std::max(enemyPosition.y, enemyPosition.y + enemySize.y);
-      ENG::Drawer::DrawRectangleOutline(
-        ENG::Rectangle{left, top, right - left, bottom - top}, ENG::Color::Red, 2.0f);
+      // ENG::Drawer::DrawRectangleOutline(
+      //   ENG::Rectangle{left, top, right - left, bottom - top}, ENG::Color::Red, 2.0f);
     }
   }
 
@@ -310,6 +319,41 @@ namespace APP
     return false;    
   }
 
+  bool System_EnemiesAttackPlayer(ENG::Object& player, ENG::ObjectPool& pool, uint8_t damage)
+  {
+    auto* playerBoundingBox = player.GetComponent<ENG::IBoundingBox>();
+    auto* playerHealth = player.GetComponent<APP::HealtStat>();
+    if (!playerBoundingBox || !playerHealth || playerHealth->isDead())
+      return false;
+
+    bool attacked = false;
+    for (const uint32_t id : pool.GetAllIDs())
+    {
+      auto* enemy = pool.Get(id);
+      if (!enemy || enemy == &player || enemy->GetName().rfind("Native", 0) != 0)
+        continue;
+
+      auto* enemyBoundingBox = enemy->GetComponent<ENG::IBoundingBox>();
+      auto* enemyHealth = enemy->GetComponent<APP::HealtStat>();
+      if (!enemyBoundingBox || (enemyHealth && enemyHealth->isDead()))
+        continue;
+
+      if (!ENG::CollisionAABB(*playerBoundingBox, *enemyBoundingBox))
+        continue;
+
+      attacked = true;
+      const ENG::Vector2 directionToEnemy = enemy->GetPosition() - player.GetPosition();
+
+      /// El dano pasa por el Shield si el jugador lo tiene (para que pueda
+      /// bloquearlo); si no, se aplica directamente a la vida.
+      if (auto* shield = player.GetComponent<APP::Shield>())
+        shield->UpdateShield(player, damage, directionToEnemy);
+      else
+        playerHealth->receiveDamage(damage);
+    }
+    return attacked;
+  }
+
   //Attack Systems////////////////////////////////////////////////////////////////////////////////////////////////////////
   bool System_MeleeAttack(ENG::Object& player, std::vector<uint32_t> allObjectsIds, ENG::ObjectPool& pool)
   {
@@ -320,12 +364,7 @@ namespace APP
       return false;
 
 
-    const ENG::Vector2 playerPosition = player.GetTransform().m_position;
-    const ENG::Vector2 playerSize = playerBoundingBox->GetSize();
-    const ENG::Vector2 playerCenter{
-      playerPosition.x + playerSize.x / 2.0f,
-      playerPosition.y + playerSize.y / 2.0f
-    };
+    const ENG::Vector2 playerCenter = playerBoundingBox->GetCenter();
 
     const uint8_t attackDamage = strength->getCurrent();
 
@@ -354,7 +393,7 @@ namespace APP
         continue;
 
       const ENG::Vector2 enemySize = enemyBoundingBox->GetSize();
-      const ENG::Vector2 enemyPosition = enemy->GetTransform().m_position;
+      const ENG::Vector2 enemyPosition = enemyBoundingBox->GetPosition();
       const float left = std::min(enemyPosition.x, enemyPosition.x + enemySize.x);
       const float right = std::max(enemyPosition.x, enemyPosition.x + enemySize.x);
       const float top = std::min(enemyPosition.y, enemyPosition.y + enemySize.y);

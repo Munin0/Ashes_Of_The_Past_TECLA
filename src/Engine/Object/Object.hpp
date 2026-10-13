@@ -84,7 +84,18 @@ namespace ENG
       {
         T& component = components.Emplace<T>(std::forward<Args>(args)...);
         if constexpr (std::is_same_v<T, IBoundingBox>)
+        {
+          /// Centra la caja en el sprite (si ya existe): asi una caja mas
+          /// pequena que el frame queda en el centro en vez de en la esquina.
+          if (auto* sprite = GetComponent<ISprite>())
+          {
+            const Vector2 frame{(float)sprite->GetWidth(), (float)sprite->GetHeight()};
+            const Vector2 boxSize = component.GetSize();
+            component.SetOffset({(frame.x - boxSize.x) * 0.5f,
+                                 (frame.y - boxSize.y) * 0.5f});
+          }
           component.Update(GetTransform().m_position);
+        }
         return component;
       }
 

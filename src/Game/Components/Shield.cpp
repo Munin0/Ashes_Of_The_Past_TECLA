@@ -3,6 +3,7 @@
 /// | ------------------------------------ |
 #include "Engine/Object/Object.hpp"
 #include "Engine/Utils/Vector2.hpp"
+#include "Game/Components/Stats.hpp"
 /// | ------------------------------------ |
 #include <cstdint>
 /// | ------------------------------------ |
@@ -41,6 +42,14 @@ namespace APP
     if(r)
     {
       this->ApplyDamageShield(damage);
+      return;
+    }
+
+    /// La vida que se muestra en el HUD es el componente HealtStat, asi que
+    /// el dano se aplica ahi.
+    if(auto* health = player.GetComponent<APP::HealtStat>())
+    {
+      health->receiveDamage(damage);
       return;
     }
 

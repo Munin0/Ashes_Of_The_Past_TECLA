@@ -26,6 +26,11 @@ namespace APP
       void UpdateMovement(ENG::ITransform& transform, float dt, bool entityDashing);
 
       bool IsRunning(void) const { return this->m_state == MovementState::Running;}
+
+      MovementState GetState(void) const { return this->m_state;}
+      float GetTimer(void) const         { return this->m_timer;}
+      float GetDuration(void) const      { return this->m_duration;}
+      float GetCooldown(void) const      { return this->m_cooldown;}
     private:
       MovementState   m_state = MovementState::Walking;
       float           m_timer = 0.0f;

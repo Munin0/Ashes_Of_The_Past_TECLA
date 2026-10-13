@@ -17,11 +17,13 @@
 #include "Engine/Utils/Vector2.hpp"
 #include "Engine/Object/ObjectPool.hpp"
 #include "Engine/Inputs/PollEvent.hpp"
+#include "Engine/Render/Batching/RAPIBatch.hpp"
 #include "Engine/Services/ScenesManager.hpp"
 #include "Engine/Services/Services.hpp"
   /// | ------------------------------------ |
 #include "Game/Game.hpp"
 #include "Game/Systems/Functions.hpp"
+#include "Game/Systems/HUD.hpp"
   /// | ------------------------------------ |
 #include "SDL3/SDL_mouse.h"
 #include "SDL3/SDL_properties.h"
@@ -30,6 +32,7 @@
   /// | ------------------------------------ |
 #include <memory>
 #include <string>
+#include <vector>
   /// | ------------------------------------ |
 
   namespace APP
@@ -60,7 +63,7 @@
       options = SDL_CreateProperties();
       SDL_SetNumberProperty(options, MIX_PROP_PLAY_LOOPS_NUMBER, -1);
       ENG::Services::Music().LoadMusic("Music/Ambient_MainMenu.mp3", "Ambient_MainMenu", options);
-      ENG::Services::Music().SetVolume("Ambient_MainMenu", 1000.0f);
+      ENG::Services::Music().SetVolume("Ambient_MainMenu", 500.0f);
       ENG::Services::Music().PlayMusic("Ambient_MainMenu");
 
       // ###############################
@@ -129,6 +132,8 @@
       // Final configurations
       // Final configurations for the GameLayer
       // ###############################
+      m_highScores.Load();
+
       isInit = true;
       isRunning = true;
       this->renderQueue = pool.Sort();
@@ -201,5 +206,7 @@
       {
         pool.Get(entry.id)->Draw(b);
       }
+
+      DrawHighScoresPanel(m_highScores);
     }
   }

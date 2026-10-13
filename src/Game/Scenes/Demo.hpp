@@ -7,7 +7,9 @@
 #include "Engine/Render/Batching/RenderEntry.hpp"
 #include "Engine/Render/Camera/Camera2D.hpp"
 #include "Game/FactoryEnemies/Factory.hpp"
+#include "Game/Systems/NameEntry.hpp"
 /// | ------------------------------------ |
+#include <cstdint>
 #include <memory>
 #include <string>
 #include <vector>
@@ -30,8 +32,13 @@ namespace APP
     
     private:
       APP::FactoryEnemies factoryEnemies;
+      APP::NameEntry      nameEntry;
       ENG::ObjectPool pool;
       std::vector<ENG::RenderEntry> renderQueue;
       std::unique_ptr<ENG::Camera2D> cam;
+
+      uint32_t m_enemiesKilled = 0;
+      uint32_t m_score = 0;
+      float m_playerHitCooldown = 0.0f;
   };
 }
