@@ -79,8 +79,8 @@ namespace ENG
       TileMap map;
       map.m_name            = layerJson.value("name", "");
       map.m_layer           = map.GetLayerNum(map.m_name);
-      map.m_offsetLayer.x = layerJson.value("offsetx",0);
-      map.m_offsetLayer.y = layerJson.value("offsety",0);
+      map.m_offsetLayer.x = layerJson.value("offsetx",0.f) * scale;
+      map.m_offsetLayer.y = layerJson.value("offsety",0.f) * scale;
       map.m_width           = layerJson.at("width").get<int>();
       map.m_height          = layerJson.at("height").get<int>();
       map.m_scale           = scale;
@@ -266,9 +266,47 @@ namespace ENG
     if (name == "World")      return LAYER_WORLD;
     if (name == "Middle")     return LAYER_MIDDLE;
     if (name == "Top")      return LAYER_TOP;
+    if (name == "Collision") return LAYER_COLLISION;
     if (name == "FX")         return LAYER_FX;
     if (name == "UI")         return LAYER_UI;
     return LAYER_GROUND;
+  }
+
+  Vector2 TileMap::WorldToGrid(const Vector2& world) const
+  {
+    glm::vec2 cell = m_tileSize * m_scale;
+    glm::vec2 local = glm::vec2(world) - glm::vec2(m_position) - m_offsetLayer;
+
+    if (m_orientation == TileOrientation::Isometric)
+    {
+      float halfW = cell.x * 0.5f;
+      float halfH = cell.y * 0.5f;
+      if (halfW == 0.0f || halfH == 0.0f)
+        return {0.0f, 0.0f};
+      local.x -= halfW;
+      float col = (local.x / halfW + local.y / halfH) * 0.5f;
+      float row = (local.y / halfH - local.x / halfW) * 0.5f;
+      return {col, row};
+    }
+
+    if (cell.x == 0.0f || cell.y == 0.0f)
+      return {0.0f, 0.0f};
+    return {local.x / cell.x, local.y / cell.y};
+  }
+
+  bool TileMap::IsCellBlocked(int col, int row) const
+  {
+    if (col < 0 || row < 0 || col >= m_width || row >= m_height)
+      return true;
+    return m_cells[row * m_width + col] >= 0;
+  }
+
+  bool TileMap::IsBlockedAtWorld(const Vector2& world) const
+  {
+    Vector2 grid = WorldToGrid(world);
+    int col = static_cast<int>(std::floor(grid.x));
+    int row = static_cast<int>(std::floor(grid.y));
+    return IsCellBlocked(col, row);
   }
 
 }

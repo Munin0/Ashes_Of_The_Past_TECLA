@@ -44,7 +44,7 @@ namespace APP
 
  void FactoryEnemies::UpdateFactoryEnemies()
  {
-   if(CanSpawnEnemy() && m_actualTime < m_maxTimeToSpawn)
+   if(m_actualTime < m_maxTimeToSpawn)
    {
      m_actualTime += m_step;
    }
@@ -54,9 +54,12 @@ namespace APP
    }
  }
 
- bool FactoryEnemies::CanSpawnEnemy() const
+ bool FactoryEnemies::CanSpawnEnemy()
  {
-    return m_countEnemies < m_maxEnemies;
+   bool canByTime = false;
+   if(this->m_actualTime > this->m_maxTimeToSpawn)
+     canByTime = true;
+    return m_countEnemies < m_maxEnemies && canByTime;
  }
 
  ////! Private Method

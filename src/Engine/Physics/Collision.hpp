@@ -2,6 +2,7 @@
 #pragma once
 // | -------------------------------
 #include "Engine/Component/Component.hpp"
+#include "Engine/Map/TileMap/TileMap.hpp"
 #include "Engine/Object/Object.hpp"
 #include "Engine/Utils/RawGeometry.hpp"
 #include "Engine/Utils/Vector2.hpp"
@@ -9,6 +10,24 @@
 
 namespace ENG
 {
+  /**
+   * @brief Checks whether an object collides with a tile map (isometric).
+   *
+   * Samples the footprint (solid bounding box) of @p object against the
+   * occupied cells of @p map. A cell is occupied when the layer holds a tile
+   * at that position (for example, a wall on the "World" layer).
+   *
+   * @param[in,out] object     Object to test. If @p resolution is true and a
+   *                           collision is found, it is moved back to its
+   *                           previous position.
+   * @param[in]     map        Tile map to test against.
+   * @param[in]     resolution true to resolve the collision, false to only
+   *                           detect it.
+   * @return true if the object collides with an occupied cell, false
+   *         otherwise.
+   */
+  [[maybe_unused]] bool CollisionTileMapIsometric(Object& object, const TileMap& map, bool resolution);
+
   /**
    * @brief Checks whether two objects collide using their AABBs, and can
    *        optionally resolve the collision.
