@@ -11,6 +11,8 @@
 #include "glm/geometric.hpp"
 // | -------------------------------
 #include <algorithm>
+#include <array>
+#include <cstddef>
 // | -------------------------------
 
 namespace ENG
@@ -98,6 +100,66 @@ namespace ENG
     float distSq = glm::dot(d, d);
     float radiusSum = a.radius + b.radius;
     return distSq <= (radiusSum * radiusSum);
+  }
+
+  bool CollisionRectTriangle(const ENG::Rectangle& rect, const ENG::Triangle& triangle)
+  {
+    const float left = std::min(rect.x, rect.x + rect.w);
+    const float right = std::max(rect.x, rect.x + rect.w);
+    const float top = std::min(rect.y, rect.y + rect.h);
+    const float bottom = std::max(rect.y, rect.y + rect.h);
+
+    const std::array<ENG::Vector2, 4> rectangleVertices = {{
+      {left, top},
+      {right, top},
+      {right, bottom},
+      {left, bottom}
+    }};
+    const std::array<ENG::Vector2, 3> triangleVertices = {{
+      triangle.a,
+      triangle.b,
+      triangle.c
+    }};
+
+    const auto separatedOnAxis = [&](const ENG::Vector2& axis)
+    {
+      float rectMin = rectangleVertices[0].x * axis.x + rectangleVertices[0].y * axis.y;
+      float rectMax = rectMin;
+      for (const auto& vertex : rectangleVertices)
+      {
+        const float projection = vertex.x * axis.x + vertex.y * axis.y;
+        rectMin = std::min(rectMin, projection);
+        rectMax = std::max(rectMax, projection);
+      }
+
+      float triangleMin = triangleVertices[0].x * axis.x + triangleVertices[0].y * axis.y;
+      float triangleMax = triangleMin;
+      for (const auto& vertex : triangleVertices)
+      {
+        const float projection = vertex.x * axis.x + vertex.y * axis.y;
+        triangleMin = std::min(triangleMin, projection);
+        triangleMax = std::max(triangleMax, projection);
+      }
+
+      return rectMax < triangleMin || triangleMax < rectMin;
+    };
+
+    if (separatedOnAxis({1.0f, 0.0f}))
+      return false;
+    if (separatedOnAxis({0.0f, 1.0f}))
+      return false;
+
+    for (size_t i = 0; i < triangleVertices.size(); ++i)
+    {
+      const auto& start = triangleVertices[i];
+      const auto& end = triangleVertices[(i + 1) % triangleVertices.size()];
+      const ENG::Vector2 edge = end - start;
+      const ENG::Vector2 normal{-edge.y, edge.x};
+      if (separatedOnAxis(normal))
+        return false;
+    }
+
+    return true;
   }
 
 }

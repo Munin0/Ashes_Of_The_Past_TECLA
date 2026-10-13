@@ -14,10 +14,8 @@
 #include "Engine/Physics/Collision.hpp"
 #include "Engine/Inputs/PollEvent.hpp"
 #include "Engine/Render/Batching/RBatch.hpp"
-#include "Engine/Services/ScenesManager.hpp"
 #include "Engine/Services/Services.hpp"
 #include "Engine/Text/TextAPI.hpp"
-#include "Engine/Utils/Log.hpp"
 #include "Engine/Utils/Vector2.hpp"
 /// | ------------------------------------ |
 #include "Game/FactoryEnemies/Factory.hpp"
@@ -27,10 +25,9 @@
 #include "Game/Components/Movement.hpp"
 #include "Game/Systems/HUD.hpp"
 #include "Game/Components/Stats.hpp"
+/// | ------------------------------------ |
 #include "SDL3/SDL_mouse.h"
-#include "SDL3/SDL_properties.h"
 #include "SDL3/SDL_scancode.h"
-#include "SDL3_mixer/SDL_mixer.h"
 /// | ------------------------------------ |
 #include <algorithm>
 #include <memory>
@@ -72,19 +69,19 @@ namespace APP
     
     objPlayer->AddComponent<ENG::IBoundingBox>(ENG::Vector2{64,64});
 
-    objPlayer->AddComponent<APP::HealtStat>();
-    objPlayer->AddComponent<APP::DefenseStat>();
-    objPlayer->AddComponent<APP::StrengthStat>();
-    objPlayer->AddComponent<APP::XPStat>();
+    objPlayer->AddComponent<HealtStat>();
+    objPlayer->AddComponent<DefenseStat>();
+    objPlayer->AddComponent<StrengthStat>();
+    objPlayer->AddComponent<XPStat>();
     
-    objPlayer->AddComponent<APP::MeleeAttackDistance>();
-    objPlayer->AddComponent<APP::MeleeAttackRange>();
-    objPlayer->AddComponent<APP::MeleeAttackVelocity>();
+    objPlayer->AddComponent<MeleeAttackDistance>();
+    objPlayer->AddComponent<MeleeAttackRange>();
+    objPlayer->AddComponent<MeleeAttackVelocity>();
 
-    objPlayer->AddComponent<APP::Shield>(1.0f, 5.0f, 100);
-    objPlayer->AddComponent<APP::Dash>(5.0f, 2.0f, .5f);
+    objPlayer->AddComponent<Shield>(1.0f, 5.0f, 100);
+    objPlayer->AddComponent<Dash>(5.0f, 2.0f, .5f);
 
-    objPlayer->AddComponent<APP::Movement>(ENG::Vector2{100.f,100.f}, ENG::Vector2{250.f,250.f}, 2.0f, .5f, 5.0f);
+    objPlayer->AddComponent<Movement>(ENG::Vector2{100.f,100.f}, ENG::Vector2{250.f,250.f}, 2.0f, .5f, 5.0f);
     objPlayer->GetTransform().m_direction = {0,0};
     
     objPlayer->GetTransform().m_prev_direction = {0 , 1.f};
@@ -156,28 +153,17 @@ namespace APP
     }
 
     ENG::Vector2 inputDir{0.f, 0.f};
-    bool moving = false;
     if (pollEvent.IsKeyDown(SDL_SCANCODE_W))
-    {
       inputDir.y -= 1.0f;
-      moving = true;
-    }
     if (pollEvent.IsKeyDown(SDL_SCANCODE_S))
-    {
       inputDir.y += 1.0f;
-      moving = true;
-    }
     if (pollEvent.IsKeyDown(SDL_SCANCODE_A))
-    {
       inputDir.x -= 1.0f;
-      moving = true;
-    }
     if (pollEvent.IsKeyDown(SDL_SCANCODE_D))
-    {
       inputDir.x += 1.0f;
-      moving = true;
-    }
     transform.m_direction = inputDir;
+
+    const bool moving = inputDir.x != 0.f || inputDir.y != 0.f;
 
     if (transform.m_direction.x != 0.f || transform.m_direction.y != 0.f)
     {
@@ -241,6 +227,15 @@ namespace APP
     for (auto& o : pool.GetAllIDs())
     {
       auto obj = pool.Get(o);
+
+      if(auto* hs = obj->GetComponent<APP::HealtStat>())
+      {
+        if(hs->isDead())
+        {
+          continue;
+        }
+      }
+
       if(obj->GetName() == "Player")
       {
         auto d = obj->GetComponent<Dash>();
@@ -255,19 +250,11 @@ namespace APP
       System_AIMovement(*pool.Get(PLAYER),*obj, dt);
       obj->Update(dt);
 
-      if(obj->GetName() == "Player")
+      for (auto& map : tileMaps)
       {
-        m_isColliding = false;
-        for (auto& map : tileMaps)
+        if (map.IsCollisionLayer() && ENG::CollisionTileMapIsometric(*pool.Get(PLAYER), map, true))
         {
-          if (map.IsCollisionLayer())
-          {
-            if (ENG::CollisionTileMapIsometric(*obj, map, true))
-            {
-              m_isColliding = true;
-              break;
-            }
-          }
+          break;
         }
       }
     }
@@ -288,7 +275,7 @@ namespace APP
     for (auto& entry : renderQueue)
     {
       auto* obj = pool.Get(entry.id);
-      if(obj->GetComponent<APP::HealtStat>()->isDead())
+      if(obj->GetComponent<HealtStat>()->isDead())
         continue;
       obj->Draw(b);
     }
@@ -310,12 +297,6 @@ namespace APP
       }
     }
 
-
-    ENG::TextAPI::Get().DrawText(
-        *ENG::Services::Fonts().GetFont("Ithaca"),
-        50.f, 110.f, 16.f,
-        ENG::TextAPI::Get().FormatText("Collision: %s", m_isColliding ? "YES" : "NO")
-        );
     ENG::TextAPI::Get().DrawText(
         *ENG::Services::Fonts().GetFont("Ithaca"),
         50.f, 50.f, 16.f,
@@ -324,11 +305,9 @@ namespace APP
     ENG::TextAPI::Get().DrawText(
         *ENG::Services::Fonts().GetFont("Ithaca"),
         50.f, 80.f, 16.f,
-        ENG::TextAPI::Get().FormatText("FPS: %f" , ENG::Services::Clock().GetFPS())
+        ENG::TextAPI::Get().FormatText("FPS: %.2f" , ENG::Services::Clock().GetFPS())
         );
     EssenceBar(b, *cam, *pool.Get(PLAYER));
-
-
   }
 
   void DemoScene::Destroy()

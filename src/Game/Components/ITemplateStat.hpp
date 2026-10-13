@@ -1,39 +1,34 @@
+/// | ------------------------------------ |
 #pragma once
-
+/// | ------------------------------------ |
 #include "Engine/Component/Component.hpp"
+/// | ------------------------------------ |
+#include <string>
+/// | ------------------------------------ |
 
 
 namespace APP
 {
   template <typename T>
-  class ITemplateStat : public ENG::IComponents
+    class ITemplateStat : public ENG::IComponents
   {
-
     public:
-        ITemplateStat(T max, T min, T current, std::string name);
+      explicit ITemplateStat(std::string name);
+      ITemplateStat(T min, T current, std::string name);
+      ITemplateStat(T max, T min, T current, std::string name);
+      ~ITemplateStat() override = default;
 
-        explicit ITemplateStat(std::string name);
+      T getCurrent() const;
+      T getMax() const;
+      T getMin() const;
 
-        ITemplateStat(T min, T current, std::string name);
-
-        ~ITemplateStat() override = default;
-
-        T getCurrent() const;
-
-        T getMax() const;
-
-        T getMin() const;
-
-        void setCurrent(T newCurrent);
-
-        void setMax(T newMax);
-
-        void setMin(T newMin);
-
+      void setCurrent(T newCurrent);
+      void setMax(T newMax);
+      void setMin(T newMin);
     protected:
-        std::string stat_name;
-        T max_value{};
-        T current_value{};
-        T min_value{};
+      std::string stat_name;
+      T max_value{};
+      T current_value{};
+      T min_value{};
   };
 }

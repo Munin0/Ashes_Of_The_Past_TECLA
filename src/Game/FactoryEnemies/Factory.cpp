@@ -5,7 +5,9 @@
 #include "Engine/Component/Component.hpp"
 #include "Engine/Utils/RawGeometry.hpp"
 #include "Engine/Utils/Vector2.hpp"
+/// | ------------------------------------ |
 #include "Game/Systems/Systems.hpp"
+#include "Game/Components/Stats.hpp"
 /// | ------------------------------------ |
 #include <cstdint>
 #include <memory>
@@ -35,6 +37,7 @@ namespace APP
       entity->AddComponent<ENG::IAnimator>("Player", "IddleS", 10.f, 1, 1.0f);
       entity->GetComponent<ENG::IAnimator>()->Play();
     }
+    entity->AddComponent<HealtStat>();
     entity->AddComponent<ENG::IBoundingBox>(ENG::Vector2{64,64});
     // Give AI
     

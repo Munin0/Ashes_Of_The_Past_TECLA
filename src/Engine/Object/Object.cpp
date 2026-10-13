@@ -9,7 +9,9 @@
 #include "Engine/Utils/Vector2.hpp"
 #include "Engine/Component/Component.hpp"
 #include "Engine/Services/WorldSaver.hpp"
+// | -------------------------------
 #include "Game/Components/Movement.hpp"
+#include "Game/Components/Stats.hpp"
 // | -------------------------------
 #include <glm/common.hpp>
 #include <glm/ext/vector_float4.hpp>
@@ -65,6 +67,12 @@ namespace ENG
 
   void Object::Update(float dt)
   {
+    if(auto* hp = this->GetComponent<APP::HealtStat>())
+    {
+      if(hp->isDead())
+        return;
+    }
+
     if(auto bb  = GetComponent<IBoundingBox>())
       bb->Update(this->GetTransform().m_position);
     

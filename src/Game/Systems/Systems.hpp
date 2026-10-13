@@ -8,12 +8,11 @@
 /// | ------------------------------------ |
 #include <string>
 #include <cstdint>
+#include <vector>
 /// | ------------------------------------ |
 
 namespace APP
 {
-  [[maybe_unused]] bool System_CollisionRectTriangle(const ENG::Rectangle& rect, const ENG::Triangle& triangle);
-  
   [[maybe_unused]] void System_Aim(ENG::Object& entity, const ENG::Vector2& targetPosition);
   
   [[maybe_unused]] void System_PlayerTrabuco(ENG::Object& player);
@@ -39,4 +38,7 @@ namespace APP
   [[maybe_unused]] bool System_MeleeAttack(ENG::Object& player, std::vector<uint32_t> allObjectsIds, ENG::ObjectPool& pool);
   
   [[maybe_unused]] void System_DrawMeleeDebug(ENG::Object& player, std::vector<uint32_t> allObjectsIds, ENG::ObjectPool& pool);
+
+  [[maybe_unused]] bool System_GetMeleeAttackTriangle(ENG::Object& player, ENG::Triangle& attackTriangle);
+
 }

@@ -7,7 +7,5 @@
 
 namespace APP
 {
-
-    [[maybe_unused]] void EssenceBar(ENG::Batcher& batcher, const ENG::Camera2D& cam, ENG::Object& who);
-
+  [[maybe_unused]] void EssenceBar(ENG::Batcher& batcher, const ENG::Camera2D& cam, ENG::Object& who);
 }
