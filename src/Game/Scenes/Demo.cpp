@@ -24,6 +24,7 @@
 #include "Game/Systems/Systems.hpp"
 #include "Game/Components/Dash.hpp"
 #include "Game/Components/Movement.hpp"
+#include "Game/Systems/HUD.hpp"
 #include "Game/Components/Stats.hpp"
 #include "SDL3/SDL_mouse.h"
 #include "SDL3/SDL_properties.h"
@@ -59,6 +60,8 @@ namespace APP
     auto objPlayer = pool.Get(idPlayer);
     objPlayer->GetStats().m_hp = 100;
     objPlayer->GetStats().m_hp_max = 100;
+    objPlayer->GetStats().m_essence = 100;
+    objPlayer->GetStats().m_essence_max = 100;
     objPlayer->SetPosition(ENG::Vector2{500,500});
     objPlayer->AddComponent<ENG::ISprite>("Player", "IddleS", 0, 1.0f);
     objPlayer->AddComponent<ENG::IAnimator>("Player", "IddleS", 10.f, 1, 1.0f);
@@ -290,6 +293,8 @@ namespace APP
         50.f, 80.f, 16.f,
         ENG::TextAPI::Get().FormatText("FPS: %f" , ENG::Services::Clock().GetFPS())
         );
+    EssenceBar(b, *cam, *pool.Get(PLAYER));
+
 
   }
 
