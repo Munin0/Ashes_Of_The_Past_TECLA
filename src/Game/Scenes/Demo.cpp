@@ -25,6 +25,8 @@
 #include "Game/Systems/Systems.hpp"
 #include "Game/Components/Dash.hpp"
 #include "Game/Components/Movement.hpp"
+#include "Game/Systems/HUD.hpp"
+#include "Game/Components/Stats.hpp"
 #include "SDL3/SDL_mouse.h"
 #include "SDL3/SDL_properties.h"
 #include "SDL3/SDL_scancode.h"
@@ -59,11 +61,25 @@ namespace APP
     auto objPlayer = pool.Get(idPlayer);
     objPlayer->GetStats().m_hp = 100;
     objPlayer->GetStats().m_hp_max = 100;
+    objPlayer->GetStats().m_essence = 100;
+    objPlayer->GetStats().m_essence_max = 100;
+    
     objPlayer->SetPosition(ENG::Vector2{30,50});
+    
     objPlayer->AddComponent<ENG::ISprite>("Player", "IddleNE", 0, 1.0f);
     objPlayer->AddComponent<ENG::IAnimator>("Player", "IddleNE", 10.f, 1, 1.0f);
     objPlayer->GetComponent<ENG::IAnimator>()->Play();
+    
     objPlayer->AddComponent<ENG::IBoundingBox>(ENG::Vector2{64,64});
+
+    objPlayer->AddComponent<APP::HealtStat>();
+    objPlayer->AddComponent<APP::DefenseStat>();
+    objPlayer->AddComponent<APP::StrengthStat>();
+    objPlayer->AddComponent<APP::XPStat>();
+    
+    objPlayer->AddComponent<APP::MeleeAttackDistance>();
+    objPlayer->AddComponent<APP::MeleeAttackRange>();
+    objPlayer->AddComponent<APP::MeleeAttackVelocity>();
 
     objPlayer->AddComponent<APP::Shield>(1.0f, 5.0f, 100);
     objPlayer->AddComponent<APP::Dash>(5.0f, 2.0f, .5f);
@@ -122,6 +138,7 @@ namespace APP
     auto* animator = player->GetComponent<ENG::IAnimator>();
     auto* movement = player->GetComponent<APP::Movement>();
     auto* dash = player->GetComponent<APP::Dash>();
+    auto poolIDs = pool.GetAllIDs();
 
     if(pollEvent.IsMouseButtonDown(SDL_BUTTON_RIGHT))
     {
@@ -193,6 +210,15 @@ namespace APP
     }
     ////////////////////////////////////////
 
+
+    //////////////////Attacks//////////////////////
+    if(pollEvent.IsKeyPress(SDL_SCANCODE_N))
+    {
+      System_MeleeAttack(*player, poolIDs, pool);
+    }
+
+    //////////////////Attacks//////////////////////
+
     float wheel = pollEvent.GetMouseWheel();
     if (wheel != 0.0f)
     {
@@ -262,9 +288,14 @@ namespace APP
     for (auto& entry : renderQueue)
     {
       auto* obj = pool.Get(entry.id);
+      if(obj->GetComponent<APP::HealtStat>()->isDead())
+        continue;
       obj->Draw(b);
     }
     RenderTileMaps(b, LAYER_PLAYER, LAYER_MAX);    /// Layer front of the player
+
+    if (auto* player = pool.Get(PLAYER))
+      System_DrawMeleeDebug(*player, pool.GetAllIDs(), pool);
 
     ENG::Drawer::DrawRectangleOutline(cam->GetRectCamera(),ENG::Color::Blue); 
     if (auto* player = pool.Get(PLAYER))
@@ -295,6 +326,8 @@ namespace APP
         50.f, 80.f, 16.f,
         ENG::TextAPI::Get().FormatText("FPS: %f" , ENG::Services::Clock().GetFPS())
         );
+    EssenceBar(b, *cam, *pool.Get(PLAYER));
+
 
   }
 

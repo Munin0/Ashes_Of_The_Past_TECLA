@@ -67,6 +67,9 @@ namespace ENG
   {
     if(auto bb  = GetComponent<IBoundingBox>())
       bb->Update(this->GetTransform().m_position);
+    
+    for (auto& bb : boundingBoxes)
+      bb.Update(this->GetTransform().m_position);
 
     if(auto* anim = this->GetComponent<IAnimator>())
     {
@@ -81,11 +84,23 @@ namespace ENG
     transform.m_prev_position = transform.m_position;
     transform.m_position.x = x;
     transform.m_position.y = y;
+    const auto& box = this->GetComponent<ENG::IBoundingBox>();
+    if(box){
+      box->Update(transform.m_position);
+    }
+    for (auto& bb : boundingBoxes)
+      bb.Update(transform.m_position);
   }
 
   void Object::SetPosition(const Vector2& new_pos)
   {
     this->transform.m_position = new_pos;
+    const auto& box = this->GetComponent<ENG::IBoundingBox>();
+    if(box){
+      box->Update(transform.m_position);
+    }
+    for (auto& bb : boundingBoxes)
+      bb.Update(transform.m_position);
   }
 
   const Vector2& Object::GetPosition(void) const
@@ -124,7 +139,9 @@ namespace ENG
       .m_def      = s.m_def,
       .m_agi      = s.m_agi,
       .m_level    = s.m_level,
-      .m_xp       = s.m_xp
+      .m_xp       = s.m_xp,
+      .m_essence  = s.m_essence,
+      .m_essence_max = s.m_essence_max
     };
 
     // ISprite
@@ -188,6 +205,8 @@ namespace ENG
     s.m_agi    = state.m_sData.m_agi;
     s.m_level  = state.m_sData.m_level;
     s.m_xp     = state.m_sData.m_xp;
+    s.m_essence = state.m_sData.m_essence;
+    s.m_essence_max = state.m_sData.m_essence_max;
 
     if(state.m_spData)
     {

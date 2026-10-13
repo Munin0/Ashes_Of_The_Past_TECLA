@@ -69,6 +69,13 @@ namespace ENG
       * Se usa uint32_t para que pueda almacenar una cantidad mayor de experiencia desde 0 a 4294 millones
       */
       uint32_t m_xp = 0;
+      /*
+      * m_essence es la esencia actual del personaje
+      * m_essence_max es la esencia maxima que puede tener el personaje
+      * Si el maximo es 0 es porque no se usa la escencia
+      */
+      uint32_t m_essence = 0;
+      uint32_t m_essence_max = 0;
   };
 
   //! ISprite, control the graphics to draw on the engine, this are only reference to the sprites.

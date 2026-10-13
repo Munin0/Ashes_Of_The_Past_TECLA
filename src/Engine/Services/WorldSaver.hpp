@@ -115,8 +115,12 @@ namespace ENG
     uint8_t m_level = 1;
     /// @brief Current experience points of the object.
     uint32_t m_xp = 0;
+    /// @brief Essence of the object.
+    uint32_t m_essence = 0;
+    /// @brief Maximum essence.
+    uint32_t m_essence_max = 0;
     /// @brief Enables JSON conversion of all the members.
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(IStatsData, m_hp,m_hp_max,m_str,m_def,m_agi,m_level,m_xp)
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE(IStatsData, m_hp,m_hp_max,m_str,m_def,m_agi,m_level,m_xp,m_essence,m_essence_max)
   };
 
   /**
