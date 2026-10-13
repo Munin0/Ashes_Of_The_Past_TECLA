@@ -15,13 +15,16 @@
 #include "Engine/Inputs/PollEvent.hpp"
 #include "Engine/Render/Batching/RBatch.hpp"
 #include "Engine/Services/Services.hpp"
+#include "Engine/Text/Font/Font.hpp"
 #include "Engine/Text/TextAPI.hpp"
 #include "Engine/Utils/Vector2.hpp"
 /// | ------------------------------------ |
 #include "Game/FactoryEnemies/Factory.hpp"
 #include "Game/Components/Shield.hpp"
+#include "Game/Systems/NameEntry.hpp"
 #include "Game/Systems/Systems.hpp"
 #include "Game/Components/Dash.hpp"
+#include "Game/Components/Heal.hpp"
 #include "Game/Components/Movement.hpp"
 #include "Game/Systems/HUD.hpp"
 #include "Game/Components/Stats.hpp"
@@ -30,9 +33,11 @@
 #include "SDL3/SDL_scancode.h"
 /// | ------------------------------------ |
 #include <algorithm>
+#include <cstdint>
 #include <memory>
 #include <string>
 #include <utility>
+#include <vector>
 /// | ------------------------------------|
 #define PLAYER 1
 /// | ------------------------------------|
@@ -40,7 +45,7 @@
 namespace APP
 {
   DemoScene::DemoScene(const std::string& id)
-    : ENG::Scene{}, factoryEnemies{1000, 5.0f, 0.1f}
+    : ENG::Scene{}, factoryEnemies{1000, 5.0f, 0.2f}
   {
     sceneID = id;
   }
@@ -56,8 +61,8 @@ namespace APP
     // ###############################
     auto idPlayer = pool.Add(std::make_unique<ENG::Object>("Player"));
     auto objPlayer = pool.Get(idPlayer);
-    objPlayer->GetStats().m_hp = 100;
-    objPlayer->GetStats().m_hp_max = 100;
+    objPlayer->GetStats().m_hp = 200;
+    objPlayer->GetStats().m_hp_max = 200;
     objPlayer->GetStats().m_essence = 100;
     objPlayer->GetStats().m_essence_max = 100;
     
@@ -67,7 +72,7 @@ namespace APP
     objPlayer->AddComponent<ENG::IAnimator>("Player", "IddleNE", 10.f, 1, 1.0f);
     objPlayer->GetComponent<ENG::IAnimator>()->Play();
     
-    objPlayer->AddComponent<ENG::IBoundingBox>(ENG::Vector2{64,64});
+    objPlayer->AddComponent<ENG::IBoundingBox>(ENG::Vector2{32,32});
 
     objPlayer->AddComponent<HealtStat>();
     objPlayer->AddComponent<DefenseStat>();
@@ -80,8 +85,9 @@ namespace APP
 
     objPlayer->AddComponent<Shield>(1.0f, 5.0f, 100);
     objPlayer->AddComponent<Dash>(5.0f, 2.0f, .5f);
+    objPlayer->AddComponent<Heal>(8.0f, 20);
 
-    objPlayer->AddComponent<Movement>(ENG::Vector2{100.f,100.f}, ENG::Vector2{250.f,250.f}, 2.0f, .5f, 5.0f);
+    objPlayer->AddComponent<Movement>(ENG::Vector2{150.f,150.f}, ENG::Vector2{250.f,250.f}, 2.0f, .5f, 5.0f);
     objPlayer->GetTransform().m_direction = {0,0};
     
     objPlayer->GetTransform().m_prev_direction = {0 , 1.f};
@@ -104,7 +110,7 @@ namespace APP
     cam = std::make_unique<ENG::Camera2D>(r.x, r.y);
     cam->SetTarget(&objPlayer->GetTransform());
     cam->SetPosition(objPlayer->GetPosition());
-    cam->SetZoom(1.0f);
+    cam->SetZoom(1.5f);
     ENG::Render::Get().GetBatcher().SetCamera2D(cam.get());
    
     // ###############################
@@ -122,6 +128,11 @@ namespace APP
     // Final
     // Final configurations
     // ###############################
+    m_enemiesKilled = 0;
+    m_score = 0;
+    m_playerHitCooldown = 0.0f;
+    nameEntry = APP::NameEntry{};
+
     isInit = true;
     isRunning = true;
     this->renderQueue = pool.Sort();
@@ -130,6 +141,19 @@ namespace APP
   void DemoScene::Inputs(float dt)
   {
     auto& pollEvent = ENG::PollEvent::Get();
+
+    /// Con el menu de fin de partida abierto, el control le pertenece a el.
+    if(nameEntry.IsActive())
+    {
+      nameEntry.Input(dt);
+      if(nameEntry.WantsExit())
+      {
+        isRunning = false;
+        ENG::Services::Scenes().PedingScene("MainMenu");
+      }
+      return;
+    }
+
     auto player = pool.Get(PLAYER);
     auto& transform = player->GetTransform();
     auto* animator = player->GetComponent<ENG::IAnimator>();
@@ -140,16 +164,6 @@ namespace APP
     if(pollEvent.IsMouseButtonDown(SDL_BUTTON_RIGHT))
     {
       player->GetComponent<Shield>()->ActiveShield();
-    }
-
-    if (pollEvent.IsKeyPress(SDL_SCANCODE_LSHIFT))
-    {
-      movement->ApplyRun();
-    }
-
-    if (pollEvent.IsKeyPress(SDL_SCANCODE_SPACE))
-    {
-      dash->TryDash(player->GetTransform());
     }
 
     ENG::Vector2 inputDir{0.f, 0.f};
@@ -165,9 +179,24 @@ namespace APP
 
     const bool moving = inputDir.x != 0.f || inputDir.y != 0.f;
 
-    if (transform.m_direction.x != 0.f || transform.m_direction.y != 0.f)
+    if (moving)
     {
       transform.m_prev_direction = transform.m_direction;
+    }
+
+    if (pollEvent.IsKeyPress(SDL_SCANCODE_LSHIFT))
+    {
+      movement->ApplyRun();
+    }
+
+    if (pollEvent.IsKeyPress(SDL_SCANCODE_SPACE))
+    {
+      dash->TryDash(player->GetTransform());
+    }
+
+    if (pollEvent.IsKeyPress(SDL_SCANCODE_H))
+    {
+      player->GetComponent<Heal>()->TryHeal(*player);
     }
 
     if (dash->GetState() == DashState::Dashing)
@@ -198,7 +227,7 @@ namespace APP
 
 
     //////////////////Attacks//////////////////////
-    if(pollEvent.IsKeyPress(SDL_SCANCODE_N))
+    if(pollEvent.IsKeyPress(SDL_SCANCODE_J))
     {
       System_MeleeAttack(*player, poolIDs, pool);
     }
@@ -216,12 +245,24 @@ namespace APP
 
   void DemoScene::Update(float dt)
   {
+    /// Con el jugador muerto la partida queda congelada: solo importa el
+    /// ingreso del nombre y el guardado del puntaje.
+    if(nameEntry.IsActive())
+      return;
+
+    /// Cada 1000 puntos de puntaje sube un poco la velocidad de spawn.
+    factoryEnemies.UpdateSpawnStepFromScore(m_score);
+
     /// Adding Enemies per frame
     if(factoryEnemies.CanSpawnEnemy())
     {
       pool.Add(factoryEnemies.CreateEnemy(this->cam->GetRectCamera(),"Native"));
       this->renderQueue = pool.Sort();
     }
+
+    /// IDs de objetos muertos a eliminar al terminar el bucle: no se puede
+    /// modificar el pool mientras se itera sobre GetAllIDs().
+    std::vector<ENG::ObjectID> deadIDs;
 
     /// Objects Update
     for (auto& o : pool.GetAllIDs())
@@ -232,6 +273,21 @@ namespace APP
       {
         if(hs->isDead())
         {
+          if(o != PLAYER)
+          {
+            factoryEnemies.DecreaseEnemyCount();
+
+            if(obj->GetName().rfind("Native", 0) == 0)
+            {
+              ++m_enemiesKilled;
+              m_score += 1u + 10;
+              if(auto* player = pool.Get(PLAYER))
+              {
+                System_AumentLevel(*player, 10);
+              }
+            }
+            deadIDs.push_back(o);
+          }
           continue;
         }
       }
@@ -240,11 +296,12 @@ namespace APP
       {
         auto d = obj->GetComponent<Dash>();
         auto mv = obj->GetComponent<Movement>();
+        auto heal = obj->GetComponent<Heal>();
 
-        obj->GetComponent<Shield>()->UpdateShield(*obj, 10, ENG::GetMousePosition().Normalize());
         d->UpdateDash(obj->GetTransform(), dt);
         mv->ApplyMovement(obj->GetTransform(), dt);
         mv->UpdateMovement(obj->GetTransform(), dt, d->IsDashing());
+        heal->UpdateHeal(dt);
       }
 
       System_AIMovement(*pool.Get(PLAYER),*obj, dt);
@@ -257,6 +314,36 @@ namespace APP
           break;
         }
       }
+    }
+
+    if(!deadIDs.empty())
+    {
+      for(ENG::ObjectID id : deadIDs)
+      {
+        pool.Remove(id);
+      }
+      this->renderQueue = pool.Sort();
+    }
+
+    /// Enemigos que tocan al jugador le bajan la vida, con una cadencia para
+    /// que no drene cada frame.
+    m_playerHitCooldown -= dt;
+    if(m_playerHitCooldown <= 0.0f)
+    {
+      if(auto* player = pool.Get(PLAYER))
+      {
+        if(System_EnemiesAttackPlayer(*player, pool, 5.f))
+        {
+          m_playerHitCooldown = 0.5f;
+        }
+      }
+    }
+
+    /// Si el jugador murio, se abre el menu de ingreso de nombre.
+    if(auto* player = pool.Get(PLAYER))
+    {
+      if(auto* hs = player->GetComponent<HealtStat>(); hs && hs->isDead())
+        nameEntry.Open(m_score);
     }
 
     /// Update all Modules
@@ -275,7 +362,10 @@ namespace APP
     for (auto& entry : renderQueue)
     {
       auto* obj = pool.Get(entry.id);
-      if(obj->GetComponent<HealtStat>()->isDead())
+      if(!obj)
+        continue;
+      auto* hs = obj->GetComponent<HealtStat>();
+      if(hs && hs->isDead())
         continue;
       obj->Draw(b);
     }
@@ -284,30 +374,47 @@ namespace APP
     if (auto* player = pool.Get(PLAYER))
       System_DrawMeleeDebug(*player, pool.GetAllIDs(), pool);
 
-    ENG::Drawer::DrawRectangleOutline(cam->GetRectCamera(),ENG::Color::Blue); 
-    if (auto* player = pool.Get(PLAYER))
-    {
-      if (auto* box = player->GetComponent<ENG::IBoundingBox>())
-      {
-        const auto sz = box->GetSize();
-        float fw = sz.x * 0.4f, fh = std::max(2.0f, sz.y * 0.12f);
-        ENG::Drawer::DrawRectangleOutline(
-            ENG::Vector2{box->GetPosition().x + (sz.x - fw) * 0.5f, box->GetPosition().y + sz.y - fh},
-            ENG::Vector2{fw, fh}, ENG::Color::Red);
-      }
-    }
+    // ENG::Drawer::DrawRectangleOutline(cam->GetRectCamera(),ENG::Color::Blue); 
+    // if (auto* player = pool.Get(PLAYER))
+    // {
+    //   if (auto* box = player->GetComponent<ENG::IBoundingBox>())
+    //   {
+    //     const auto sz = box->GetSize();
+    //     float fw = sz.x * 0.4f, fh = std::max(2.0f, sz.y * 0.12f);
+    //     ENG::Drawer::DrawRectangleOutline(
+    //         ENG::Vector2{box->GetPosition().x + (sz.x - fw) * 0.5f, box->GetPosition().y + sz.y - fh},
+    //         ENG::Vector2{fw, fh}, ENG::Color::Red);
+    //
+    //     ENG::Drawer::DrawRectangleOutline(
+    //         box->GetPosition(),
+    //         box->GetSize(), ENG::Color::Yellow);
+    //
+    //   }
+    // }
 
-    ENG::TextAPI::Get().DrawText(
-        *ENG::Services::Fonts().GetFont("Ithaca"),
-        50.f, 50.f, 16.f,
-        ENG::TextAPI::Get().FormatText("Entites: %u" , factoryEnemies.GetTotalEnemies())
-        );
-    ENG::TextAPI::Get().DrawText(
-        *ENG::Services::Fonts().GetFont("Ithaca"),
-        50.f, 80.f, 16.f,
-        ENG::TextAPI::Get().FormatText("FPS: %.2f" , ENG::Services::Clock().GetFPS())
-        );
+    const float   hudTextX = 30.f;
+    float         hudTextY = 120.f;
+    const float   hudLineH = 24.f;
+    const ENG::Font* hudFont = ENG::Services::Fonts().GetFont("Ithaca");
+    auto drawHudLine = [&](const std::string& str)
+    {
+      ENG::TextAPI::Get().DrawText(*hudFont, hudTextX, hudTextY, 16.f, str);
+      hudTextY += hudLineH;
+    };
+
+    drawHudLine("WASD para moverte");
+    drawHudLine("Shift para correr");
+    drawHudLine("Espacio para Dash");
+    drawHudLine("H para curarte");
+    drawHudLine("J para golpear enemigos");
+    drawHudLine(ENG::TextAPI::Get().FormatText("Enemigos vivos: %u" , factoryEnemies.GetAliveEnemies()));
+    drawHudLine(ENG::TextAPI::Get().FormatText("FPS: %.2f" , ENG::Services::Clock().GetFPS()));
     EssenceBar(b, *cam, *pool.Get(PLAYER));
+    PlayerHUD(b, *cam, *pool.Get(PLAYER));
+    ScoreHUD(b, *cam, m_enemiesKilled, m_score);
+
+    if(nameEntry.IsActive())
+      nameEntry.Render(*cam);
   }
 
   void DemoScene::Destroy()
@@ -317,6 +424,7 @@ namespace APP
     isInit = false;
     isRunning = false;
     tileMaps.clear();
+    factoryEnemies.Clear();
   }
 
   bool DemoScene::IsRunning()

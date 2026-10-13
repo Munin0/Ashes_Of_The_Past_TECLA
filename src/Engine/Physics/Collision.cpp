@@ -22,7 +22,17 @@ namespace ENG
     IBoundingBox* box = object.GetComponent<ENG::IBoundingBox>();
     if (!box) return false;
 
-    const Vector2 size = box->GetSize();
+    /// Para colisionar con el mapa se usa el frame completo del sprite (si lo
+    /// hay) en vez de la caja: la caja puede ser mas pequena y estar centrada
+    /// para el combate, pero los muros deben seguir bloqueando igual.
+    Vector2 size   = box->GetSize();
+    Vector2 boxPos = box->GetPosition();
+    if (auto* sprite = object.GetComponent<ENG::ISprite>())
+    {
+      size   = {(float)sprite->GetWidth(), (float)sprite->GetHeight()};
+      boxPos = object.GetPosition();
+    }
+
     const float footWidth  = size.x * 0.4f;
     const float footHeight = std::max(2.0f, size.y * 0.12f);
 
@@ -39,7 +49,6 @@ namespace ENG
       return false;
     };
 
-    const Vector2 boxPos = box->GetPosition();
     if (!blockedAt(boxPos)) return false;
 
     if (resolution)
@@ -78,10 +87,16 @@ namespace ENG
 
   bool CollisionAABB(const IBoundingBox& source, const IBoundingBox& target)
   {
-    Vector2 posA = source.GetPosition(), posB = target.GetPosition();
-    auto dimA = source.GetSize();
-    auto dimB = target.GetSize();
-    return (posA.x <= dimB.x && dimA.x >= posB.x) && (posA.y <= dimB.y && dimA.y >= posB.y);
+    const Vector2 posA  = source.GetPosition();
+    const Vector2 posB  = target.GetPosition();
+    const Vector2 sizeA = source.GetSize();
+    const Vector2 sizeB = target.GetSize();
+
+    /// Solapamiento de AABBs: cada caja va desde su posicion hasta
+    /// posicion + tamano. Antes se comparaba la posicion contra el tamano de
+    /// la otra caja, por lo que solo funcionaba cerca del origen (x,y <= 64).
+    return (posA.x <= posB.x + sizeB.x && posA.x + sizeA.x >= posB.x) &&
+           (posA.y <= posB.y + sizeB.y && posA.y + sizeA.y >= posB.y);
   }
 
   bool CollisionAABB(const Rectangle& a, const Rectangle& b)

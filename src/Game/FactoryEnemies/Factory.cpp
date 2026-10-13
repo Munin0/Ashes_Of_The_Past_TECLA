@@ -3,6 +3,7 @@
 /// | ------------------------------------ |
 #include "Engine/Object/Object.hpp"
 #include "Engine/Component/Component.hpp"
+#include "Engine/Utils/Log.hpp"
 #include "Engine/Utils/RawGeometry.hpp"
 #include "Engine/Utils/Vector2.hpp"
 /// | ------------------------------------ |
@@ -19,7 +20,8 @@
 namespace APP
 {
   FactoryEnemies::FactoryEnemies(uint32_t maxEnemies, float maxTimeToSpawn, float step)
-    : m_maxEnemies{maxEnemies}, m_maxTimeToSpawn{maxTimeToSpawn}, m_step{step}
+    : m_step{step}, m_baseStep{step},
+      m_maxTimeToSpawn{maxTimeToSpawn}, m_maxEnemies{maxEnemies}
   { }
   
  std::unique_ptr<ENG::Object> FactoryEnemies::CreateEnemy(const ENG::Rectangle& rect, const std::string& classEnemy)
@@ -38,12 +40,27 @@ namespace APP
       entity->GetComponent<ENG::IAnimator>()->Play();
     }
     entity->AddComponent<HealtStat>();
-    entity->AddComponent<ENG::IBoundingBox>(ENG::Vector2{64,64});
+    entity->AddComponent<XPStat>();
+    entity->AddComponent<ENG::IBoundingBox>(ENG::Vector2{32,32});
     // Give AI
     
     m_countEnemies++;
+    m_aliveEnemies++;
     return std::move(entity);
- }
+  }
+
+  void FactoryEnemies::DecreaseEnemyCount(void)
+  {
+    if(m_aliveEnemies > 0)
+      --m_aliveEnemies;
+  }
+
+  void FactoryEnemies::UpdateSpawnStepFromScore(uint32_t score)
+  {
+    /// Por cada ScorePerStep puntos sube un nivel de velocidad.
+    const uint32_t levels = score / ScorePerStep;
+    m_step = m_baseStep + StepIncrement * static_cast<float>(levels);
+  }
 
  void FactoryEnemies::UpdateFactoryEnemies()
  {
@@ -74,5 +91,12 @@ namespace APP
      return 2;
 
    return 0;
+ }
+
+
+ void FactoryEnemies::Clear()
+ {
+    this->m_countEnemies = 0;
+    this->m_aliveEnemies = 0;
  }
 }

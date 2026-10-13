@@ -21,7 +21,7 @@ namespace APP
   {
     public:
       explicit StrengthStat()
-        : ITemplateStat<uint8_t>(20, 0, 20, "Fuerza")
+        : ITemplateStat<uint8_t>(50, 0, 40, "Fuerza")
       {}
   };
 

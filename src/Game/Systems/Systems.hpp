@@ -36,6 +36,11 @@ namespace APP
   [[maybe_unused]] bool System_CheckEssence(ENG::Object& who, uint32_t essence);
   //Attack System
   [[maybe_unused]] bool System_MeleeAttack(ENG::Object& player, std::vector<uint32_t> allObjectsIds, ENG::ObjectPool& pool);
+
+  /// @brief Aplica @p damage a @p player por cada enemigo que lo toque
+  ///        (solape de bounding boxes). El dano pasa por el Shield si lo
+  ///        tiene. Devuelve true si al menos un enemigo ataco.
+  [[maybe_unused]] bool System_EnemiesAttackPlayer(ENG::Object& player, ENG::ObjectPool& pool, uint8_t damage);
   
   [[maybe_unused]] void System_DrawMeleeDebug(ENG::Object& player, std::vector<uint32_t> allObjectsIds, ENG::ObjectPool& pool);
 

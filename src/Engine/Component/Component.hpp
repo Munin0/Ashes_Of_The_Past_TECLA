@@ -196,9 +196,10 @@ namespace ENG
 
       //! Position is the same anchor Object/Batcher::DrawQuad use to draw a sprite (its
       //! bottom-left corner), not the box's center -- this keeps the box aligned with what's
-      //! actually drawn on screen.
-      void Update(const Vector2& _position)   { this->m_position = _position; };
-      void Update(float x, float y)           { this->m_position = {x,y};     };
+      //! actually drawn on screen. The offset is added on top so a box smaller than the
+      //! sprite can stay centered on it.
+      void Update(const Vector2& _position)   { this->m_position = _position + this->m_offset; };
+      void Update(float x, float y)           { this->m_position = Vector2{x,y} + this->m_offset; };
       //! Change the dimention from the IBoundingBox.
       void ChangeSize(const Vector2& dim)     { this->m_size = dim;     }
       //! Get the actual size from the IBoundingBox.
@@ -207,6 +208,10 @@ namespace ENG
       const Vector2& GetPosition(void) const  { return this->m_position;}
       //! Get the center from the IBoundingBox.
       Vector2 GetCenter(void) const           { return this->m_position + this->m_size / 2.0f;}
+      //! Offset added on top of the object position when Update is called. Used
+      //! to keep a smaller box centered on the sprite it belongs to.
+      void SetOffset(const Vector2& _offset)  { this->m_offset = _offset; }
+      const Vector2& GetOffset(void) const    { return this->m_offset;   }
 
       //! Validate if the IBoundingBox was created for be a TriggerBox. 
       bool IsTrigger(void) const {return this->m_isTrigger;}
@@ -215,6 +220,7 @@ namespace ENG
     private:
       Vector2 m_position;
       Vector2 m_size;
+      Vector2 m_offset{0.0f, 0.0f};
       bool    m_isTrigger;
   };
 

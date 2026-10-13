@@ -46,7 +46,7 @@ namespace APP
 
     this->m_direction = transform.m_direction;
     this->m_direction.Normalize();
-    this->m_normalVelocity = transform.m_velocity;
+    this->m_normalVelocity = {150.f,150.f};
     this->m_timer = 0.0f;
     this->m_state = DashState::Dashing;
   }

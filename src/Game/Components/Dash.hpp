@@ -25,6 +25,10 @@ namespace APP
       bool IsDashing(void) const            { return this->m_state == DashState::Dashing;}
       ENG::Vector2 GetDirecction() const    { return this->m_direction;}
 
+      float GetTimer(void) const            { return this->m_timer;}
+      float GetDuration(void) const         { return this->m_duration;}
+      float GetCooldown(void) const         { return this->m_cooldown;}
+
       void UpdateDash(ENG::ITransform& transform, float dt);
       void TryDash(ENG::ITransform& transform);
 

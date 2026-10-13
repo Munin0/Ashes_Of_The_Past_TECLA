@@ -6,6 +6,7 @@
 #include "Engine/Render/Batching/RBatch.hpp"
 #include "Engine/Render/Batching/RenderEntry.hpp"
 #include "Engine/Services/ScenesManager.hpp"
+#include "Game/Systems/HighScores.hpp"
 /// | ------------------------------------ |
 #include <string>
 #include <vector>
@@ -29,6 +30,9 @@ namespace APP
       bool mousePressed;
       ENG::ObjectPool pool;
       std::vector<ENG::RenderEntry> renderQueue;
+
+      /// @brief Puntuaciones cargadas desde disco (las 10 mejores).
+      HighScores m_highScores;
   };
 }
 
