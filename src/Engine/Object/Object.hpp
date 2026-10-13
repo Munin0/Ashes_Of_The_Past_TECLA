@@ -82,7 +82,10 @@ namespace ENG
       template<typename T, typename... Args>
       T& AddComponent(Args&&... args)
       {
-        return components.Emplace<T>(std::forward<Args>(args)...);
+        T& component = components.Emplace<T>(std::forward<Args>(args)...);
+        if constexpr (std::is_same_v<T, IBoundingBox>)
+          component.Update(GetTransform().m_position);
+        return component;
       }
 
       /**
@@ -127,6 +130,7 @@ namespace ENG
       IBoundingBox& AddBoundingBox(const Vector2& dim, bool isTrigger = false)
       {
         boundingBoxes.emplace_back(dim, isTrigger);
+        boundingBoxes.back().Update(GetTransform().m_position);
         return boundingBoxes.back();
       }
 
