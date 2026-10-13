@@ -32,4 +32,5 @@ namespace APP
 
   //Attack System
   [[maybe_unused]] bool System_MeleeAttack(ENG::Object& player, std::vector<uint32_t> allObjectsIds, ENG::ObjectPool& pool);
+  [[maybe_unused]] void System_DrawMeleeDebug(ENG::Object& player, std::vector<uint32_t> allObjectsIds, ENG::ObjectPool& pool);
 }

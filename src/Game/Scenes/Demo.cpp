@@ -247,6 +247,9 @@ namespace APP
     }
     RenderTileMaps(b, LAYER_PLAYER, LAYER_MAX);    /// Layer front of the player
 
+    if (auto* player = pool.Get(PLAYER))
+      System_DrawMeleeDebug(*player, pool.GetAllIDs(), pool);
+
     ENG::Drawer::DrawRectangleOutline(cam->GetRectCamera(),ENG::Color::Blue);
   }
 

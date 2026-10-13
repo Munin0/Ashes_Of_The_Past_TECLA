@@ -43,7 +43,7 @@ namespace APP
     {
         public:
             explicit MeleeAttackDistance() :
-                ITemplateStat<float>(10.f, 0.5f, 0.5f, "Distancia de ataque cuerpo a cuerpo")
+                ITemplateStat<float>(100.f, 0.5f, 100.f, "Distancia de ataque cuerpo a cuerpo")
             {}
     };
 
@@ -51,7 +51,7 @@ namespace APP
     {
         public:
             explicit MeleeAttackRange() :
-                ITemplateStat<float>(20, 0, 5, "Rango de ataque cuerpo a cuerpo")
+                ITemplateStat<float>(100, 0, 50, "Rango de ataque cuerpo a cuerpo")
             {}
     };
 
