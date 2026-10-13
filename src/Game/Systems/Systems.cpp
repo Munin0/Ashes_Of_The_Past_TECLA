@@ -10,6 +10,7 @@
 /// | ------------------------------------ |
 #include <cstdint>
 #include <string>
+#include <algorithm>
 /// | ------------------------------------ |
 #include "Engine/Utils/Log.hpp"
 /// | ------------------------------------ |
@@ -136,5 +137,40 @@ namespace APP
     }
     return newPosition;  
 
+  }
+
+  // Devuelve cuanta esencia se sumo de verdad
+  // si el maximo de esencia es 0 el objeto no tiene esencia y no se suma nada
+  uint32_t System_AddEssence(ENG::Object& who, uint32_t essence)
+  {
+    auto& stats = who.GetStats();
+
+    uint32_t remainingEssence = stats.m_essence_max - stats.m_essence;
+    uint32_t toAdd = std::min(essence, remainingEssence);
+    stats.m_essence += toAdd;
+    return toAdd;
+  }
+
+  // Devuelve un true si se pudo usar la esencia y false si no se pudo
+  bool System_RemoveEssence(ENG::Object& who, uint32_t essence)
+  {
+    auto& stats = who.GetStats();
+
+    if(System_CheckEssence(who, essence))
+    {
+      stats.m_essence -= essence;
+      return true;
+    }
+    
+    return false;
+  }
+
+  // Devuelve true si hay suficiente esencia para usarse y false si no es asi
+  bool System_CheckEssence(ENG::Object& who, uint32_t essence)
+  {
+    auto& stats = who.GetStats();
+
+    if(essence <= stats.m_essence) return true;
+    return false;    
   }
 }
